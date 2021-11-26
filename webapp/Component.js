@@ -6,7 +6,7 @@ sap.ui.define(
 	function (UIComponent, JSONModel) {
 		'use strict';
 
-		return UIComponent.extend('sap.ui.demo.walkthrough.Component', {
+		return UIComponent.extend('my.category.list.Component', {
 			metadata: {
 				interfaces: ['sap.ui.core.IAsyncContentCreation'],
 				manifest: 'json'
@@ -22,6 +22,8 @@ sap.ui.define(
 				};
 				let oModel = new JSONModel(oData);
 				this.setModel(oModel);
+
+				this.getRouter().initialize();
 			},
 		});
 	},

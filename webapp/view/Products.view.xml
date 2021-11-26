@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="my.category.list.controller.Products"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f"
+    displayBlock="true">
+        <Page title="{i18n>detialHeader}">
+            <f:GridList
+                items="{category>Products}"
+                class="sapUiResponsiveContentPadding"
+                headerText="{category>CategoryName}">
+                <f:customLayout>
+                    <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="0.5rem" />
+                </f:customLayout>
+                <f:GridListItem
+                    counter="{category>ProductID}"
+                >
+                <VBox height="100%">
+				<HBox height="100%" class="sapUiSmallMargin" alignItems="Center">
+					<VBox>
+						<Title text="{category>ProductName}" wrapping="true" />
+						<Label text="{category>QuantityPerUnit}" wrapping="true" />
+					</VBox>
+				</HBox>
+			</VBox>
+                </f:GridListItem>
+            </f:GridList>
+        </Page>
+</mvc:View>

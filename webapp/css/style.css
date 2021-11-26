@@ -1,17 +1,7 @@
-html[dir="ltr"] .myAppDemoWT .myCustomButton.sapMBtn {
-    margin-right: 0.2rem;
+.category-list-item {
+    cursor: pointer;
 }
 
-html[ dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
-    margin-left: 0.2rem;
-}
-
-.myAppDemoWT .myCustomText {
-    display: inline-block;
-    font-weight: 700;
-}
-
-.myAppDemoWT .myPanel .sapMPanelContent {
-    display: flex;
-    align-items: center;
+.category-list-item:hover {
+    filter: brightness(115%);
 }

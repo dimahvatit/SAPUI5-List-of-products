@@ -1,17 +1,8 @@
 <mvc:View
-	controllerName="sap.ui.demo.walkthrough.controller.App"
+	controllerName="my.category.list.controller.App"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	displayBlock="true">
+	xmlns="sap.m" displayBlock="true">
 	<Shell>
-		<App class="myAppDemoWT">
-			<pages>
-				<Page title="{i18n>helloPageTitle}">
-					<content>
-						<mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
-					</content>
-				</Page>
-			</pages>
-		</App>
+		<App class="myAppDemoWT" id="app"/>
 	</Shell>
 </mvc:View>
