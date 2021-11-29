@@ -1,0 +1,12 @@
+specVersion: '2.1'
+metadata:
+  name: list_with_links
+type: application
+framework:
+  name: SAPUI5
+  version: "1.96.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: themelib_sap_fiori_3
