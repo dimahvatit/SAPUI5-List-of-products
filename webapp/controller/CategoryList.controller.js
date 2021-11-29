@@ -39,15 +39,14 @@ function (Controller, Filter, FilterOperator) {
         },
 
         onPress: function (oEvent) {
-            console.log(oEvent.getSource().getBindingContext("category").getObject());
-            console.log(oEvent.getSource().getBindingContext("category"));
 
-            let sPath = oEvent.getSource().getBindingContext("category").getPath().substr(1);
+            // let sPath = oEvent.getSource().getBindingContext("category").getPath().substr(1);
+            let ID = oEvent.getSource().getBindingContext("category").getObject().CategoryID;
 
             let oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('products', {
-                productPath: window.encodeURIComponent(sPath)
+                productPath: window.encodeURIComponent(`Categories(${ID})`)
             });
         },
     });
