@@ -5,15 +5,14 @@ sap.ui.define([
 ], function(Controller, JSONModel/* , formatter, */) {
 	"use strict";
 
-	return Controller.extend("my.category.list.controller.Products", {
+	return Controller.extend("myCategoryList.controller.Products", {
 		// formatter: formatter,
         onInit: function () {
             let oViewModel = new JSONModel({
                 currency: 'EUR',
             });
             this.getView().setModel(oViewModel, 'view');
-        },
-        onInit: function() {
+        
             let oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute('products').attachPatternMatched(this._onObjectMatched, this);
         },

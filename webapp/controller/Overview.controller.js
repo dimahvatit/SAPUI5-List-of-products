@@ -6,7 +6,7 @@ sap.ui.define([
 function (Controller, Filter, FilterOperator) {
     'use strict';
 
-    return Controller.extend('my.category.list.controller.CategoryList', {
+    return Controller.extend('myCategoryList.controller.Overview', {
 
         // search by category name and description
         onFilterCategories: function (oEvent) {
@@ -41,12 +41,12 @@ function (Controller, Filter, FilterOperator) {
         onPress: function (oEvent) {
 
             // let sPath = oEvent.getSource().getBindingContext("category").getPath().substr(1);
-            let ID = oEvent.getSource().getBindingContext("category").getObject().CategoryID;
+            let oInst = oEvent.getSource().getBindingContext("category").getObject();
 
             let oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('products', {
-                productPath: window.encodeURIComponent(`Categories(${ID})`)
+                productPath: window.encodeURIComponent(`Categories(${oInst.CategoryID})`)
             });
         },
     });

@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "my.category.list",
+		"id": "myCategoryList",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -29,7 +29,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "my.category.list.view.App",
+			"viewName": "myCategoryList.view.App",
 			"type": "XML",
 			"id": "app"
 		},
@@ -44,7 +44,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "my.category.list.i18n.i18n",
+					"bundleName": "myCategoryList.i18n.i18n",
 					"supportedLocales": [""],
 					"fallbackLocale": ""
 				}
@@ -57,7 +57,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "my.category.list.view",
+				"viewPath": "myCategoryList.view",
 				"controlId": "app",
 				"controlAggregation": "pages"
 			},

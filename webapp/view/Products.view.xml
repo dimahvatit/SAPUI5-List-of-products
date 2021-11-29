@@ -1,9 +1,9 @@
 <mvc:View
-    controllerName="my.category.list.controller.Products"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
+    controllerName="myCategoryList.controller.Products"
     xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.f"
+    xmlns="sap.m"
     displayBlock="true">
         <Page title="{i18n>detialHeader}">
             <f:GridList
@@ -13,9 +13,7 @@
                 <f:customLayout>
                     <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="0.5rem" />
                 </f:customLayout>
-                <f:GridListItem
-                    counter="{category>ProductID}"
-                >
+                <f:GridListItem counter="{category>ProductID}">
                 <VBox height="100%">
 				<HBox height="100%" class="sapUiSmallMargin" alignItems="Center">
 					<VBox>

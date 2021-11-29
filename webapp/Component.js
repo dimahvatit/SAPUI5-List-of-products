@@ -6,7 +6,7 @@ sap.ui.define(
 	function (UIComponent, JSONModel) {
 		'use strict';
 
-		return UIComponent.extend('my.category.list.Component', {
+		return UIComponent.extend('myCategoryList.Component', {
 			metadata: {
 				interfaces: ['sap.ui.core.IAsyncContentCreation'],
 				manifest: 'json'

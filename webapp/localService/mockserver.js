@@ -19,7 +19,7 @@ sap.ui.define([
 			});
 
 			// simulate
-			let sPath = sap.ui.require.toUrl("my/category/list/localService");
+			let sPath = sap.ui.require.toUrl("myCategoryList/localService");
 			oMockServer.simulate(sPath + "/metadata.xml", sPath + "/mockdata/");
 
 			// start

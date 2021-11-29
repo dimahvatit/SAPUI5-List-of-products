@@ -1,10 +1,39 @@
 <mvc:View
+    controllerName="myCategoryList.controller.Overview"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
         <Page title="{i18n>appTitle}">
             <content>
-                <mvc:XMLView viewName="my.category.list.view.CategoryList"/>
+                <List
+        id="catList"
+        class="sapUiResponsiveMargin"
+        width="auto"
+        items="{
+            path: 'category>/Categories',
+            parameters: {expand: 'Products'}
+        }">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>categoryListTitle}"/>
+                <ToolbarSpacer />
+                <SearchField width="50%" liveChange="onFilterCategories" placeholder="{i18n>searchPlaceholder}"/>
+            </Toolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem
+                class="category-list-item sapUiSmallMarginbBottom"
+                title="{category>CategoryName}"
+                number="ID {category>CategoryID}"
+                type="Navigation"
+                press="onPress">
+                <ObjectAttribute
+                    text="{
+                        path: 'category>Description'
+                    }"/>
+            </ObjectListItem>
+        </items>
+    </List>
             </content>
         </Page>
 </mvc:View>

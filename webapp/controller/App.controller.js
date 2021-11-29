@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(Controller) {
 	"use strict";
 
-	return Controller.extend("my.category.list.controller.App", {
+	return Controller.extend("myCategoryList.controller.App", {
 		
 	});
 });

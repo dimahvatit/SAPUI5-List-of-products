@@ -7,7 +7,7 @@
     "cors-anywhere": "^0.4.4",
     "rimraf": "3.0.2"
   },
-  "name": "my.category.list",
+  "name": "myCategoryList",
   "version": "0.0.1",
   "private": true,
   "sapuxLayer": "CUSTOMER_BASE",
