@@ -10,7 +10,7 @@
 			"version": "1.0.0"
 		},
 		"dataSources": {
-			"categoryRemote": {
+			"categories": {
 				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
 				"type": "OData",
 				"settings": {
@@ -50,7 +50,7 @@
 				}
 			},
 			"category": {
-				"dataSource": "categoryRemote"
+				"dataSource": "categories"
 			}
 		},
 		"routing": {
