@@ -2,9 +2,8 @@
 
 ### development stage
 
-#### `npm i`
-#### then:
 
+#### `npm i`, then:
 ##### run with oData service:
 
 - `npm start`
