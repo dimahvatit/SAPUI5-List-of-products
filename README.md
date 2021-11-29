@@ -2,15 +2,16 @@
 
 ### development stage
 
-##### Run with oData service:
+#### `npm i`
+#### then:
 
-- `npm i`
+##### run with oData service:
+
 - `npm start`
 - http://localhost:8080/index.html
 
 
-##### Run with mock server
+##### run with mock server
 
-- `npm i`
 - `npm test`
 - http://localhost:8080/test/mockServer.html
