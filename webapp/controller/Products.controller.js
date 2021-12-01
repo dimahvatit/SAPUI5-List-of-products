@@ -2,14 +2,15 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
     'sap/ui/model/json/JSONModel',
 	// '../model/formatter',
-], function(Controller, JSONModel/* , formatter, */) {
+], function(Controller, JSONModel/* , formatter */) {
 	"use strict";
 
-	return Controller.extend("myCategoryList.controller.Products", {
+	return Controller.extend('myCategoryList.controller.Products', {
+
 		// formatter: formatter,
         onInit: function () {
             let oViewModel = new JSONModel({
-                currency: 'EUR',
+                currency: 'EUR'
             });
             this.getView().setModel(oViewModel, 'view');
         
@@ -21,6 +22,11 @@ sap.ui.define([
 				path: "/" + window.decodeURIComponent(oEvent.getParameter("arguments").productPath),
 				model: 'category'
 			})
+		},
+		onItemClick: function(oEvent) {
+			console.log(oEvent.getSource());
+
+			let oItem = oEvent.getSource();
 		}
 	});
 });

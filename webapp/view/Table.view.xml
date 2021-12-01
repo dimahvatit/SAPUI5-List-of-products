@@ -1,0 +1,12 @@
+<mvc:View
+	controllerName="myCategoryList.Table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+>
+    <Page id="table" title="{i18n>tableTitle}">
+        <Table id="myTable">
+            
+        </Table>
+    </Page>
+</mvc:View>

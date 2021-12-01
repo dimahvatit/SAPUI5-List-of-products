@@ -1,12 +1,12 @@
 {
   "devDependencies": {
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^2.11.1",
+    "@ui5/cli": "^2.14.1",
     "@ui5/fs": "^2.0.6",
     "@ui5/logger": "^2.0.1",
     "cors-anywhere": "^0.4.4",
-    "rimraf": "3.0.2",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "rimraf": "3.0.2"
   },
   "name": "myCategoryList",
   "version": "0.0.1",
@@ -27,6 +27,9 @@
   "ui5": {
     "dependencies": [
       "@sap/ux-ui5-tooling"
-    ]
+    ],
+    "ui5parser": {
+      "ui5version": "1.96.1"
+    }
   }
 }

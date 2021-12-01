@@ -1,9 +1,7 @@
-sap.ui.define(
-	[
-		'sap/ui/core/UIComponent',
-		'sap/ui/model/json/JSONModel',
+sap.ui.define([
+		'sap/ui/core/UIComponent'
 	],
-	function (UIComponent, JSONModel) {
+	function (UIComponent) {
 		'use strict';
 
 		return UIComponent.extend('myCategoryList.Component', {
@@ -14,14 +12,6 @@ sap.ui.define(
 			init: function() {
 				// call the init function of the parent
 				UIComponent.prototype.init.apply(this, arguments);
-				// set data model
-				let oData = {
-					recipient: {
-						name: 'World'
-					}
-				};
-				let oModel = new JSONModel(oData);
-				this.setModel(oModel);
 
 				this.getRouter().initialize();
 			},

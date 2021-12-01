@@ -7,7 +7,6 @@ function (Controller, Filter, FilterOperator) {
     'use strict';
 
     return Controller.extend('myCategoryList.controller.Overview', {
-
         // search by category name and description
         onFilterCategories: function (oEvent) {
             let aFilter = [];
@@ -35,18 +34,17 @@ function (Controller, Filter, FilterOperator) {
 
             let oList = this.byId('catList');
             let oBinding = oList.getBinding('items');
+            console.log(oBinding);
             oBinding.filter(aFilter);
         },
 
         onPress: function (oEvent) {
-
-            // let sPath = oEvent.getSource().getBindingContext("category").getPath().substr(1);
-            let oInst = oEvent.getSource().getBindingContext("category").getObject();
+            let oCatItem = oEvent.getSource().getBindingContext("category").getObject();
 
             let oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('products', {
-                productPath: window.encodeURIComponent(`Categories(${oInst.CategoryID})`)
+                productPath: window.encodeURIComponent(`Categories(${oCatItem.CategoryID})`)
             });
         },
     });
