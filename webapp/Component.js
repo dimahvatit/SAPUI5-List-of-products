@@ -4,7 +4,7 @@ sap.ui.define([
 	function (UIComponent) {
 		'use strict';
 
-		return UIComponent.extend('myCategoryList.Component', {
+		return UIComponent.extend('my_cat_list.Component', {
 			metadata: {
 				interfaces: ['sap.ui.core.IAsyncContentCreation'],
 				manifest: 'json'

@@ -1,0 +1,266 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Page1" xmlns:tnt="sap.tnt" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+    <tnt:ToolPage sideExpanded="true">
+        <tnt:header>
+            <tnt:ToolHeader height="3rem" width="auto" design="Transparent" visible="true" enabled="true">
+                <tnt:content>
+                    <Button text="" type="Default" icon="sap-icon://menu2" iconFirst="true" width="auto" enabled="true" visible="true" tooltip="Toggle Side Navigation" press="_onToggleButtonPress"/>
+                    <ToolbarSpacer width="20px"/>
+                    <Text text="BEST SHOP EVER" width="120px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+                </tnt:content>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation visible="true">
+                <tnt:item>
+                    <tnt:NavigationList width="auto" expanded="true">
+                        <tnt:items>
+                            <tnt:NavigationListItem icon="sap-icon://circle-task-2" expanded="true" hasExpander="false" text="Menu">
+                                <tnt:items>
+                                    <tnt:NavigationListItem icon="" expanded="true" hasExpander="true" text="Categories">
+                                        <tnt:items/>
+                                    </tnt:NavigationListItem>
+                                    <tnt:NavigationListItem icon="" expanded="true" hasExpander="true" text="All Products">
+                                        <tnt:items/>
+                                    </tnt:NavigationListItem>
+                                    <tnt:NavigationListItem icon="sap-icon://cart" expanded="true" hasExpander="false" text="Cart">
+                                        <tnt:items/>
+                                    </tnt:NavigationListItem>
+                                </tnt:items>
+                            </tnt:NavigationListItem>
+                        </tnt:items>
+                    </tnt:NavigationList>
+                </tnt:item>
+                <tnt:fixedItem/>
+                <tnt:footer/>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <layout:BlockLayout background="Default" visible="true">
+                <layout:content>
+                    <layout:BlockLayoutRow scrollable="false">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="1" title="Browse products" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="by categories" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="Search products" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="by title" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="Manage You Cart" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <core:Icon src="sap-icon://cart" size="40px" color="#168282" height="48px" width="48px" activeColor="#116464" hoverColor="#006794" visible="true" tooltip="Cart"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow scrollable="false">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                </layout:content>
+            </layout:BlockLayout>
+            <layout:BlockLayout background="Accent" visible="true">
+                <layout:content>
+                    <layout:BlockLayoutRow scrollable="false">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="1" title="Cryprocurrencies" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="Total cap" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="1/4 width cell" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="More text" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="End aligned heading" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="More text" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow scrollable="false">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="4" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L3 M6 S12" position="Center" width="100%" containerQuery="false" hSpacing="1" vSpacing="1" visible="true">
+                                        <layout:content>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                            <layout:VerticalLayout width="100%" visible="true">
+                                                <layout:content>
+                                                    <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                        <attributes/>
+                                                        <firstStatus/>
+                                                        <secondStatus/>
+                                                    </ObjectListItem>
+                                                </layout:content>
+                                            </layout:VerticalLayout>
+                                        </layout:content>
+                                    </layout:Grid>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow scrollable="false">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Center" titleLevel="Auto">
+                                <layout:content>
+                                    <Image src="/build/uilibraries/content/static/image-canvas.svg" height="130px" width="129.875px" visible="true" densityAware="false"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Image src="/build/uilibraries/content/static/image-canvas.svg" height="130px" width="129.875px" visible="true" densityAware="false"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <layout:VerticalLayout width="100%" visible="true">
+                                        <layout:content>
+                                            <ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" numberState="None" type="Active" selected="false" showMarkers="false">
+                                                <attributes/>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </layout:content>
+                                    </layout:VerticalLayout>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                </layout:content>
+            </layout:BlockLayout>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

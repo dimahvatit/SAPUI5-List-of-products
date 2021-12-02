@@ -4,7 +4,7 @@
 	"start_url": "index.html",
 
 	"sap.app": {
-		"id": "myCategoryList",
+		"id": "my_cat_list",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -32,7 +32,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "myCategoryList.view.App",
+			"viewName": "my_cat_list.view.App",
 			"type": "XML",
 			"id": "app"
 		},
@@ -56,21 +56,22 @@
 						"bundleUrl": "i18n/i18n.properties",
 						"bundleUrlRelativeTo": "manifest"
 					}],
-					"bundleName": "myCategoryList.i18n.i18n",
+					"bundleName": "my_cat_list.i18n.i18n",
 					"supportedLocales": ["en", "ru_RU"],
 					"fallbackLocale": "en",
 					"async": "true"
 				}
 			},
 			"category": {
-				"dataSource": "categories"
+				"dataSource": "categories",
+				"type": "sap.ui.model.odata.v2.ODataModel"
 			}
 		},
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "myCategoryList.view",
+				"viewPath": "my_cat_list.view",
 				"controlId": "app",
 				"controlAggregation": "pages"
 			},

@@ -1,6 +1,6 @@
 specVersion: '2.6'
 metadata:
-  name: myCategoryList
+  name: my_cat_list
 type: application
 framework:
   name: SAPUI5

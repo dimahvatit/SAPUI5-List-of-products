@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="myCategoryList.controller.App"
+	controllerName="my_cat_list.controller.App"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" displayBlock="true">
 	<Shell>

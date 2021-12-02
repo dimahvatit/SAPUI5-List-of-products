@@ -6,13 +6,13 @@ sap.ui.define([
 function (Controller, Filter, FilterOperator) {
     'use strict';
 
-    return Controller.extend('myCategoryList.controller.Overview', {
+    return Controller.extend('my_cat_list.controller.Overview', {
         // search by category name and description
         onFilterCategories: function (oEvent) {
             let aFilter = [];
             let sQuery = oEvent.getParameter('newValue');
 
-            if (sQuery) {
+            if (sQuery ?? sQuery.length > 0) {
                 aFilter.push(
                     new Filter({
                         filters: [
@@ -40,7 +40,6 @@ function (Controller, Filter, FilterOperator) {
 
         onPress: function (oEvent) {
             let oCatItem = oEvent.getSource().getBindingContext("category").getObject();
-
             let oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('products', {

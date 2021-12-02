@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="myCategoryList.controller.Overview"
+    controllerName="my_cat_list.controller.Overview"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
@@ -24,13 +24,11 @@
             <ObjectListItem
                 class="category-list-item sapUiSmallMarginbBottom"
                 title="{category>CategoryName}"
-                number="ID {category>CategoryID}"
+                number="{= ${category>Products/}.length}"
                 type="Navigation"
                 press="onPress">
                 <ObjectAttribute
-                    text="{
-                        path: 'category>Description'
-                    }"/>
+                    text="{category>Description}"/>
             </ObjectListItem>
         </items>
     </List>
