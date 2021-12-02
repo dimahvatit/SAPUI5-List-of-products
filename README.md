@@ -1,7 +1,5 @@
 # SAPUI5-List-of-products
 
-### development stage
-
 
 #### `npm i`, then:
 ##### run with oData service:
