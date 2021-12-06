@@ -1,0 +1,222 @@
+<mvc:View controllerName="my_cat_list.controller.HomePage"
+	xmlns:layout="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m" height="100%">
+
+	<tnt:ToolPage sideExpanded="false">
+		<tnt:header>
+			<tnt:ToolHeader height="100%" width="auto" design="Transparent">
+				<Button icon="sap-icon://menu2" width="auto" tooltip="Toggle Side Navigation" press="_onToggleButtonPress"/>
+				<ToolbarSpacer width="1.5rem"/>
+				<Text text="BEST SHOP EVER" maxLines="1" wrapping="false" textAlign="Center" class="sapUiSmallMargin"/>
+			</tnt:ToolHeader>
+		</tnt:header>
+
+		<tnt:sideContent>
+			<tnt:SideNavigation>
+				<tnt:NavigationList width="auto" itemSelect=".onItemSelect">
+					<tnt:NavigationListItem custom:to="products" icon="sap-icon://heatmap-chart" text="All Products"/>
+					<tnt:NavigationListItem custom:to="overview" icon="sap-icon://group-2" text="Categories"/>
+					<tnt:NavigationListItem custom:to="cart" icon="sap-icon://cart" text="Cart"/>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+
+		<tnt:mainContents>
+			<layout:BlockLayout background="Accent">
+				<layout:content>
+
+					<layout:BlockLayoutRow>
+						<layout:content>
+							<layout:BlockLayoutCell width="1" title="Browse products">
+								<layout:content>
+									<core:Icon src="sap-icon://group-2" size="40px" color="#168282" height="48px" width="48px" activeColor="#116464" hoverColor="#006794" tooltip="Cart"/>
+									<Text text="by categories" width="auto" maxLines="1" wrapping="false"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="Search products">
+								<layout:content>
+									<core:Icon src="sap-icon://heatmap-chart" size="40px" color="#168282" height="48px" width="48px" activeColor="#116464" hoverColor="#006794" tooltip="Cart"/>
+									<Text text="by title" width="auto" maxLines="1" wrapping="false"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="Manage You Cart">
+								<layout:content>
+									<core:Icon src="sap-icon://cart" size="40px" color="#168282" height="48px" width="48px" activeColor="#116464" hoverColor="#006794" tooltip="Cart"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:content>
+					</layout:BlockLayoutRow>
+
+					<layout:BlockLayoutRow>
+						<layout:content>
+							<layout:BlockLayoutCell width="1" title="">
+								<layout:content>
+									<layout:VerticalLayout width="100%">
+										<layout:content>
+											<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+												<attributes/>
+												<firstStatus/>
+												<secondStatus/>
+											</ObjectListItem>
+										</layout:content>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="">
+								<layout:content>
+									<layout:VerticalLayout width="100%">
+										<layout:content>
+											<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+												<attributes/>
+												<firstStatus/>
+												<secondStatus/>
+											</ObjectListItem>
+										</layout:content>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="">
+								<layout:content>
+									<layout:VerticalLayout width="100%">
+										<layout:content>
+											<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+												<attributes/>
+												<firstStatus/>
+												<secondStatus/>
+											</ObjectListItem>
+										</layout:content>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="">
+								<layout:content>
+									<layout:VerticalLayout width="100%">
+										<layout:content>
+											<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+												<attributes/>
+												<firstStatus/>
+												<secondStatus/>
+											</ObjectListItem>
+										</layout:content>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:content>
+					</layout:BlockLayoutRow>
+
+					<layout:BlockLayoutRow>
+						<layout:content>
+							<layout:BlockLayoutCell width="1" title="Cryprocurrencies">
+								<layout:content>
+									<Text text="Total cap" width="auto" maxLines="1" wrapping="false"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="1/4 width cell">
+								<layout:content>
+									<Text text="More text" width="auto" maxLines="1" wrapping="false"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="1" title="End aligned heading">
+								<layout:content>
+									<Text text="More text" width="auto" maxLines="1" wrapping="false"/>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:content>
+					</layout:BlockLayoutRow>
+
+					<layout:BlockLayoutRow>
+						<layout:content>
+							<layout:BlockLayoutCell width="4" title="" titleAlignment="Begin" titleLevel="Auto">
+								<layout:content>
+									<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L3 M6 S12" position="Center" width="100%" containerQuery="false" hSpacing="1" vSpacing="1">
+										<layout:content>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout width="100%">
+												<layout:content>
+													<ObjectListItem intro="Intro." title="Item" icon="sap-icon://simple-payment" number="1,000" numberUnit="USDT" type="Active">
+														<attributes/>
+														<firstStatus/>
+														<secondStatus/>
+													</ObjectListItem>
+												</layout:content>
+											</layout:VerticalLayout>
+										</layout:content>
+									</layout:Grid>
+								</layout:content>
+							</layout:BlockLayoutCell>
+							
+						</layout:content>
+					</layout:BlockLayoutRow>
+
+				</layout:content>
+			</layout:BlockLayout>
+
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

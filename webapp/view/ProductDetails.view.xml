@@ -1,0 +1,20 @@
+<mvc:View
+	controllerName="my_cat_list.controller.ProductDetails"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns:m="sap.m"
+    xmlns = "sap.uxap"
+	height="100%"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true"
+		isChildPage="true"
+		upperCaseAnchorBar="false"
+	>
+        
+    </ObjectPageLayout>
+</mvc:View>

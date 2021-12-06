@@ -1,32 +1,40 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-    'sap/ui/model/json/JSONModel',
-	'../model/formatter'
-], function(Controller, JSONModel, formatter) {
-	"use strict";
+		'./BaseController',
+		'sap/m/MessageToast',
+		'../model/formatter',
+	],
+	function (BaseController, MessageToast, formatter) {
+		'use strict';
 
-	return Controller.extend('my_cat_list.controller.Products', {
-		formatter: formatter,
-        onInit: function () {
-            let oViewModel = new JSONModel({
-                currency: 'EUR'
-				// price: nPrice
-            });
-            this.getView().setModel(oViewModel, 'view');
-        
-            let oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute('products').attachPatternMatched(this._onObjectMatched, this);
-        },
-		_onObjectMatched: function(oEvent) {
-			this.getView().bindElement({
-				path: "/" + window.decodeURIComponent(oEvent.getParameter("arguments").productPath),
-				model: 'category'
-			})
-		},
-		onItemClick: function(oEvent) {
-			console.log(oEvent.getSource());
+		return BaseController.extend('my_cat_list.controller.Products', {
+			formatter: formatter,
+			onInit: function () {
+				let oRouter = this.getRouter();
+				oRouter.getRoute('products').attachPatternMatched(this._onObjectMatched, this);
+			},
+			_onObjectMatched: function (oEvent) {
+				let idParam = window.decodeURIComponent(
+					oEvent.getParameter('arguments').productPath,
+				);
 
-			let oItem = oEvent.getSource();
-		}
-	});
-});
+				if (idParam) {
+					this.getView().bindElement({
+						path: `/Categories(${idParam})`,
+						model: 'category',
+					});
+				} else {
+					this.getView().bindElement({
+						path: `/Products`,
+						model: 'category',
+					});
+				}
+
+			},
+			onItemClick: function (oEvent) {
+				let ID = oEvent.getSource().getBindingContext('category').getObject().ProductID;
+				let sMessage = `Clicked Item with ProductID: ${ID}`;
+				MessageToast.show(sMessage);
+			}
+		});
+	},
+);

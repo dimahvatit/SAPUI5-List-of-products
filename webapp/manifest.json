@@ -44,7 +44,8 @@
 				},
 				"sap.ui.core": {
 					"minVersion": "1.34.0"
-				}
+				},
+				"sap.uxap": {}
 			}
 		},
 		"models": {
@@ -78,6 +79,11 @@
 			"routes": [
 				{
 					"pattern": "",
+					"name": "homepage",
+					"target": "homepage"
+				},
+				{
+					"pattern": "overview",
 					"name": "overview",
 					"target": "overview"
 				},
@@ -88,6 +94,10 @@
 				}
 			],
 			"targets": {
+				"homepage": {
+					"viewId": "homepage",
+					"viewName": "HomePage"
+				},
 				"overview": {
 					"viewId": "overview",
 					"viewName": "Overview"

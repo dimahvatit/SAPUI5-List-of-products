@@ -1,7 +1,36 @@
 .category-list-item {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .category-list-item:hover {
-    filter: brightness(115%);
+	filter: brightness(115%);
+}
+
+.myListApp .sapMBarTitleAlignAuto .sapMBarPH {
+	justify-content: center;
+}
+
+.myListApp .category-list-toolbar {
+	border: none;
+}
+
+.myListApp .sapMIBar .sapMTitle {
+	align-self: start;
+	margin-top: 0.25rem;
+}
+
+.myListApp .sapMIBar .sapMText {
+	align-self: end;
+	margin-bottom: 0.25rem;
+}
+
+/**Home Page**/
+.myListApp #__page0-aside {
+	width: auto;
+	position: static;
+}
+
+.myListApp #__page0-main {
+	padding-left: 0;
+	overflow: auto;
 }

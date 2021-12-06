@@ -3,7 +3,10 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
-    <Page title="{i18n>appTitle}">
+    <Page
+        title="{i18n>appTitle}"
+        showNavButton="true"
+        navButtonPress='.onNavBack'>
         <content>
             <List
                 id="catList"
@@ -14,12 +17,12 @@
                     parameters: {expand: 'Products'}
                 }">
                 <headerToolbar>
-                    <Toolbar>
+                    <Toolbar class="sapUiTinyMarginBottom category-list-toolbar">
                         <Title text="{i18n>categoryListTitle}"/>
+                        <ToolbarSpacer width="1rem"/>
+                        <SearchField width="25%" liveChange='.onFilterCategories' placeholder="{i18n>searchPlaceholder}"/>
                         <ToolbarSpacer />
-                        <SearchField width="30%" liveChange="onFilterCategories" placeholder="{i18n>searchPlaceholder}"/>
-                        <ToolbarSpacer />
-                        <Title text="{i18n>listItemStatusText}"/>
+                        <Text text="{i18n>listItemStatusText}"/>
                     </Toolbar>
                 </headerToolbar>
                 <items>
@@ -28,7 +31,7 @@
                         title="{category>CategoryName}"
                         number="{= ${category>Products/}.length}"
                         type="Navigation"
-                        press="onPress">
+                        press='.onPress'>
                         <ObjectAttribute text="{category>Description}"/>
                     </ObjectListItem>
                 </items>

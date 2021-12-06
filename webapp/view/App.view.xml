@@ -1,8 +1,9 @@
 <mvc:View
 	controllerName="my_cat_list.controller.App"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" displayBlock="true">
-	<Shell>
-		<App class="myAppDemoWT" id="app"/>
+	xmlns="sap.m"
+	displayBlock="true">
+	<Shell appWidthLimited="false" title="BEST SHOP EVER">
+		<App class="myListApp" id="app"/>
 	</Shell>
 </mvc:View>
