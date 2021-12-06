@@ -20,7 +20,7 @@
 				<tnt:NavigationList width="auto" itemSelect=".onItemSelect">
 					<tnt:NavigationListItem custom:to="products" icon="sap-icon://heatmap-chart" text="All Products"/>
 					<tnt:NavigationListItem custom:to="overview" icon="sap-icon://group-2" text="Categories"/>
-					<tnt:NavigationListItem custom:to="cart" icon="sap-icon://cart" text="Cart"/>
+					<tnt:NavigationListItem custom:to="overview" icon="sap-icon://cart" text="Cart"/>
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
@@ -110,17 +110,12 @@
 
 					<layout:BlockLayoutRow>
 						<layout:content>
-							<layout:BlockLayoutCell width="1" title="Cryprocurrencies">
+							<layout:BlockLayoutCell width="1" title="Sellers">
 								<layout:content>
 									<Text text="Total cap" width="auto" maxLines="1" wrapping="false"/>
 								</layout:content>
 							</layout:BlockLayoutCell>
-							<layout:BlockLayoutCell width="1" title="1/4 width cell">
-								<layout:content>
-									<Text text="More text" width="auto" maxLines="1" wrapping="false"/>
-								</layout:content>
-							</layout:BlockLayoutCell>
-							<layout:BlockLayoutCell width="1" title="End aligned heading">
+							<layout:BlockLayoutCell width="1" title="Orders">
 								<layout:content>
 									<Text text="More text" width="auto" maxLines="1" wrapping="false"/>
 								</layout:content>
