@@ -13,7 +13,7 @@
 			"version": "1.0.0"
 		},
 		"dataSources": {
-			"categories": {
+			"backend": {
 				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
 				"type": "OData",
 				"settings": {
@@ -64,7 +64,7 @@
 				}
 			},
 			"category": {
-				"dataSource": "categories",
+				"dataSource": "backend",
 				"type": "sap.ui.model.odata.v2.ODataModel"
 			}
 		},
@@ -88,7 +88,7 @@
 					"target": "overview"
 				},
 				{
-					"pattern": "products/{productPath}",
+					"pattern": "products/:productPath:",
 					"name": "products",
 					"target": "products"
 				}

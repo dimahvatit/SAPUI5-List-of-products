@@ -19,11 +19,6 @@ sap.ui.define([
 				let sTarget = oEvent.getParameter('item').data('to');
 				let oRouter = this.getRouter();
 
-				if (sTarget === 'products') {
-					oRouter.navTo(sTarget, {
-						productPath: 'Products'
-					});
-				}
 				oRouter.navTo(sTarget);
 			},
 		});

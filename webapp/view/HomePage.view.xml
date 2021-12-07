@@ -6,7 +6,7 @@
 	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns="sap.m" height="100%">
 
-	<tnt:ToolPage sideExpanded="false">
+	<tnt:ToolPage sideExpanded="false" class="my-toolpage">
 		<tnt:header>
 			<tnt:ToolHeader height="100%" width="auto" design="Transparent">
 				<Button icon="sap-icon://menu2" width="auto" tooltip="Toggle Side Navigation" press="_onToggleButtonPress"/>

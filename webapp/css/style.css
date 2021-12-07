@@ -1,11 +1,3 @@
-.category-list-item {
-	cursor: pointer;
-}
-
-.category-list-item:hover {
-	filter: brightness(115%);
-}
-
 .myListApp .sapMBarTitleAlignAuto .sapMBarPH {
 	justify-content: center;
 }
@@ -25,12 +17,13 @@
 }
 
 /**Home Page**/
-.myListApp #__page0-aside {
+
+.myListApp .my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
 	width: auto;
 	position: static;
 }
 
-.myListApp #__page0-main {
+.myListApp .my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside+.sapTntToolPageMain {
 	padding-left: 0;
 	overflow: auto;
 }
