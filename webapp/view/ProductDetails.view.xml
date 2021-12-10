@@ -2,8 +2,9 @@
 	controllerName="my_cat_list.controller.ProductDetails"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
+	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
-    xmlns = "sap.uxap"
+    xmlns="sap.uxap"
 	height="100%"
 >
     <ObjectPageLayout
@@ -15,6 +16,38 @@
 		isChildPage="true"
 		upperCaseAnchorBar="false"
 	>
-        
+	<headerTitle>
+		<ObjectPageDynamicHeaderTitle>
+			<expandedHeading>
+				<m:Title text="Denise Smith" wrapping="true"/>
+			</expandedHeading>
+
+			<snappedHeading>
+				<m:FlexBox fitContainer="true" alignItems="Center" >
+					<m:Avatar src="sap-icon://picture" class="sapUiTinyMarginEnd"/>
+					<m:Title text="Denise Smith" wrapping="true" />
+				</m:FlexBox>
+			</snappedHeading>
+
+			<expandedContent>
+				<m:Text text="Senior UI Developer"/>
+			</expandedContent>
+
+			<snappedContent>
+				<m:Text text="Senior UI Developer"/>
+			</snappedContent>
+
+			<snappedTitleOnMobile>
+				<m:Title text="Senior UI Developer"/>
+			</snappedTitleOnMobile>
+
+			<actions>
+				<m:Button text="Edit" type="Emphasized"/>
+				<m:Button type="Transparent" text="Delete"/>
+				<m:Button type="Transparent" text="Copy"/>
+				<m:OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
+			</actions>
+		</ObjectPageDynamicHeaderTitle>
+	</headerTitle>
     </ObjectPageLayout>
 </mvc:View>

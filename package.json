@@ -28,8 +28,35 @@
     "dependencies": [
       "@sap/ux-ui5-tooling"
     ],
+    "ui5linter": {
+      "severity": {
+        "WrongParametersLinter": "Warning"
+      },
+      "xmlClassExceptions": [{
+          "className": "sap.f.Grid",
+          "memberName": "*",
+          "applyToChildren": "true"
+        },
+        {
+          "className": "sap.ui.layout.cssgrid.GridBasicLayout",
+          "memberName": "*",
+          "applyToChildren": "true"
+        }
+      ],
+      "jsLinterExceptions": [{
+        "className": "sap.f.Grid",
+        "memberName": "*",
+        "applyToChildren": "true"
+      },
+      {
+        "className": "sap.ui.layout.cssgrid.GridBasicLayout",
+        "memberName": "*",
+        "applyToChildren": "true"
+      }
+    ]},
     "ui5parser": {
-      "ui5version": "1.96.0"
+      "ui5version": "1.96.0",
+      "dataSource": "https://sapui5.hana.ondemand.com/"
     }
   }
 }

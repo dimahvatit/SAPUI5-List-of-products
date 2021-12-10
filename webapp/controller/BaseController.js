@@ -15,14 +15,12 @@ sap.ui.define([
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		},
 		onNavBack: function() {
-			let oHistory = History.getInstance();
-			let sPrevHash = oHistory.getPreviousHash();
+			let sPrevHash = History.getInstance().getPreviousHash();
 
 			if (sPrevHash) {
 				window.history.go(-1);
 			} else {
-				let oRouter = this.getRouter();
-				oRouter.navTo("homepage", {}, true);
+				this.getRouter().navTo("homepage", {}, true);
 			}
 		}
 	});

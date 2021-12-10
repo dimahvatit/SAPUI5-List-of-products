@@ -2,37 +2,42 @@
     controllerName="my_cat_list.controller.Products"
     xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns:f="sap.f"
     xmlns="sap.m"
     displayBlock="true">
     <Page
         title="{i18n>detialHeader}"
         showNavButton="true"
-        navButtonPress=".onNavBack">
+        navButtonPress="onNavBack">
         <f:GridList
             id="gridList"
             class="sapUiResponsiveContentPadding"
-            headerText="{category>CategoryName}"
-            items="{itemsPath>path}">
+            items="{category>Products}"
+            >
             <f:customLayout>
-                <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="1rem" />
+                <grid:GridBasicLayout
+                    gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
+                    gridAutoRows="minmax(4rem, 6rem)"
+                    gridGap="1rem"
+                    gridRowGap="2rem"/>
             </f:customLayout>
-            <f:GridListItem counter="{category>ProductID}" press="onItemClick" type="Active">
-                <VBox height="100%">
-                    <HBox height="100%" class="sapUiSmallMargin" alignItems="Start" justifyContent="SpaceBetween">
-                        <VBox>
-                            <Title text="{category>ProductName}" wrapping="true" />
-                            <Label text="{category>QuantityPerUnit}" wrapping="true" />
-                        </VBox>
-                        <VBox>
-                            <ObjectNumber 
-                                number="{ path: 'category>UnitPrice', formatter: '.formatter.productPrice'}"
-                                textAlign="End">
-                            </ObjectNumber>
-                        </VBox>
-                    </HBox>
-                </VBox>
-            </f:GridListItem>
+
+            <f:headerToolbar>
+                <Toolbar>
+                    <Title text="{category>CategoryName}"/>
+                    <ToolbarSpacer/>
+                    <SearchField width="30%" placeholder="Search" liveChange=".onFilterProducts">
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                shrinkable="true"
+                                minWidth = "100px"/>
+                        </layoutData>
+                    </SearchField>
+                </Toolbar>
+            </f:headerToolbar>
+
+            <core:Fragment fragmentName="my_cat_list.fragments.ProductItem" type="XML" />
         </f:GridList>
     </Page>
 </mvc:View>

@@ -6,7 +6,7 @@
     <Page
         title="{i18n>appTitle}"
         showNavButton="true"
-        navButtonPress='.onNavBack'>
+        navButtonPress='onNavBack'>
         <content>
             <List
                 id="catList"
@@ -19,9 +19,9 @@
                 <headerToolbar>
                     <Toolbar class="sapUiTinyMarginBottom category-list-toolbar">
                         <Title text="{i18n>categoryListTitle}"/>
-                        <ToolbarSpacer width="1rem"/>
-                        <SearchField width="25%" liveChange='.onFilterCategories' placeholder="{i18n>searchPlaceholder}"/>
                         <ToolbarSpacer />
+                        <SearchField width="25%" liveChange='.onFilterCategories' placeholder="{i18n>searchPlaceholder}"/>
+                        <ToolbarSpacer width="1rem"/>
                         <Text text="{i18n>listItemStatusText}"/>
                     </Toolbar>
                 </headerToolbar>

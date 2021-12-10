@@ -27,3 +27,17 @@
 	padding-left: 0;
 	overflow: auto;
 }
+
+.myListApp .my-toolpage .sapUiBlockCellContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.myListApp .my-toolpage .sapUiBlockCellTitle {
+	margin-bottom: 0;
+}
+
+.myListApp .my-toolpage .sapUiBlockCellContent {
+	justify-content: space-around;
+}

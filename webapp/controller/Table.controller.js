@@ -1,14 +1,11 @@
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
-	"./utilities",
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, History) {
+], function(BaseController, MessageBox, History) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Page2", {
 		handleRouteMatched: function(oEvent) {
-			var sAppId = "App61a523265baf111a0b748c8a";
-
 			var oParams = {};
 
 			if (oEvent.mParameters.data.context) {
@@ -27,7 +24,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					};
 
 					this.sContext = patternConvert(this.getOwnerComponent().getComponentData().startupParameters);
-
 				}
 			}
 

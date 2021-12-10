@@ -1,4 +1,8 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Page2" xmlns:tnt="sap.tnt" xmlns="sap.m">
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="my_cat_list.controller.Table"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
     <tnt:ToolPage sideExpanded="false">
         <tnt:header>
             <tnt:ToolHeader height="50px" width="auto" design="Transparent" visible="true" enabled="true">
@@ -9,14 +13,20 @@
         </tnt:header>
         <tnt:sideContent/>
         <tnt:mainContents>
-            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+            <Table
+                width="auto"
+                noDataText="No data"
+                growing="true"
+                growingScrollToLoad="true"
+                class="sapUiResponsiveMargin">
                 <infoToolbar>
-                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                    <Toolbar width="100%" height="auto" design="Info" visible="false">
                         <content>
-                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Label text="Label" design="Bold" width="100%"/>
                         </content>
                     </Toolbar>
                 </infoToolbar>
+
                 <headerToolbar>
                     <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
                         <content>
@@ -31,98 +41,101 @@
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
+
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Product" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product" width="auto" maxLines="1" wrapping="false"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Supplier" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier" width="auto" maxLines="1" wrapping="false"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Price" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Price" width="auto" maxLines="1" wrapping="false"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Category" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Category" width="auto" maxLines="1" wrapping="false"/>
                         </header>
                         <footer/>
                     </Column>
                 </columns>
+
                 <items>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="Product Name" text="Product ID" titleActive="false" visible="true"/>
-                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Supplier Name" width="auto" maxLines="1" wrapping="false"/>
                             <ObjectNumber number="150.00" unit="USD" emphasized="true" state="None"/>
-                            <Text text="Product category" width="114px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product category" width="114px" maxLines="1" wrapping="false"/>
                         </cells>
                     </ColumnListItem>
                 </items>
+                
             </Table>
         </tnt:mainContents>
     </tnt:ToolPage>

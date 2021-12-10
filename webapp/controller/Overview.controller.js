@@ -1,15 +1,14 @@
 sap.ui.define([
     './BaseController',
     'sap/ui/model/Filter',
-    'sap/ui/model/FilterOperator',
-    'sap/ui/core/routing/History'
+    'sap/ui/model/FilterOperator'
 ],
-function (BaseController, Filter, FilterOperator, History) {
+function (BaseController, Filter, FilterOperator) {
     'use strict';
 
     return BaseController.extend('my_cat_list.controller.Overview', {
         
-        // search by category name and description
+        //* search by category name and description
         onFilterCategories: function (oEvent) {
             let aFilter = [];
             let sQuery = oEvent.getParameter('newValue');
@@ -35,30 +34,15 @@ function (BaseController, Filter, FilterOperator, History) {
             }
 
             let oList = this.byId('catList');
-            let oBinding = oList.getBinding('items');
-            oBinding.filter(aFilter);
+            oList.getBinding('items').filter(aFilter);
         },
 
         onPress: function (oEvent) {
             let oCatItem = oEvent.getSource().getBindingContext("category").getObject();
-            let oRouter = this.getRouter();
-
-            oRouter.navTo('products', {
+            
+            this.getRouter().navTo('products', {
                 productPath: window.encodeURIComponent(oCatItem.CategoryID)
             });
-        },
-
-        onNavBack: function() {
-            let oHistory = History.getInstance();
-            let sPrevHash = oHistory.getPreviousHash();
-
-            if (sPrevHash) {
-                window.history.go(-1);
-            } else {
-                let oRouter = this.getRouter();
-                oRouter.navTo('homepage', {}, true);
-            }
         }
     });
-},
-);
+});
