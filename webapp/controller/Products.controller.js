@@ -24,11 +24,9 @@ sap.ui.define([
 
 			_onObjectMatched: function (oEvent) {
 
-				let oModel = this.getModel('category');
-				this.getView().setModel(oModel);
+				//* different aggregation bindings depending on the presence of the "catID" parameter
+				let sParam = oEvent.getParameter('arguments').catID;
 
-				//* different binding depending on the presence of the "productPath" parameter
-				let sParam = oEvent.getParameter('arguments').productPath;
 				if (sParam && sParam.length > 0) {
 					let oGridItemFrag = new sap.ui.xmlfragment("my_cat_list.fragments.ProductItem", this);
 					this.byId('gridList').bindAggregation('items', {
@@ -50,6 +48,10 @@ sap.ui.define([
 				let ID = oEvent.getSource().getBindingContext('category').getObject().ProductID;
 				let sMessage = `Clicked Item with ProductID: ${ID}`;
 				MessageToast.show(sMessage);
+
+				this.getRouter().navTo('details', {
+					productID: ID
+				})
 			},
 
 			//* SearchFiled filtering

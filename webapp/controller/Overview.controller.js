@@ -41,7 +41,7 @@ function (BaseController, Filter, FilterOperator) {
             let oCatItem = oEvent.getSource().getBindingContext("category").getObject();
             
             this.getRouter().navTo('products', {
-                productPath: window.encodeURIComponent(oCatItem.CategoryID)
+                catID: window.encodeURIComponent(oCatItem.CategoryID)
             });
         }
     });

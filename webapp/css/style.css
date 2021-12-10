@@ -18,12 +18,12 @@
 
 /**Home Page**/
 
-.myListApp .my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
+.myListApp .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
 	width: auto;
 	position: static;
 }
 
-.myListApp .my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside+.sapTntToolPageMain {
+.myListApp .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside+.sapTntToolPageMain {
 	padding-left: 0;
 	overflow: auto;
 }

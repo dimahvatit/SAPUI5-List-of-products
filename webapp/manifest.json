@@ -31,6 +31,10 @@
 		}
 	},
 	"sap.ui5": {
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
 		"rootView": {
 			"viewName": "my_cat_list.view.App",
 			"type": "XML",
@@ -88,9 +92,14 @@
 					"target": "overview"
 				},
 				{
-					"pattern": "products/:productPath:",
+					"pattern": "products/:catID:",
 					"name": "products",
 					"target": "products"
+				},
+				{
+					"pattern": "details/{productID}",
+					"name": "details",
+					"target": "details"
 				}
 			],
 			"targets": {
@@ -105,6 +114,10 @@
 				"products": {
 					"viewId": "products",
 					"viewName": "Products"
+				},
+				"details": {
+					"viewId": "details",
+					"viewName": "ProductDetails"
 				}
 			}
 		},

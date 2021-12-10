@@ -1,53 +1,58 @@
-<mvc:View
-	controllerName="my_cat_list.controller.ProductDetails"
+<mvc:View controllerName="my_cat_list.controller.ProductDetails"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
-	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
-    xmlns="sap.uxap"
-	height="100%"
->
-    <ObjectPageLayout
-        id="ObjectPageLayout"
-		showTitleInHeaderContent="true"
-		alwaysShowContentHeader="false"
-		preserveHeaderStateOnScroll="false"
-		headerContentPinnable="true"
-		isChildPage="true"
-		upperCaseAnchorBar="false"
-	>
-	<headerTitle>
-		<ObjectPageDynamicHeaderTitle>
-			<expandedHeading>
-				<m:Title text="Denise Smith" wrapping="true"/>
-			</expandedHeading>
+	xmlns="sap.uxap"
+	height="100%">
+	<m:Page
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<ObjectPageLayout showTitleInHeaderContent="true"
+			alwaysShowContentHeader="true"
+			preserveHeaderStateOnScroll="true"
+			headerContentPinnable="false"
+			isChildPage="true"
+			upperCaseAnchorBar="false"
+			flexEnabled="true">
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					<expandedHeading>
+						<m:Title text="Denise Smith"
+							wrapping="true" />
+					</expandedHeading>
 
-			<snappedHeading>
-				<m:FlexBox fitContainer="true" alignItems="Center" >
-					<m:Avatar src="sap-icon://picture" class="sapUiTinyMarginEnd"/>
-					<m:Title text="Denise Smith" wrapping="true" />
-				</m:FlexBox>
-			</snappedHeading>
+					<snappedHeading>
+						<m:FlexBox fitContainer="true"
+							alignItems="Center">
+							<m:Avatar src="sap-icon://picture"
+								class="sapUiTinyMarginEnd" />
+							<m:Title text="Denise Smith"
+								wrapping="true" />
+						</m:FlexBox>
+					</snappedHeading>
 
-			<expandedContent>
-				<m:Text text="Senior UI Developer"/>
-			</expandedContent>
+					<expandedContent>
+						<m:Text text="Senior UI Developer" />
+					</expandedContent>
 
-			<snappedContent>
-				<m:Text text="Senior UI Developer"/>
-			</snappedContent>
+					<snappedTitleOnMobile>
+						<m:Title text="Senior UI Developer" />
+					</snappedTitleOnMobile>
 
-			<snappedTitleOnMobile>
-				<m:Title text="Senior UI Developer"/>
-			</snappedTitleOnMobile>
-
-			<actions>
-				<m:Button text="Edit" type="Emphasized"/>
-				<m:Button type="Transparent" text="Delete"/>
-				<m:Button type="Transparent" text="Copy"/>
-				<m:OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
-			</actions>
-		</ObjectPageDynamicHeaderTitle>
-	</headerTitle>
-    </ObjectPageLayout>
+					<actions>
+						<m:Button text="Edit"
+							type="Emphasized" />
+						<m:Button type="Transparent"
+							text="Delete" />
+						<m:Button type="Transparent"
+							text="Copy" />
+						<m:OverflowToolbarButton icon="sap-icon://action"
+							type="Transparent"
+							text="Share"
+							tooltip="action" />
+					</actions>
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+		</ObjectPageLayout>
+	</m:Page>
 </mvc:View>

@@ -1,7 +1,8 @@
 sap.ui.define([
-		'sap/ui/core/UIComponent'
+		'sap/ui/core/UIComponent',
+		'sap/ui/Device'
 	],
-	function (UIComponent) {
+	function (UIComponent, Device) {
 		'use strict';
 
 		return UIComponent.extend('my_cat_list.Component', {
@@ -15,6 +16,16 @@ sap.ui.define([
 
 				this.getRouter().initialize();
 			},
+			getContentDensityClass: function() {
+				if (!this._sContentDensityClass) {
+					if (!Device.support.touch) {
+						this._sContentDensityClass = 'sapUiSizeCompact';
+					} else {
+						this._sContentDensityClass = 'sapUiSizeCozy';
+					}
+				}
+				return this._sContentDensityClass;
+			}
 		});
 	},
 );
