@@ -13,8 +13,7 @@
         <f:GridList
             id="gridList"
             class="sapUiResponsiveContentPadding"
-            items="{category>Products}"
-            >
+            items="{category>Products}">
             <f:customLayout>
                 <grid:GridBasicLayout
                     gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
@@ -24,14 +23,13 @@
             </f:customLayout>
 
             <f:headerToolbar>
-                <Toolbar>
+                <Toolbar id="prods-toolbar">
                     <Title text="{category>CategoryName}"/>
                     <ToolbarSpacer/>
-                    <SearchField width="30%" placeholder="Search" liveChange=".onFilterProducts">
+                    <SearchField width="30%" placeholder="{i18n>searchPlaceholder}" liveChange=".onFilterProducts">
                         <layoutData>
                             <OverflowToolbarLayoutData
-                                shrinkable="true"
-                                minWidth = "100px"/>
+                                shrinkable="true" />
                         </layoutData>
                     </SearchField>
                 </Toolbar>

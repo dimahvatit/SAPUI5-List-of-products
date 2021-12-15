@@ -44,15 +44,15 @@
 		</tnt:sideContent>
 
 		<tnt:mainContents>
-			<layout:BlockLayout background="Accent">
+			<layout:BlockLayout background="Dashboard">
 				<layout:content>
-
 					<layout:BlockLayoutRow>
 						<layout:content>
+
 							<layout:BlockLayoutCell width="1"
 								title="{i18n>HomePageView.SearchForProducts}">
 								<layout:content>
-									<core:Icon src="sap-icon://group-2"
+									<core:Icon src="sap-icon://heatmap-chart"
 										size="4rem"
 										color="#168282"
 										activeColor="#116464"
@@ -60,10 +60,11 @@
 										tooltip="{i18n>HomePageView.ProductsTooltip}" />
 								</layout:content>
 							</layout:BlockLayoutCell>
+
 							<layout:BlockLayoutCell width="1"
 								title="{i18n>HomePageView.BrowseCategories}">
 								<layout:content>
-									<core:Icon src="sap-icon://heatmap-chart"
+									<core:Icon src="sap-icon://group-2"
 										size="4rem"
 										color="#168282"
 										activeColor="#116464"
@@ -71,6 +72,7 @@
 										tooltip="{i18n>HomePageView.CategoriesTooltip}" />
 								</layout:content>
 							</layout:BlockLayoutCell>
+
 							<layout:BlockLayoutCell width="1"
 								title="{i18n>HomePageView.ManageYouCart}">
 								<layout:content>
@@ -82,6 +84,7 @@
 										tooltip="{i18n>HomePageView.CartTooltip}" />
 								</layout:content>
 							</layout:BlockLayoutCell>
+							
 						</layout:content>
 					</layout:BlockLayoutRow>
 

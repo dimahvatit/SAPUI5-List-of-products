@@ -26,16 +26,21 @@ sap.ui.define([
 
 				//* different aggregation bindings depending on the presence of the "catID" parameter
 				let sParam = oEvent.getParameter('arguments').catID;
+				let oGridItemFrag = new sap.ui.xmlfragment("grid-list-item" ,"my_cat_list.fragments.ProductItem", this);
 
 				if (sParam && sParam.length > 0) {
-					let oGridItemFrag = new sap.ui.xmlfragment("my_cat_list.fragments.ProductItem", this);
 					this.byId('gridList').bindAggregation('items', {
 						path: `/Categories(${sParam})/Products`,
 						template: oGridItemFrag,
 						model: 'category'
 					})
+					this.byId('prods-toolbar').bindElement({
+						path: `/Categories(${sParam})`,
+						model: 'category'
+					})
 				} else {
-					let oGridItemFrag = new sap.ui.xmlfragment("my_cat_list.fragments.ProductItem", this);
+					this.byId('prods-toolbar').unbindElement('category');
+					this.byId('gridList').unbindAggregation('items');
 					this.byId('gridList').bindAggregation('items', {
 						path: '/Products',
 						template: oGridItemFrag,
@@ -50,7 +55,7 @@ sap.ui.define([
 				MessageToast.show(sMessage);
 
 				this.getRouter().navTo('details', {
-					productID: ID
+					productID: window.encodeURIComponent(ID)
 				})
 			},
 

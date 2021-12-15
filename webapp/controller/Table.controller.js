@@ -4,6 +4,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 ], function(BaseController, MessageBox, History) {
 	"use strict";
 
+	//TODO: setup the controller for table page
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Page2", {
 		handleRouteMatched: function(oEvent) {
 			var oParams = {};

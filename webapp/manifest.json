@@ -19,6 +19,10 @@
 				"settings": {
 					"odataVersion": "2.0"
 				}
+			},
+			"description": {
+				"uri": "./localService/mockdata/descriptions.json",
+				"type": "JSON"
 			}
 		}
 	},
@@ -70,6 +74,10 @@
 			"category": {
 				"dataSource": "backend",
 				"type": "sap.ui.model.odata.v2.ODataModel"
+			},
+			"description": {
+				"dataSource": "description",
+				"type": "sap.ui.model.json.JSONModel" 
 			}
 		},
 		"routing": {

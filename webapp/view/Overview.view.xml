@@ -1,15 +1,12 @@
-<mvc:View
-    controllerName="my_cat_list.controller.Overview"
+<mvc:View controllerName="my_cat_list.controller.Overview"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
-    <Page
-        title="{i18n>appTitle}"
+    <Page title="{i18n>appTitle}"
         showNavButton="true"
         navButtonPress='onNavBack'>
         <content>
-            <List
-                id="catList"
+            <List id="catList"
                 class="sapUiResponsiveMargin"
                 width="auto"
                 items="{
@@ -18,21 +15,21 @@
                 }">
                 <headerToolbar>
                     <Toolbar class="sapUiTinyMarginBottom category-list-toolbar">
-                        <Title text="{i18n>categoryListTitle}"/>
+                        <Title text="{i18n>categoryListTitle}" />
                         <ToolbarSpacer />
-                        <SearchField width="25%" liveChange='.onFilterCategories' placeholder="{i18n>searchPlaceholder}"/>
-                        <ToolbarSpacer width="1rem"/>
-                        <Text text="{i18n>listItemStatusText}"/>
+                        <SearchField width="30%"
+                            liveChange='.onFilterCategories'
+                            placeholder="{i18n>searchPlaceholder}" />
                     </Toolbar>
                 </headerToolbar>
                 <items>
-                    <ObjectListItem
-                        class="category-list-item sapUiSmallMarginbBottom"
+                    <ObjectListItem class="category-list-item sapUiSmallMarginbBottom"
                         title="{category>CategoryName}"
                         number="{= ${category>Products/}.length}"
+                        numberUnit="{i18n>listItemStatusText}"
                         type="Navigation"
                         press='.onPress'>
-                        <ObjectAttribute text="{category>Description}"/>
+                        <ObjectAttribute text="{category>Description}" />
                     </ObjectListItem>
                 </items>
             </List>

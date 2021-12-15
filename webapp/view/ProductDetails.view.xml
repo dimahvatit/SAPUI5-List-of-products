@@ -4,55 +4,154 @@
 	xmlns:m="sap.m"
 	xmlns="sap.uxap"
 	height="100%">
-	<m:Page
-		showNavButton="true"
+	<m:Page showNavButton="true"
 		navButtonPress="onNavBack">
-		<ObjectPageLayout showTitleInHeaderContent="true"
+		<ObjectPageLayout preserveHeaderStateOnScroll="true"
+			toggleHeaderOnTitleClick="false"
+			showTitleInHeaderContent="true"
 			alwaysShowContentHeader="true"
-			preserveHeaderStateOnScroll="true"
 			headerContentPinnable="false"
-			isChildPage="true"
 			upperCaseAnchorBar="false"
-			flexEnabled="true">
+			flexEnabled="true"
+			isChildPage="true">
 			<headerTitle>
 				<ObjectPageDynamicHeaderTitle>
 					<expandedHeading>
-						<m:Title text="Denise Smith"
+						<m:Title text="{category>ProductName}"
 							wrapping="true" />
 					</expandedHeading>
 
-					<snappedHeading>
-						<m:FlexBox fitContainer="true"
-							alignItems="Center">
-							<m:Avatar src="sap-icon://picture"
-								class="sapUiTinyMarginEnd" />
-							<m:Title text="Denise Smith"
-								wrapping="true" />
-						</m:FlexBox>
-					</snappedHeading>
-
 					<expandedContent>
-						<m:Text text="Senior UI Developer" />
+						<m:Text text="ID: {category>ProductID}" />
 					</expandedContent>
 
-					<snappedTitleOnMobile>
-						<m:Title text="Senior UI Developer" />
-					</snappedTitleOnMobile>
-
 					<actions>
-						<m:Button text="Edit"
-							type="Emphasized" />
-						<m:Button type="Transparent"
-							text="Delete" />
-						<m:Button type="Transparent"
-							text="Copy" />
-						<m:OverflowToolbarButton icon="sap-icon://action"
-							type="Transparent"
-							text="Share"
-							tooltip="action" />
+						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
+							type="Emphasized"
+							icon="sap-icon://cart-4"
+							enabled="{:= !!${category>UnitsInStock}}" />
+						<m:Button text="{i18n>ProductDetailsView.SaveToWishlist}"
+							icon="sap-icon://bookmark" />
 					</actions>
 				</ObjectPageDynamicHeaderTitle>
 			</headerTitle>
+
+			<headerContent>
+				<m:FlexBox backgroundDesign="Translucent"
+					wrap="Wrap"
+					alignItems="Start"
+					fitContainer="true">
+					<m:Avatar src="sap-icon://product"
+						displaySize="L"
+						class="sapUiLargeMarginEnd" />
+
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:Title text="{i18n>ProductDetailsView.DeliveryTime}"
+							class="sapUiTinyMarginBottom" />
+						<m:ObjectStatus id="delivery-time-status"
+							text="{path: 'delivery>/term', formatter: '.formatter.deliveryTime'}"
+							state="{path: 'delivery>/term', formatter: '.formatter.deliveryState'}"
+							icon="sap-icon://shipping-status"
+							class="sapMObjectStatusLarge" />
+					</m:VBox>
+
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:Title text="{i18n>ProductDetailsView.QuantityPerUnit}"
+							class="sapUiTinyMarginBottom" />
+						<m:ObjectStatus text="{category>QuantityPerUnit}"
+							class="sapMObjectStatusLarge" />
+					</m:VBox>
+
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:Title text="{i18n>ProductDetailsView.Price}"
+							class="sapUiTinyMarginBottom" />
+						<m:ObjectNumber number="{
+								parts:[{path: 'category>UnitPrice'}, {path: 'units>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {
+									showMeasure: false
+								}
+							}"
+							unit="{units>/currency}"
+							emphasized="false"
+							class="sapMObjectNumberLarge" />
+					</m:VBox>
+
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:layoutData>
+							<m:FlexItemData
+								baseSize="16%"/>
+						</m:layoutData>
+						<m:Title text="{i18n>ProductDetailsView.UnitsInStock}"
+							class="sapUiTinyMarginBottom" />
+						<m:ObjectStatus text="{i18n>ProductDetailsView.Discontinued}"
+							state="Error"
+							visible="{path:'category>Discontinued'}" />
+						<m:ProgressIndicator percentValue="{category>UnitsInStock}"
+							displayValue="{category>UnitsInStock}"
+							state="{
+								path: 'category>UnitsInStock',
+								formatter: '.formatter.quantityState'}" />
+					</m:VBox>
+
+					<m:VBox class="sapUiSmallMarginBottom"
+						id="prod-description">
+						<m:layoutData>
+							<m:FlexItemData
+								baseSize="30%"/>
+						</m:layoutData>
+						<m:Title text="{i18n>ProductDetailsView.Description}"
+							class="sapUiTinyMarginBottom" />
+						<m:ObjectStatus text="{prodDesc>/text}"
+							class="sapMObjectStatusSmall" />
+					</m:VBox>
+				</m:FlexBox>
+			</headerContent>
+
+			<sections>
+				<ObjectPageSection title="{i18n>ProductDetailsView.SupplierDetails}"
+					id="supplier-details">
+					<ObjectPageSubSection titleUppercase="true">
+						<blocks>
+							<m:VBox width="50%"
+								class="sapUiSmallMarginBegin">
+								<m:HBox alignItems="Start"
+									height="2rem"
+									wrap="Wrap"
+									class="sapUiTinyMarginBottom">
+									<m:Label class="sapUiTinyMarginEnd"
+										text="{i18n>ProductDetailsView.SupplierName}" />
+									<m:Title text="{category>CompanyName}" />
+								</m:HBox>
+								<m:HBox alignItems="Start"
+									height="2rem"
+									wrap="Wrap"
+									class="sapUiTinyMarginBottom">
+									<m:Label class="sapUiTinyMarginEnd"
+										text="{i18n>ProductDetailsView.SupplierAddress}" />
+									<m:Title text="{category>Address}" />
+								</m:HBox>
+								<m:HBox alignItems="Start"
+									height="2rem"
+									wrap="Wrap"
+									class="sapUiTinyMarginBottom">
+									<m:Label class="sapUiTinyMarginEnd"
+										text="{i18n>ProductDetailsView.SupplierZipcodeSupplierCity}" />
+									<m:Title text="{category>PostalCode} / {category>City}" />
+								</m:HBox>
+								<m:HBox alignItems="Start"
+									height="2rem"
+									wrap="Wrap"
+									class="sapUiTinyMarginBottom">
+									<m:Label class="sapUiTinyMarginEnd"
+										text="{i18n>ProductDetailsView.SupplierCountry}" />
+									<m:Title text="{category>Country}" />
+								</m:HBox>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</ObjectPageSection>
+			</sections>
 		</ObjectPageLayout>
 	</m:Page>
 </mvc:View>

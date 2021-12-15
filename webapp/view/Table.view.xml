@@ -1,3 +1,4 @@
+<!-- TODO: Complete the Table view -->
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="my_cat_list.controller.Table"
