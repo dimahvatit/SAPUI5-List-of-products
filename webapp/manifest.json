@@ -108,6 +108,11 @@
 					"pattern": "details/{productID}",
 					"name": "details",
 					"target": "details"
+				},
+				{
+					"pattern": "cart",
+					"name": "cart",
+					"target": "cart"
 				}
 			],
 			"targets": {
@@ -126,6 +131,10 @@
 				"details": {
 					"viewId": "details",
 					"viewName": "ProductDetails"
+				},
+				"cart": {
+					"viewId": "cart",
+					"viewName": "Cart"
 				}
 			}
 		},

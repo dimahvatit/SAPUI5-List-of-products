@@ -29,7 +29,8 @@
 						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
 							type="Emphasized"
 							icon="sap-icon://cart-4"
-							enabled="{:= !!${category>UnitsInStock}}" />
+							enabled="{:= !!${category>UnitsInStock}}"
+							press="onAddToCart" />
 						<m:Button text="{i18n>ProductDetailsView.SaveToWishlist}"
 							icon="sap-icon://bookmark" />
 					</actions>
@@ -66,13 +67,13 @@
 						<m:Title text="{i18n>ProductDetailsView.Price}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectNumber number="{
-								parts:[{path: 'category>UnitPrice'}, {path: 'units>/currency'}],
+								parts:[{path: 'category>UnitPrice'}, {path: 'view>/currency'}],
 								type: 'sap.ui.model.type.Currency',
 								formatOptions: {
 									showMeasure: false
 								}
 							}"
-							unit="{units>/currency}"
+							unit="{view>/currency}"
 							emphasized="false"
 							class="sapMObjectNumberLarge" />
 					</m:VBox>

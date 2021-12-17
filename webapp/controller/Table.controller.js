@@ -5,18 +5,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"use strict";
 
 	//TODO: setup the controller for table page
-	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Page2", {
+	return BaseController.extend("my_cat_list.controller.Table", {
 		handleRouteMatched: function(oEvent) {
-			var oParams = {};
+			let oParams = {};
 
 			if (oEvent.mParameters.data.context) {
 				this.sContext = oEvent.mParameters.data.context;
 
 			} else {
 				if (this.getOwnerComponent().getComponentData()) {
-					var patternConvert = function(oParam) {
+					let patternConvert = function(oParam) {
 						if (Object.keys(oParam).length !== 0) {
-							for (var prop in oParam) {
+							for (let prop in oParam) {
 								if (prop !== "sourcePrototype" && prop.includes("Set")) {
 									return prop + "(" + oParam[prop][0] + ")";
 								}
@@ -28,7 +28,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}
 			}
 
-			var oPath;
+			let oPath;
 
 			if (this.sContext) {
 				oPath = {
@@ -40,16 +40,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onToggleButtonPress: function(oEvent) {
-			var oToolPage = oEvent.getSource().getParent().getParent();
-			var oSideNavigation = oToolPage.getAggregation('sideContent');
-			var bExpanded = oSideNavigation.getExpanded();
+			let oToolPage = oEvent.getSource().getParent().getParent();
+			let oSideNavigation = oToolPage.getAggregation('sideContent');
+			let bExpanded = oSideNavigation.getExpanded();
 			oSideNavigation.setExpanded(!bExpanded);
 
 		},
 		onInit: function() {
-			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			this.oRouter.getTarget("Page2").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
-
+			let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getTarget("Page2").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 		}
 	});
 }, /* bExport= */ true);

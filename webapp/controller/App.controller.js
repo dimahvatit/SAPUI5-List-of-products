@@ -1,6 +1,6 @@
 sap.ui.define([
 	"./BaseController"
-], function(BaseController) {
+], function(BaseController, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("my_cat_list.controller.App", {

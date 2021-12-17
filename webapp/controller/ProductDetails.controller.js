@@ -1,23 +1,26 @@
-sap.ui.define(
-	['./BaseController', '../model/formatter', 'sap/ui/model/json/JSONModel'],
-	function (BaseController, formatter, JSONModel) {
+sap.ui.define([
+	'./BaseController',
+	'../model/formatter',
+	'sap/ui/model/json/JSONModel',
+	"../model/cart"
+], function (BaseController, formatter, JSONModel, cart) {
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
 			formatter: formatter,
 			onInit() {
+				let oViewModel = new JSONModel({
+					Promoted: [],
+					Favorites: [],
+					currency: 'EUR'
+				})
+
 				this.getRouter().getRoute('details').attachPatternMatched(this._onProductMatched, this);
-				this._setDeliveryTime();
 
 				let sHash = this.getRouter().getHashChanger().getHash();
 				let sPath = this.getRouter().getRouteInfoByHash(sHash).arguments.productID;
 
-				
-				let oUnitsModel = new JSONModel({
-					currency: 'EUR'
-				});
-
-				this.getView().setModel(oUnitsModel, 'units');
+				this.getView().setModel(oViewModel, 'view');
 			},
 
 			_onProductMatched(oEvent) {
@@ -40,17 +43,30 @@ sap.ui.define(
 					text: sDescription
 				});
 				this.getView().byId('prod-description').setModel(oDescModel, 'prodDesc');
-
+				this._setDeliveryTime();
 			},
 
+			/**
+			 * Sets random amount of days between 1 and 10 to simulate delivery time calculations
+			 */
 			_setDeliveryTime() {
 				let term = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
 				let oModel = new JSONModel({
 					term: term,
 				});
-
 				this.getView().setModel(oModel, 'delivery');
 			},
+
+			onAddToCart(oEvent) {
+				console.log(this.getView());
+
+				let oResourceBundle = this.getResourceBundle();
+				let oEntry = this.getView().getBindingContext('category').getObject();
+				console.log(oEntry);
+
+				let oCartModel = this.getModel("cartProducts");
+				cart.addToCart(oResourceBundle, oEntry, oCartModel);
+			}
 		});
 	},
 );

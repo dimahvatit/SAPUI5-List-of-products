@@ -3,7 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	displayBlock="true">
-	<Shell appWidthLimited="false" title="BEST SHOP EVER">
+	<Shell appWidthLimited="false" id="my-shell" title="BEST SHOP EVER" >
 		<App class="myListApp" id="app"/>
 	</Shell>
 </mvc:View>

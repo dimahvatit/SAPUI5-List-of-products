@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@sap/ux-ui5-tooling": "^1.4.3",
-    "@ui5/cli": "^2.14.1",
+    "@ui5/cli": "^2.14.2",
     "@ui5/fs": "^2.0.6",
     "@ui5/logger": "^2.0.1",
     "cors-anywhere": "^0.4.4",
@@ -32,7 +32,8 @@
       "severity": {
         "WrongParametersLinter": "Warning"
       },
-      "xmlClassExceptions": [{
+      "xmlClassExceptions": [
+        {
           "className": "sap.f.Grid",
           "memberName": "*",
           "applyToChildren": "true"
@@ -43,17 +44,19 @@
           "applyToChildren": "true"
         }
       ],
-      "jsLinterExceptions": [{
-        "className": "sap.f.Grid",
-        "memberName": "*",
-        "applyToChildren": "true"
-      },
-      {
-        "className": "sap.ui.layout.cssgrid.GridBasicLayout",
-        "memberName": "*",
-        "applyToChildren": "true"
-      }
-    ]},
+      "jsLinterExceptions": [
+        {
+          "className": "sap.f.Grid",
+          "memberName": "*",
+          "applyToChildren": "true"
+        },
+        {
+          "className": "sap.ui.layout.cssgrid.GridBasicLayout",
+          "memberName": "*",
+          "applyToChildren": "true"
+        }
+      ]
+    },
     "ui5parser": {
       "ui5version": "1.96.0",
       "dataSource": "https://sapui5.hana.ondemand.com/"

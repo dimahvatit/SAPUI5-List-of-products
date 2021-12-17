@@ -1,0 +1,48 @@
+<mvc:View controllerName="my_cat_list.controller.Cart"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0">
+    <Page backgroundDesign="Solid"
+        navButtonTooltip="Back"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+        title="Your Shopping Cart"
+        titleAlignment="Center"
+        titleLevel="H2">
+        <content>
+            <FlexBox fitContainer="true"
+                height="100%"
+                justifyContent="Center"
+                width="100vw">
+                <items>
+                    <List headerText="List header"
+                        includeItemInSelection="true"
+                        inset="true"
+                        mode="MultiSelect"
+                        noDataText="No data"
+                        backgroundDesign="Translucent">
+                        <items>
+                            <ObjectListItem icon="sap-icon://product"
+                                intro="Quantity"
+                                number="UnitPrice"
+                                numberState="Success"
+                                numberUnit="EUR"
+                                title="ProductName">
+                                <attributes>
+                                    <ObjectAttribute active="true"
+                                        text="Add to Favorites" />
+                                </attributes>
+                            </ObjectListItem>
+                        </items>
+                        <layoutData>
+                            <FlexItemData baseSize="100%"
+                                shrinkFactor="0" />
+                        </layoutData>
+                    </List>
+                </items>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>
