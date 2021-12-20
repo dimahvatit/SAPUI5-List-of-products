@@ -34,7 +34,8 @@
                     </SearchField>
                 </Toolbar>
             </f:headerToolbar>
-
+            
+            <!--* ./fragments/ProductItem.fragment.xml -->
             <core:Fragment fragmentName="my_cat_list.fragments.ProductItem" type="XML" />
         </f:GridList>
     </Page>

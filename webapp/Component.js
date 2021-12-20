@@ -11,22 +11,25 @@ sap.ui.define([
 
 	return UIComponent.extend('my_cat_list.Component', {
 		metadata: {
-			interfaces: ['sap.ui.core.IAsyncContentCreation'],
 			manifest: 'json'
 		},
-		init() {
+		init: function() {
+			// create and set cart model
 			let oCartModel = new LocalStorageModel("BEST_SHOP_STORAGE", {
 				cartEntries: {},
 				favorites: {}
 			});
 			this.setModel(oCartModel, "cartProducts");
+			this.setModel(new JSONModel({
+				currency: "USD",
+			}), 'measures');
 
 			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);
 
 			this.getRouter().initialize();
 		},
-		getContentDensityClass() {
+		getContentDensityClass: function() {
 			if (!this._sContentDensityClass) {
 				if (!Device.support.touch) {
 					this._sContentDensityClass = 'sapUiSizeCompact';

@@ -73,7 +73,8 @@
 			},
 			"category": {
 				"dataSource": "backend",
-				"type": "sap.ui.model.odata.v2.ODataModel"
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true
 			},
 			"description": {
 				"dataSource": "description",

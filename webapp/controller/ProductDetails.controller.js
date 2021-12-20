@@ -1,7 +1,7 @@
 sap.ui.define([
-	'./BaseController',
-	'../model/formatter',
-	'sap/ui/model/json/JSONModel',
+	"./BaseController",
+	"../model/formatter",
+	"sap/ui/model/json/JSONModel",
 	"../model/cart"
 ], function (BaseController, formatter, JSONModel, cart) {
 		'use strict';
@@ -9,18 +9,7 @@ sap.ui.define([
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
 			formatter: formatter,
 			onInit() {
-				let oViewModel = new JSONModel({
-					Promoted: [],
-					Favorites: [],
-					currency: 'EUR'
-				})
-
 				this.getRouter().getRoute('details').attachPatternMatched(this._onProductMatched, this);
-
-				let sHash = this.getRouter().getHashChanger().getHash();
-				let sPath = this.getRouter().getRouteInfoByHash(sHash).arguments.productID;
-
-				this.getView().setModel(oViewModel, 'view');
 			},
 
 			_onProductMatched(oEvent) {
@@ -34,8 +23,8 @@ sap.ui.define([
 				});
 
 				this.getView().byId('supplier-details').bindElement({
-						path: `/Products(${productID})/Supplier`,
-						model: 'category',
+					path: `/Products(${productID})/Supplier`,
+					model: 'category',
 				});
 
 				let sDescription = this.getOwnerComponent().getModel('description').getProperty(`/${productID}`);
@@ -57,15 +46,13 @@ sap.ui.define([
 				this.getView().setModel(oModel, 'delivery');
 			},
 
-			onAddToCart(oEvent) {
-				console.log(this.getView());
-
+			onAddItem(oEvent) {
 				let oResourceBundle = this.getResourceBundle();
 				let oEntry = this.getView().getBindingContext('category').getObject();
-				console.log(oEntry);
-
 				let oCartModel = this.getModel("cartProducts");
-				cart.addToCart(oResourceBundle, oEntry, oCartModel);
+				let sButtonId = oEvent.getSource().data().id;
+
+				cart.addToCart(oResourceBundle, oEntry, oCartModel, sButtonId);
 			}
 		});
 	},

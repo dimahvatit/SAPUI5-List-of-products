@@ -1,8 +1,9 @@
 <mvc:View controllerName="my_cat_list.controller.ProductDetails"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true"
 	xmlns:m="sap.m"
 	xmlns="sap.uxap"
+	displayBlock="true"
 	height="100%">
 	<m:Page showNavButton="true"
 		navButtonPress="onNavBack">
@@ -27,12 +28,15 @@
 
 					<actions>
 						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
+							custom:id="addToCart"
 							type="Emphasized"
 							icon="sap-icon://cart-4"
 							enabled="{:= !!${category>UnitsInStock}}"
-							press="onAddToCart" />
+							press="onAddItem" />
 						<m:Button text="{i18n>ProductDetailsView.SaveToWishlist}"
-							icon="sap-icon://bookmark" />
+							custom:id="addToFavs"
+							icon="sap-icon://bookmark"
+							press="onAddItem" />
 					</actions>
 				</ObjectPageDynamicHeaderTitle>
 			</headerTitle>
@@ -67,13 +71,13 @@
 						<m:Title text="{i18n>ProductDetailsView.Price}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectNumber number="{
-								parts:[{path: 'category>UnitPrice'}, {path: 'view>/currency'}],
+								parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
 								type: 'sap.ui.model.type.Currency',
 								formatOptions: {
 									showMeasure: false
 								}
 							}"
-							unit="{view>/currency}"
+							unit="{measures>/currency}"
 							emphasized="false"
 							class="sapMObjectNumberLarge" />
 					</m:VBox>

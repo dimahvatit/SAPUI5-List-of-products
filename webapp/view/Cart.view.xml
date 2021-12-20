@@ -8,37 +8,55 @@
         navButtonTooltip="Back"
         showNavButton="true"
         navButtonPress="onNavBack"
-        title="Your Shopping Cart"
+        title="{i18n>CartView.YourShoppingCart}"
         titleAlignment="Center"
         titleLevel="H2">
         <content>
-            <FlexBox fitContainer="true"
-                height="100%"
-                justifyContent="Center"
-                width="100vw">
+            <FlexBox width="100%">
                 <items>
-                    <List headerText="List header"
+                    <List headerText="{i18n>CartView.ProductsInCart}"
+                        delete=".onCartEntriesDelete"
                         includeItemInSelection="true"
-                        inset="true"
                         mode="MultiSelect"
                         noDataText="No data"
-                        backgroundDesign="Translucent">
+                        backgroundDesign="Translucent"
+                        items="{
+                            path: 'cartProducts>/cartEntries',
+                            sorter: {path: 'ProductName'}
+                        }">
+                        <headerToolbar>
+                            <Toolbar>
+                                <!--TODO: text arg. is set depending on the presence of the selected list items -->
+                                <Button text="Order all or selected btn"
+                                    type="Accept"
+                                    class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
+                                <Button text="Delete selected or clear cart btn"
+                                    type="Reject" />
+                            </Toolbar>
+                        </headerToolbar>
                         <items>
                             <ObjectListItem icon="sap-icon://product"
-                                intro="Quantity"
-                                number="UnitPrice"
+                                intro="{i18n>CartView.InCart} {cartProducts>Quantity}"
+                                number="{
+                                    parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }"
                                 numberState="Success"
-                                numberUnit="EUR"
-                                title="ProductName">
+                                numberUnit="{measures>/currency}"
+                                title="{cartProducts>ProductName}">
                                 <attributes>
                                     <ObjectAttribute active="true"
-                                        text="Add to Favorites" />
+                                        text="{i18n>CartView.AddToFavorites}" />
                                 </attributes>
                             </ObjectListItem>
                         </items>
                         <layoutData>
-                            <FlexItemData baseSize="100%"
-                                shrinkFactor="0" />
+                            <FlexItemData backgroundDesign="Solid"
+                                baseSize="100%"
+                                growFactor="1" />
                         </layoutData>
                     </List>
                 </items>

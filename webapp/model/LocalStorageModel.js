@@ -30,7 +30,7 @@ sap.ui.define([
         /**
          * Loads the current state of the model from local storage.
          */
-        _loadData() {
+        _loadData: function() {
             let sJSON = this._storage.get(this._STORAGE_KEY);
 
             if (sJSON) {
@@ -42,19 +42,19 @@ sap.ui.define([
         /**
          * Saves the current state of the model to local storage.
          */
-        _storeData() {
+        _storeData: function() {
             let oData = this.getData();
 
             let sJSON = JSON.stringify(oData);
             this._storage.put(this._STORAGE_KEY, sJSON);
         },
 
-        setProperty(...args) {
+        setProperty: function(...args) {
             JSONModel.prototype.setProperty.apply(this, args);
             this._storeData();
         },
 
-        setData(...args) {
+        setData: function(...args) {
             JSONModel.prototype.setData.apply(this, args);
 
             if (this._bDataLoaded) {
@@ -62,7 +62,7 @@ sap.ui.define([
             }
         },
 
-        refresh(...args) {
+        refresh: function(...args) {
             JSONModel.prototype.refresh.apply(this, args)
             this._storeData();
         }

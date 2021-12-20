@@ -2,20 +2,43 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.f">
-	<f:GridListItem press=".onItemClick" type="Active">
+	<f:GridListItem
+		press=".onItemClick"
+		type="Active">
 		<VBox height="100%">
 			<layoutData>
-				<FlexItemData growFactor="1" shrinkFactor="0" />
+				<FlexItemData
+					growFactor="1"
+					shrinkFactor="0" />
 			</layoutData>
-			
-			<HBox height="100%" class="sapUiSmallMargin" alignItems="Start" justifyContent="SpaceBetween">
-				<VBox>
-					<Title text="{category>ProductName}" wrapping="true" />
-					<Label text="{category>QuantityPerUnit}" wrapping="true" />
+
+			<HBox
+				height="100%"
+				class="sapUiSmallMargin"
+				alignItems="Start"
+				justifyContent="SpaceBetween">
+				<VBox
+					justifyContent="SpaceBetween"
+					height="100%">
+					<Title
+						text="{category>ProductName}"
+						wrapping="true"
+						titleStyle="H3" />
+					<Label
+						text="{category>QuantityPerUnit}"
+						wrapping="true" />
 				</VBox>
 				<VBox>
-					<ObjectNumber number="{ path: 'category>UnitPrice', formatter: '.formatter.productPrice'}" textAlign="End">
-					</ObjectNumber>
+					<ObjectNumber
+						number="{
+							parts:[{ path: 'category>UnitPrice' }, { path: 'measures>currency' }],
+							formatter: '.formatter.productPrice',
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {
+								showMeasures: true
+							}
+						}"
+						textAlign="End" />
 				</VBox>
 			</HBox>
 		</VBox>
