@@ -1,4 +1,5 @@
 <mvc:View controllerName="my_cat_list.controller.Cart"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true"
@@ -12,25 +13,38 @@
         titleAlignment="Center"
         titleLevel="H2">
         <content>
-            <FlexBox width="100%">
+            <FlexBox direction="Column"
+                width="100%"
+                backgroundDesign="Translucent">
                 <items>
-                    <List headerText="{i18n>CartView.ProductsInCart}"
-                        delete=".onCartEntriesDelete"
+                    <List id="cart-list"
                         includeItemInSelection="true"
+                        class="sapUiSmallMarginBottom"
+                        inset="true"
                         mode="MultiSelect"
+                        selectionChange=".onItemPress"
                         noDataText="No data"
-                        backgroundDesign="Translucent"
+                        visible="{= !!Object.keys(${cartProducts>/cartEntries}).length}"
                         items="{
                             path: 'cartProducts>/cartEntries',
                             sorter: {path: 'ProductName'}
                         }">
                         <headerToolbar>
                             <Toolbar>
-                                <!--TODO: text arg. is set depending on the presence of the selected list items -->
-                                <Button text="Order all or selected btn"
+                                <Title text="{i18n>CartView.ProductsInCart}"
+                                    width="30%" />
+                                <ToolbarSpacer />
+                                <Button text="{
+                                    path: 'view>/selectedItems',
+                                    formatter: '.formatter.orderBtnText'
+                                }"
                                     type="Accept"
                                     class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
-                                <Button text="Delete selected or clear cart btn"
+                                <Button text="{
+                                    path: 'view>/selectedItems',
+                                    formatter: '.formatter.deleteBtnText'
+                                }"
+                                    press=".onDeleteBtnPress"
                                     type="Reject" />
                             </Toolbar>
                         </headerToolbar>
@@ -48,8 +62,69 @@
                                 numberUnit="{measures>/currency}"
                                 title="{cartProducts>ProductName}">
                                 <attributes>
+                                    <ObjectAttribute active="false"
+                                        title="ID"
+                                        text="{cartProducts>ProductID}" />
                                     <ObjectAttribute active="true"
-                                        text="{i18n>CartView.AddToFavorites}" />
+                                        text="{i18n>CartView.ShowProductPage}" />
+                                </attributes>
+                            </ObjectListItem>
+                        </items>
+                        <layoutData>
+                            <FlexItemData backgroundDesign="Solid"
+                                baseSize="100%"
+                                growFactor="1" />
+                        </layoutData>
+                    </List>
+
+                    <List id="fav-list"
+                        includeItemInSelection="true"
+                        inset="true"
+                        selectionChange=".onItemPress"
+                        mode="MultiSelect"
+                        noDataText="No data"
+                        backgroundDesign="Translucent"
+                        visible="{= !!Object.keys(${cartProducts>/favorites}).length}"
+                        items="{
+                            path: 'cartProducts>/favorites',
+                            sorter: {path: 'ProductName'}
+                        }">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="{i18n>CartView.ProductsInFavs}"
+                                    width="30%" />
+                                <ToolbarSpacer />
+                                <Button text="{
+                                        path: 'view>/selectedItems',
+                                        formatter: '.formatter.orderBtnText'
+                                    }"
+                                    type="Accept"
+                                    class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
+                                <Button text="{
+                                        path: 'view>/selectedItems',
+                                        formatter: '.formatter.deleteBtnText'
+                                    }"
+                                    custom:inFavs="true"
+                                    press=".onDeleteBtnPress"
+                                    type="Reject" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <items>
+                            <ObjectListItem icon="sap-icon://product"
+                                number="{
+                                    parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }"
+                                numberState="Success"
+                                numberUnit="{measures>/currency}"
+                                title="{cartProducts>ProductName}">
+                                <attributes>
+                                    <ObjectAttribute active="false"
+                                        title="ID"
+                                        text="{cartProducts>ProductID}" />
                                 </attributes>
                             </ObjectListItem>
                         </items>
@@ -60,6 +135,15 @@
                         </layoutData>
                     </List>
                 </items>
+                <Title text="{i18n>CartView.CartEmpty}"
+                        textAlign="Center"
+                        titleStyle="H2"
+                        width="100%"
+                        class="sapUiSmallMarginTopBottom"
+                        visible="{
+                            parts: [{path: 'cartProducts>/cartEntries'}, {path: 'cartProducts>/favorites'}],
+                            formatter: '.formatter.isCartEmpty'
+                        }" />
             </FlexBox>
         </content>
     </Page>

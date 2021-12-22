@@ -16,17 +16,20 @@ sap.ui.define([
 				let productID = window.decodeURIComponent(
 					oEvent.getParameter('arguments').productID,
 				);
-
+				
+				// Bind the view to Product entity
 				this.getView().bindElement({
 					path: `/Products(${productID})`,
 					model: 'category',
 				});
 
+				// Bind supplier details block to current Product's Supplier entity
 				this.getView().byId('supplier-details').bindElement({
 					path: `/Products(${productID})/Supplier`,
 					model: 'category',
 				});
 
+				// Get model with product descriptions
 				let sDescription = this.getOwnerComponent().getModel('description').getProperty(`/${productID}`);
 				let oDescModel = new JSONModel({
 					text: sDescription
@@ -46,12 +49,15 @@ sap.ui.define([
 				this.getView().setModel(oModel, 'delivery');
 			},
 
-			onAddItem(oEvent) {
+			/**
+			 * Passes chosen item to cart's addToCart()
+			 */
+			onAddItem(oEvent) {			
 				let oResourceBundle = this.getResourceBundle();
 				let oEntry = this.getView().getBindingContext('category').getObject();
 				let oCartModel = this.getModel("cartProducts");
 				let sButtonId = oEvent.getSource().data().id;
-
+	
 				cart.addToCart(oResourceBundle, oEntry, oCartModel, sButtonId);
 			}
 		});

@@ -33,7 +33,7 @@
 							icon="sap-icon://cart-4"
 							enabled="{:= !!${category>UnitsInStock}}"
 							press="onAddItem" />
-						<m:Button text="{i18n>ProductDetailsView.SaveToWishlist}"
+						<m:Button text="{i18n>ProductDetailsView.AddToFavorites}"
 							custom:id="addToFavs"
 							icon="sap-icon://bookmark"
 							press="onAddItem" />

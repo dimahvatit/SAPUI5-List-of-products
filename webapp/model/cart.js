@@ -54,6 +54,36 @@ sap.ui.define([
 
             oCartModel.setProperty('/favorites', {...oAllFavsEntries});
             oCartModel.refresh(true);
+        },
+
+        deleteItems: function(aToDelete, oCartModel, bInFavs) {
+            let sEntityName = bInFavs ? 'favorites' : 'cartEntries';
+            console.log(bInFavs);
+            
+            /* if (bInFavs) {
+                sEntityName = 'favorites';
+            } else {
+                sEntityName = 'cartEntries';
+            } */
+
+            if (aToDelete.length === 0) {
+                oCartModel.setProperty(`/${sEntityName}`, {});
+                return;
+            }
+
+            let oProducts = {...oCartModel.getData()[sEntityName]};
+            let oFilteredProducts = {};
+
+            for (const key in oProducts) {
+                if (Object.hasOwnProperty.call(oProducts, key)) {
+                    let product = oProducts[key];
+                    if (!aToDelete.includes(product.ProductID)) {
+                        oFilteredProducts[product.ProductID] = product;
+                    }
+                }
+            }
+
+            oCartModel.setProperty(`/${sEntityName}`, {...oFilteredProducts});
         }
     };
 });

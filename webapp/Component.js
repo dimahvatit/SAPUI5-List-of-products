@@ -3,10 +3,7 @@ sap.ui.define([
 	'sap/ui/Device',
 	'my_cat_list/model/LocalStorageModel',
 	"sap/ui/model/json/JSONModel"
-], function (UIComponent,
-	Device,
-	LocalStorageModel,
-	JSONModel) {
+], function (UIComponent, Device, LocalStorageModel, JSONModel) {
 	'use strict';
 
 	return UIComponent.extend('my_cat_list.Component', {
