@@ -24,6 +24,8 @@ sap.ui.define([
 			},
 
 			onItemPress(oEvent) {
+				console.log(oEvent.getSource());
+
 				let oList = this.getView().byId('cart-list');
 				let aItems = oList.getSelectedItems();
 
@@ -43,6 +45,13 @@ sap.ui.define([
 				cart.deleteItems(aToDelete, oCartModel, bInFavs);
 				aToDelete = [];
 				oViewModel.setData({selectedItems: []});
+			},
+
+			onShowProductPress: function (oEvent) {
+				let iProdID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
+				this.getRouter().navTo('details', {
+					productID: window.encodeURIComponent(iProdID),
+				});
 			}
 		});
 	},

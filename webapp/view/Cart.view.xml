@@ -66,6 +66,7 @@
                                         title="ID"
                                         text="{cartProducts>ProductID}" />
                                     <ObjectAttribute active="true"
+                                        press="onShowProductPress"
                                         text="{i18n>CartView.ShowProductPage}" />
                                 </attributes>
                             </ObjectListItem>
@@ -125,6 +126,9 @@
                                     <ObjectAttribute active="false"
                                         title="ID"
                                         text="{cartProducts>ProductID}" />
+                                    <ObjectAttribute active="true"
+                                        press="onShowProductPress"
+                                        text="{i18n>CartView.ShowProductPage}" />
                                 </attributes>
                             </ObjectListItem>
                         </items>
@@ -136,11 +140,11 @@
                     </List>
                 </items>
                 <Title text="{i18n>CartView.CartEmpty}"
-                        textAlign="Center"
-                        titleStyle="H2"
-                        width="100%"
-                        class="sapUiSmallMarginTopBottom"
-                        visible="{
+                    textAlign="Center"
+                    titleStyle="H2"
+                    width="100%"
+                    class="sapUiSmallMarginTopBottom"
+                    visible="{
                             parts: [{path: 'cartProducts>/cartEntries'}, {path: 'cartProducts>/favorites'}],
                             formatter: '.formatter.isCartEmpty'
                         }" />
