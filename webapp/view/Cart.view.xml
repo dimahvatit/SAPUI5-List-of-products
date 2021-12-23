@@ -17,7 +17,7 @@
                 width="100%"
                 backgroundDesign="Translucent">
                 <items>
-                    <List id="cart-list"
+                    <List custom:id="cart-list"
                         includeItemInSelection="true"
                         class="sapUiSmallMarginBottom"
                         inset="true"
@@ -35,13 +35,13 @@
                                     width="30%" />
                                 <ToolbarSpacer />
                                 <Button text="{
-                                    path: 'view>/selectedItems',
+                                    path: 'view>/cartItems',
                                     formatter: '.formatter.orderBtnText'
                                 }"
                                     type="Accept"
                                     class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
                                 <Button text="{
-                                    path: 'view>/selectedItems',
+                                    path: 'view>/cartItems',
                                     formatter: '.formatter.deleteBtnText'
                                 }"
                                     press=".onDeleteBtnPress"
@@ -78,7 +78,7 @@
                         </layoutData>
                     </List>
 
-                    <List id="fav-list"
+                    <List custom:id="favs-list"
                         includeItemInSelection="true"
                         inset="true"
                         selectionChange=".onItemPress"
@@ -96,13 +96,7 @@
                                     width="30%" />
                                 <ToolbarSpacer />
                                 <Button text="{
-                                        path: 'view>/selectedItems',
-                                        formatter: '.formatter.orderBtnText'
-                                    }"
-                                    type="Accept"
-                                    class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
-                                <Button text="{
-                                        path: 'view>/selectedItems',
+                                        path: 'view>/favsItems',
                                         formatter: '.formatter.deleteBtnText'
                                     }"
                                     custom:inFavs="true"
@@ -145,9 +139,9 @@
                     width="100%"
                     class="sapUiSmallMarginTopBottom"
                     visible="{
-                            parts: [{path: 'cartProducts>/cartEntries'}, {path: 'cartProducts>/favorites'}],
-                            formatter: '.formatter.isCartEmpty'
-                        }" />
+                        parts: [{path: 'cartProducts>/cartEntries'}, {path: 'cartProducts>/favorites'}],
+                        formatter: '.formatter.isCartEmpty'
+                    }" />
             </FlexBox>
         </content>
     </Page>

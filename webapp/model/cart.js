@@ -58,13 +58,6 @@ sap.ui.define([
 
         deleteItems: function(aToDelete, oCartModel, bInFavs) {
             let sEntityName = bInFavs ? 'favorites' : 'cartEntries';
-            console.log(bInFavs);
-            
-            /* if (bInFavs) {
-                sEntityName = 'favorites';
-            } else {
-                sEntityName = 'cartEntries';
-            } */
 
             if (aToDelete.length === 0) {
                 oCartModel.setProperty(`/${sEntityName}`, {});

@@ -15,7 +15,8 @@ sap.ui.define([
 					.attachPatternMatched(this._onPatternMatched, this);
 				this.getView().setModel(
 					new JSONModel({
-						selectedItems: [],
+						cartItems: [],
+						favsItems: [],
 					}), 'view');
 			},
 
@@ -23,28 +24,39 @@ sap.ui.define([
 				let oCartModel = this.getModel('cartProducts');
 			},
 
+			/**
+			 * Pushes selected items to the 'cartItems' array of the 'view' model
+			 * @param {object} oEvent 
+			 */
 			onItemPress(oEvent) {
-				console.log(oEvent.getSource());
-
-				let oList = this.getView().byId('cart-list');
-				let aItems = oList.getSelectedItems();
+				let oList = oEvent.getSource();
+				let aItems = oList.getSelectedContexts();
+				console.log(aItems);
 
 				let aProductIDs = [];
 				for (let item of aItems) {
-					aProductIDs.push(item.getBindingContext('cartProducts').getObject().ProductID);
+					aProductIDs.push(item.getObject().ProductID);
 				}
 
-				this.getModel('view').setData({selectedItems: aProductIDs});
+				if (oList.data().id === 'cart-list') {
+					this.getModel('view').setProperty('/cartItems', aProductIDs);
+				} else {
+					this.getModel('view').setProperty('/favsItems', aProductIDs);
+				}
 			},
+
 			onDeleteBtnPress(oEvent) {
-				let bInFavs = oEvent.getSource().data().inFavs
+				let bInFavs = oEvent.getSource().data().inFavs;
+				let sCurrList = bInFavs ? 'favsItems' : 'cartItems';
+
 				let oCartModel = this.getModel('cartProducts');
 				let oViewModel = this.getModel('view');
-				let aToDelete = oViewModel.getData().selectedItems;
+				
+				let aToDelete = oViewModel.getData()[sCurrList];
 
 				cart.deleteItems(aToDelete, oCartModel, bInFavs);
 				aToDelete = [];
-				oViewModel.setData({selectedItems: []});
+				oViewModel.setProperty(`/${sCurrList}`, []);
 			},
 
 			onShowProductPress: function (oEvent) {
