@@ -9,10 +9,10 @@ sap.ui.define([
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
 			formatter: formatter,
 			onInit() {
-				this.getRouter().getRoute('details').attachPatternMatched(this._onProductMatched, this);
+				this.getRouter().getRoute('details').attachPatternMatched(this._onPatternMatched, this);
 			},
 
-			_onProductMatched(oEvent) {
+			_onPatternMatched(oEvent) {
 				let productID = window.decodeURIComponent(
 					oEvent.getParameter('arguments').productID,
 				);
@@ -35,30 +35,18 @@ sap.ui.define([
 					text: sDescription
 				});
 				this.getView().byId('prod-description').setModel(oDescModel, 'prodDesc');
-				this._setDeliveryTime();
+				this._setDeliveryTime(1, 10);
 			},
 
 			/**
-			 * Sets random amount of days between 1 and 10 to simulate delivery time calculations
+			 * Sets random amount of days between min and max to simulate delivery time calculations
 			 */
-			_setDeliveryTime() {
-				let term = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+			_setDeliveryTime(min, max) {
+				let term = Math.floor(Math.random() * (max - min + 1)) + min;
 				let oModel = new JSONModel({
 					term: term,
 				});
 				this.getView().setModel(oModel, 'delivery');
-			},
-
-			/**
-			 * Passes chosen item to cart's addToCart()
-			 */
-			onAddItem(oEvent) {			
-				let oResourceBundle = this.getResourceBundle();
-				let oEntry = this.getView().getBindingContext('category').getObject();
-				let oCartModel = this.getModel("cartProducts");
-				let sButtonId = oEvent.getSource().data().id;
-	
-				cart.addToCart(oResourceBundle, oEntry, oCartModel, sButtonId);
 			}
 		});
 	},

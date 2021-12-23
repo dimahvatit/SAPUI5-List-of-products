@@ -24,6 +24,20 @@ sap.ui.define([
 			} else {
 				this.getRouter().navTo("homepage", {}, true);
 			}
+		},
+
+		/**
+		 * Passes chosen item to cart's addToCart()
+		 */
+		onAddItem(oEvent) {
+			// set model name which context will be used depending on the current view name
+			let sContextName = this.getView().getViewName() == 'my_cat_list.view.Cart' ? 'cartProducts' : 'category';
+			let oEntry = oEvent.getSource().getBindingContext(sContextName).getObject();
+			let oResourceBundle = this.getResourceBundle();
+			let oCartModel = this.getModel("cartProducts");
+			let sButtonId = oEvent.getSource().data().id;
+
+			cart.addToCart(oResourceBundle, oEntry, oCartModel, sButtonId);
 		}
 	});
 });

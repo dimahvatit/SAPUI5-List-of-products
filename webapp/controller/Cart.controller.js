@@ -1,8 +1,8 @@
 sap.ui.define([
-	'./BaseController',
-	'sap/ui/model/json/JSONModel',
+	"./BaseController",
+	"sap/ui/model/json/JSONModel",
 	"../model/cart",
-	"my_cat_list/model/formatter"
+	"my_cat_list/model/formatter",
 ], function (BaseController, JSONModel, cart, formatter) {
 		'use strict';
 
@@ -25,13 +25,12 @@ sap.ui.define([
 			},
 
 			/**
-			 * Pushes selected items to the 'cartItems' array of the 'view' model
-			 * @param {object} oEvent 
+			 * Pushes selected items to the 'cartItems' or 'favsItems' array of the 'view' model
+			 * depending on the parent list
 			 */
 			onItemPress(oEvent) {
 				let oList = oEvent.getSource();
 				let aItems = oList.getSelectedContexts();
-				console.log(aItems);
 
 				let aProductIDs = [];
 				for (let item of aItems) {
@@ -45,7 +44,12 @@ sap.ui.define([
 				}
 			},
 
+			/**
+			 * Sets the array of items to be deleted depending on the delete button's parent list,
+			 * then calls {deleteItems} method of the cart model
+			 */
 			onDeleteBtnPress(oEvent) {
+				// check what list the delete button belongs to
 				let bInFavs = oEvent.getSource().data().inFavs;
 				let sCurrList = bInFavs ? 'favsItems' : 'cartItems';
 
@@ -59,6 +63,9 @@ sap.ui.define([
 				oViewModel.setProperty(`/${sCurrList}`, []);
 			},
 
+			/**
+			 * leads to the chosen product's detail page
+			 */
 			onShowProductPress: function (oEvent) {
 				let iProdID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
 				this.getRouter().navTo('details', {
