@@ -40,6 +40,10 @@ sap.ui.define(
 						template: oGridItemFrag,
 						model: 'category',
 					});
+					this.byId('tableList').bindElement({
+						path: `/Categories(${sParam})`,
+						model: 'category',
+					});
 					this.byId('prods-toolbar').bindElement({
 						path: `/Categories(${sParam})`,
 						model: 'category',
@@ -47,6 +51,8 @@ sap.ui.define(
 				} else {
 					this.byId('prods-toolbar').unbindElement('category');
 					this.byId('gridList').unbindAggregation('items');
+					this.byId('tableList').unbindElement('category');
+					
 					this.byId('gridList').bindAggregation('items', {
 						path: '/Products',
 						template: oGridItemFrag,

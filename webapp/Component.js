@@ -19,6 +19,7 @@ sap.ui.define([
 			this.setModel(oCartModel, "cartProducts");
 			this.setModel(new JSONModel({
 				currency: "USD",
+				quantity: "in stock"
 			}), 'measures');
 
 			// call the init function of the parent

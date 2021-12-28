@@ -71,14 +71,9 @@
 						<m:Title text="{i18n>ProductDetailsView.Price}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectNumber number="{
-								parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
-								type: 'sap.ui.model.type.Currency',
-								formatOptions: {
-									showMeasure: false
-								}
+								path: 'category>UnitPrice',
+								formatter: '.formatter.productPrice'
 							}"
-							unit="{measures>/currency}"
-							emphasized="false"
 							class="sapMObjectNumberLarge" />
 					</m:VBox>
 

@@ -28,15 +28,17 @@
 						text="{category>QuantityPerUnit}"
 						wrapping="true" />
 				</VBox>
-				<VBox>
+				<VBox justifyContent="SpaceBetween" height="100%">
 					<ObjectNumber
 						number="{
-							parts:[{ path: 'category>UnitPrice' }, { path: 'measures>currency' }],
-							formatter: '.formatter.productPrice',
-							type: 'sap.ui.model.type.Currency',
-							formatOptions: {
-								showMeasures: true
-							}
+							path: 'category>UnitPrice',
+							formatter: '.formatter.productPrice'
+						}"
+						textAlign="End" />
+					<ObjectNumber
+						number="{
+							parts: [{ path: 'category>UnitsInStock' }, { path: 'measures>/quantity' }],
+							formatter: '.formatter.productQuantity'
 						}"
 						textAlign="End" />
 				</VBox>

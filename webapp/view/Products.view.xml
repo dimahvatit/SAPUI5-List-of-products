@@ -1,42 +1,211 @@
-<mvc:View
-    controllerName="my_cat_list.controller.Products"
+<mvc:View controllerName="my_cat_list.controller.Products"
     xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.f"
     xmlns="sap.m"
     displayBlock="true">
-    <Page
-        title="{i18n>Products.DetailHeader}"
+    <Page title="{i18n>Products.DetailHeader}"
         showNavButton="true"
         navButtonPress="onNavBack">
-        <f:GridList
-            id="gridList"
+        
+        <!-- TODO: Complete table view -->
+        <!--? Maybe better make a custom component from the ListBase with switchable layouts ?-->
+        <Table id="tableList"
+            width="auto"
+            visible="false"
+            noDataText="No data"
+            growing="true"
+            items="{category>Products}"
+            growingScrollToLoad="true"
+            class="sapUiResponsiveMargin">
+            <infoToolbar>
+                <Toolbar width="100%"
+                    height="auto"
+                    design="Info"
+                    visible="false">
+                    <content>
+                        <Label text="Label"
+                            design="Bold"
+                            width="100%" />
+                    </content>
+                </Toolbar>
+            </infoToolbar>
+
+            <headerToolbar>
+                <OverflowToolbar width="auto"
+                    height="auto"
+                    design="Transparent">
+                    <content>
+                        <Title text="Items"
+                            width="auto"
+                            textAlign="Begin" />
+                        <ToolbarSpacer width="50%" />
+                        <SearchField placeholder="Search"
+                            showSearchButton="true"
+                            width="21rem" />
+                        <ToolbarSpacer />
+                        <OverflowToolbarButton text="Sort"
+                            type="Transparent"
+                            icon="sap-icon://sort"
+                            width="auto" />
+                        <OverflowToolbarButton text="Filter"
+                            type="Transparent"
+                            icon="sap-icon://filter"
+                            width="auto" />
+                        <OverflowToolbarButton text="Group"
+                            type="Transparent"
+                            icon="sap-icon://group-2"
+                            width="auto" />
+                        <OverflowToolbarButton text="Settings"
+                            type="Transparent"
+                            icon="sap-icon://action-settings"
+                            width="auto" />
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column width="auto"
+                    hAlign="Left"
+                    vAlign="Middle"
+                    minScreenWidth="Phone"
+                    demandPopin="true"
+                    popinDisplay="Inline"
+                    mergeDuplicates="false">
+                    <header>
+                        <Text text="Product"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                    </header>
+                    <footer />
+                </Column>
+                <Column width="auto"
+                    hAlign="Left"
+                    vAlign="Middle"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    popinDisplay="Inline"
+                    mergeDuplicates="false">
+                    <header>
+                        <Text text="Supplier"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                    </header>
+                    <footer />
+                </Column>
+                <Column width="auto"
+                    hAlign="Left"
+                    vAlign="Middle"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    popinDisplay="Inline"
+                    mergeDuplicates="false">
+                    <header>
+                        <Text text="Price"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                    </header>
+                    <footer />
+                </Column>
+                <Column width="auto"
+                    hAlign="Left"
+                    vAlign="Middle"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    popinDisplay="Inline"
+                    mergeDuplicates="false">
+                    <header>
+                        <Text text="In stock"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                    </header>
+                    <footer />
+                </Column>
+                <Column width="auto"
+                    hAlign="Left"
+                    vAlign="Middle"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                    popinDisplay="Inline"
+                    mergeDuplicates="false">
+                    <header>
+                        <Text text="Category"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                    </header>
+                    <footer />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem type="Navigation">
+                    <cells>
+                        <ObjectIdentifier title="{category>ProductName}"
+                            text="{category>ProductID}" />
+                        <Text text="{category>Supplier/CompanyName}"
+                            width="auto"
+                            maxLines="1"
+                            wrapping="false" />
+                        <ObjectNumber number="{category>UnitPrice}"
+                            unit="USD"
+                            emphasized="true"
+                            state="None" />
+                        <ObjectNumber number="{category>UnitsInStock}"
+                            state="None" />
+                        <Text text="Product category"
+                            width="114px"
+                            maxLines="1"
+                            wrapping="false" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <f:GridList id="gridList"
+            visible="true"
             class="sapUiResponsiveContentPadding"
             items="{category>Products}">
             <f:customLayout>
-                <grid:GridBasicLayout
-                    gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
+                <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
                     gridAutoRows="minmax(4rem, 6rem)"
                     gridGap="1rem"
-                    gridRowGap="2rem"/>
+                    gridRowGap="2rem" />
             </f:customLayout>
 
             <f:headerToolbar>
                 <Toolbar id="prods-toolbar">
-                    <Title text="{category>CategoryName}"/>
-                    <ToolbarSpacer/>
-                    <SearchField width="30%" placeholder="{i18n>searchPlaceholder}" liveChange=".onFilterProducts">
+                    <Title text="{category>CategoryName}" />
+                    <ToolbarSpacer />
+                    <SearchField width="30%"
+                        placeholder="{i18n>searchPlaceholder}"
+                        liveChange=".onFilterProducts">
                         <layoutData>
-                            <OverflowToolbarLayoutData
-                                shrinkable="true" />
+                            <OverflowToolbarLayoutData shrinkable="true" />
                         </layoutData>
                     </SearchField>
+                    <Button icon="sap-icon://list"
+                        width="auto">
+                        <tooltip>
+                            <core:TooltipBase closeDelay="200"
+                                closeDuration="300"
+                                offset="1 1"
+                                openDelay="400"
+                                openDuration="300"
+                                text="Change view" />
+                        </tooltip>
+                    </Button>
                 </Toolbar>
             </f:headerToolbar>
-            
-            <!--* ./fragments/ProductItem.fragment.xml -->
-            <core:Fragment fragmentName="my_cat_list.fragments.ProductItem" type="XML" />
+            <f:items>
+                <core:Fragment fragmentName="my_cat_list.fragments.ProductItem"
+                    type="XML" />
+            </f:items>
         </f:GridList>
     </Page>
 </mvc:View>

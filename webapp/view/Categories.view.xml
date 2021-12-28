@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.Overview"
+<mvc:View controllerName="my_cat_list.controller.Categories"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
@@ -9,6 +9,7 @@
             <List id="catList"
                 class="sapUiResponsiveMargin"
                 width="auto"
+                noDataText="No data"
                 items="{
                     path: 'category>/Categories',
                     parameters: {expand: 'Products'}
@@ -28,7 +29,7 @@
                         number="{= ${category>Products/}.length}"
                         numberUnit="{i18n>listItemStatusText}"
                         type="Navigation"
-                        press='.onPress'>
+                        press='onPress'>
                         <ObjectAttribute text="{category>Description}" />
                     </ObjectListItem>
                 </items>
