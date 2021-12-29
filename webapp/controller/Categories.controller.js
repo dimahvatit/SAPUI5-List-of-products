@@ -6,6 +6,9 @@ sap.ui.define([
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.Categories', {
+
+			onInit: function () {
+			},
 			/**
 			 * Search by category name and description
 			 */
@@ -37,8 +40,6 @@ sap.ui.define([
 				oList.getBinding('items').filter(aFilter);
 			},
 
-			countProducts: function () {},
-
 			onPress: function (oEvent) {
 				let oCatItem = oEvent
 					.getSource()
@@ -48,7 +49,7 @@ sap.ui.define([
 				this.getRouter().navTo('products', {
 					catID: window.encodeURIComponent(oCatItem.CategoryID),
 				});
-			},
+			}
 		});
-	},
+	}
 );

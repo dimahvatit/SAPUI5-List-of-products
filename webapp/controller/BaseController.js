@@ -27,6 +27,16 @@ sap.ui.define([
 		},
 
 		/**
+		 * Just a utility function to get a random number
+		 * @param {integer} min 
+		 * @param {integer} max 
+		 * @returns random integer between min and max including both
+		 */
+		getRandomNum(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		},
+
+		/**
 		 * Passes chosen item to cart's addToCart()
 		 */
 		onAddItem(oEvent) {

@@ -35,14 +35,14 @@ sap.ui.define([
 					text: sDescription
 				});
 				this.getView().byId('prod-description').setModel(oDescModel, 'prodDesc');
-				this._setDeliveryTime(1, 10);
+				this._setDeliveryTime();
 			},
 
 			/**
 			 * Sets random amount of days between min and max to simulate delivery time calculations
 			 */
-			_setDeliveryTime(min, max) {
-				let term = Math.floor(Math.random() * (max - min + 1)) + min;
+			_setDeliveryTime() {
+				let term = this.getRandomNum(1, 10);
 				let oModel = new JSONModel({
 					term: term,
 				});

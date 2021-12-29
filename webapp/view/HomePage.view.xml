@@ -2,6 +2,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid"
 	xmlns:tnt="sap.tnt"
 	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns="sap.m"
@@ -88,8 +89,7 @@
 
 					<l:BlockLayoutRow>
 						<l:content>
-							<l:BlockLayoutCell
-								title="">
+							<l:BlockLayoutCell title="">
 								<l:content>
 									<ObjectListItem intro="Intro."
 										title="Item"
@@ -103,8 +103,7 @@
 									</ObjectListItem>
 								</l:content>
 							</l:BlockLayoutCell>
-							<l:BlockLayoutCell
-								title="">
+							<l:BlockLayoutCell title="">
 								<l:content>
 									<ObjectListItem intro="Intro."
 										title="Item"
@@ -118,8 +117,7 @@
 									</ObjectListItem>
 								</l:content>
 							</l:BlockLayoutCell>
-							<l:BlockLayoutCell
-								title="">
+							<l:BlockLayoutCell title="">
 								<l:content>
 									<ObjectListItem intro="Intro."
 										title="Item"
@@ -133,8 +131,7 @@
 									</ObjectListItem>
 								</l:content>
 							</l:BlockLayoutCell>
-							<l:BlockLayoutCell
-								title="">
+							<l:BlockLayoutCell title="">
 								<l:content>
 									<ObjectListItem intro="Intro."
 										title="Item"
@@ -153,16 +150,14 @@
 
 					<l:BlockLayoutRow>
 						<l:content>
-							<l:BlockLayoutCell
-								title="Suppliers">
+							<l:BlockLayoutCell title="Suppliers">
 								<l:content>
 									<Title id='supplCount'
 										width="auto"
 										titleStyle="H3" />
 								</l:content>
 							</l:BlockLayoutCell>
-							<l:BlockLayoutCell
-								title="Products">
+							<l:BlockLayoutCell title="Products">
 								<l:content>
 									<Title text="{category>Products/$count}"
 										id="prodCount"
@@ -177,80 +172,45 @@
 						<l:content>
 							<l:BlockLayoutCell>
 								<l:content>
+
 									<FlexBox alignContent="Stretch"
 										alignItems="Stretch"
 										direction="Column"
+										width="100%"
+										wrap="Wrap"
 										justifyContent="SpaceBetween">
 										<items>
 											<Title text="Popular products"
 												textAlign="Center"
+												titleStyle="H3"
 												width="auto"
 												class="sapUiSmallMarginBegin" />
-											<l:Grid defaultIndent="L0 M0 S0"
-												defaultSpan="L3 M6 S12"
-												position="Center"
-												hSpacing="2"
-												vSpacing="1">
-												<l:content>
-													<ObjectListItem
-														intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
+											<grid:CSSGrid gridAutoFlow="Row"
+												gridGap="1rem"
+												gridTemplateColumns="1fr 1fr 1fr 1fr"
+												gridTemplateRows="1fr 1fr"
+												width="100%"
+												items="{promoted>/popProducts}">
+												<grid:items>
+													<ObjectListItem intro="{promoted>ProductID}"
+														title="{promoted>ProductName}"
+														
+														icon="sap-icon://product"
+														number="{promoted>UnitPrice}"
 														numberUnit="USD"
 														type="Active">
+														<layoutData>
+															<FlexItemData alignSelf="Auto"
+																backgroundDesign="Transparent"
+																baseSize="25%"
+																maxWidth="25%"
+																growFactor="0"
+																order="0"
+																shrinkFactor="0" />
+														</layoutData>
 													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-													<ObjectListItem intro="Intro."
-														title="Item"
-														icon="sap-icon://simple-payment"
-														number="1,000"
-														numberUnit="USD"
-														type="Active">
-													</ObjectListItem>
-												</l:content>
-											</l:Grid>
+												</grid:items>
+											</grid:CSSGrid>
 										</items>
 									</FlexBox>
 								</l:content>

@@ -29,7 +29,7 @@
                         number="{= ${category>Products/}.length}"
                         numberUnit="{i18n>listItemStatusText}"
                         type="Navigation"
-                        press='onPress'>
+                        press='.onPress'>
                         <ObjectAttribute text="{category>Description}" />
                     </ObjectListItem>
                 </items>
