@@ -45,7 +45,7 @@
 		</tnt:sideContent>
 
 		<tnt:mainContents>
-			<l:BlockLayout background="Dashboard">
+			<l:BlockLayout background="Mixed">
 				<l:BlockLayoutRow>
 					<l:BlockLayoutCell title="{i18n>HomePageView.SearchForProducts}">
 						<core:Icon tooltip="{i18n>HomePageView.ProductsTooltip}"

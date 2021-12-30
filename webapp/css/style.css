@@ -40,7 +40,7 @@
 
 .myListApp .my-toolpage .sapUiBlockCellContent {
 	justify-content: space-around;
-	padding: 1rem;
+	
 }
 
 .myListApp .my-toolpage .last-viewed .sapUiBlockCellContent > *{
