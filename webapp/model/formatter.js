@@ -6,16 +6,16 @@ sap.ui.define(
 		let ValueState = coreLibrary.ValueState;
 
 		return {
-			productPrice: function (sPrice) {
+			productPrice: function (sPrice, sCode) {
 				let formatPrice = NumberFormat.getCurrencyInstance({
 					currencyCode: false,
 					customCurrencies: {
 						MyDollar: {
-							isoCode: 'USD',
+							isoCode: 'USD' && sCode,
 							decimals: 2
 						}
 					},
-					pattern: '¤#,##0.00'
+					pattern: '¤ #,##0.00'
 				});
 				return formatPrice.format(+sPrice, "MyDollar");
 			},
@@ -35,10 +35,13 @@ sap.ui.define(
 			},
 
 			deliveryState: function (iDays) {
-				if (iDays < 5) {
-					return ValueState.Success;
-				} else {
-					return ValueState.Warning;
+				switch(true) {
+					case iDays > 7:
+						return ValueState.Error;
+					case iDays > 5:
+						return ValueState.Warning;
+					default: 
+						return ValueState.Success;
 				}
 			},
 

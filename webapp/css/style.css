@@ -40,4 +40,14 @@
 
 .myListApp .my-toolpage .sapUiBlockCellContent {
 	justify-content: space-around;
+	padding: 1rem;
+}
+
+.myListApp .my-toolpage .last-viewed .sapUiBlockCellContent > *{
+	flex: 1;
+}
+
+.myListApp .my-toolpage .pop-products .sapUiBlockCellContent {
+	flex-direction: column;
+    align-items: start;
 }

@@ -16,7 +16,7 @@ sap.ui.define([
                 }
             }
         },
-        // TODO: * Reorganize _updateItem and _addToFavs into one method
+        // TODO: ** Reorganize _updateItem and _addToFavs into one method
         _updateItem: function(oBundle, oProdToAdd, oCartModel) {
             // get all entries from cart model and look for the item being added...
             let oAllCartEntries = {...oCartModel.getData()['cartEntries']};

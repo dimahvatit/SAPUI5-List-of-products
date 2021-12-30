@@ -31,7 +31,7 @@
 				<VBox justifyContent="SpaceBetween" height="100%">
 					<ObjectNumber
 						number="{
-							path: 'category>UnitPrice',
+							parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
 							formatter: '.formatter.productPrice'
 						}"
 						textAlign="End" />
@@ -39,6 +39,10 @@
 						number="{
 							parts: [{ path: 'category>UnitsInStock' }, { path: 'measures>/quantity' }],
 							formatter: '.formatter.productQuantity'
+						}"
+						state="{
+							path: 'category>UnitsInStock',
+							formatter: '.formatter.quantityState'
 						}"
 						textAlign="End" />
 				</VBox>

@@ -1,9 +1,12 @@
-sap.ui.define(
-	['./BaseController', 'sap/ui/model/json/JSONModel'],
-	function (BaseController, JSONModel) {
+sap.ui.define([
+	'./BaseController',
+	'sap/ui/model/json/JSONModel',
+	'../model/formatter'
+], function (BaseController, JSONModel, formatter) {
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.HomePage', {
+			formatter: formatter,
 			onInit: function () {
 				let oRouter = this.getRouter();
 				oRouter.getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
@@ -28,38 +31,38 @@ sap.ui.define(
 							oView.byId('prodCount').setText(sData);
 						}
 					});
-
-				this._getRandProducts();
-			},
-
-			_getRandProducts: function () {
+				
 				let oPopProductsModel = new JSONModel({
 					popProducts: []
 				});
+				this.getView().setModel(oPopProductsModel, 'promoted');
+
+				this._getRandProducts(8);
+			},
+
+			_getRandProducts: function (count) {
+				let oPopProductsModel = this.getModel('promoted');
 				let aProductIDs = [];
-				for (let i = 0; i < 8; i++) {
+
+				while (count > 0) {
 					let num = this.getRandomNum(1, 77);
 					if (aProductIDs.indexOf(num) === -1) {
 						aProductIDs.push(num);
+						count--;
 					}
 				}
-				console.log(aProductIDs);
 
-				for (let i = 0; i <= aProductIDs.length; i++) {
+				for (let i = 0; i < aProductIDs.length; i++) {
 					this.getOwnerComponent()
 					.getModel('category')
 					.read(`/Products(${aProductIDs[i]})`, {
 						sync: true,
 						success: function (oData) {
 							let aPrevVal = oPopProductsModel.getProperty('/popProducts');
-							console.log(aPrevVal);
-
 							oPopProductsModel.setProperty('/popProducts', [...aPrevVal, oData]);
 						}
 					})
 				}
-				
-				this.getView().setModel(oPopProductsModel, 'promoted');
 			},
 
 			_onPatternMatched: function () {
@@ -73,7 +76,8 @@ sap.ui.define(
 			},
 
 			onMenuItemSelect: function (oEvent) {
-				let sTarget = oEvent.getParameter('item').data('to');
+				let oItem = oEvent.getParameter('item') ? oEvent.getParameter('item') : oEvent.getSource();
+				let sTarget = oItem.data('to');
 				let oRouter = this.getRouter();
 
 				oRouter.navTo(sTarget);

@@ -9,7 +9,7 @@
         showNavButton="true"
         navButtonPress="onNavBack">
         
-        <!-- TODO: Complete table view -->
+        <!-- TODO: ** Complete table view -->
         <!--? Maybe better make a custom component from the ListBase with switchable layouts ?-->
         <Table id="tableList"
             width="auto"

@@ -46,182 +46,124 @@
 
 		<tnt:mainContents>
 			<l:BlockLayout background="Dashboard">
-				<l:content>
-					<l:BlockLayoutRow>
-						<l:content>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell title="{i18n>HomePageView.SearchForProducts}">
+						<core:Icon tooltip="{i18n>HomePageView.ProductsTooltip}"
+							src="sap-icon://heatmap-chart"
+							press=".onMenuItemSelect"
+							custom:to="products"
+							size="4rem"
+							color="#168282"
+							activeColor="#116464"
+							hoverColor="#006794" />
+					</l:BlockLayoutCell>
 
-							<l:BlockLayoutCell title="{i18n>HomePageView.SearchForProducts}">
-								<l:content>
-									<core:Icon src="sap-icon://heatmap-chart"
-										tooltip="{i18n>HomePageView.ProductsTooltip}"
-										press=".onMenuItemSelect"
-										size="4rem"
-										color="#168282"
-										activeColor="#116464"
-										hoverColor="#006794" />
-								</l:content>
-							</l:BlockLayoutCell>
+					<l:BlockLayoutCell title="{i18n>HomePageView.BrowseCategories}">
+						<core:Icon tooltip="{i18n>HomePageView.CategoriesTooltip}"
+							press=".onMenuItemSelect"
+							custom:to="overview"
+							src="sap-icon://group-2"
+							size="4rem"
+							color="#168282"
+							activeColor="#116464"
+							hoverColor="#006794" />
+					</l:BlockLayoutCell>
 
-							<l:BlockLayoutCell title="{i18n>HomePageView.BrowseCategories}">
-								<l:content>
-									<core:Icon tooltip="{i18n>HomePageView.CategoriesTooltip}"
-										src="sap-icon://group-2"
-										size="4rem"
-										color="#168282"
-										activeColor="#116464"
-										hoverColor="#006794" />
-								</l:content>
-							</l:BlockLayoutCell>
+					<l:BlockLayoutCell title="{i18n>HomePageView.ManageYouCart}">
+						<core:Icon tooltip="{i18n>HomePageView.CartTooltip}"
+							src="sap-icon://cart"
+							press=".onMenuItemSelect"
+							custom:to="cart"		
+							size="4rem"
+							color="#168282"
+							activeColor="#116464"
+							hoverColor="#006794" />
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
 
-							<l:BlockLayoutCell title="{i18n>HomePageView.ManageYouCart}">
-								<l:content>
-									<core:Icon tooltip="{i18n>HomePageView.CartTooltip}"
-										src="sap-icon://cart"
-										size="4rem"
-										color="#168282"
-										activeColor="#116464"
-										hoverColor="#006794" />
-								</l:content>
-							</l:BlockLayoutCell>
+				<l:BlockLayoutRow class="last-viewed">
+					<l:BlockLayoutCell title="">
+						<ObjectListItem intro="Intro."
+							title="Item"
+							icon="sap-icon://product"
+							number="1,000"
+							numberUnit="USD"
+							type="Active">
+						</ObjectListItem>
+					</l:BlockLayoutCell>
 
-						</l:content>
-					</l:BlockLayoutRow>
+					<l:BlockLayoutCell title="">
+						<ObjectListItem intro="Intro."
+							title="Item"
+							icon="sap-icon://product"
+							number="1,000"
+							numberUnit="USD"
+							type="Active">
+						</ObjectListItem>
+					</l:BlockLayoutCell>
 
-					<l:BlockLayoutRow>
-						<l:content>
-							<l:BlockLayoutCell title="">
-								<l:content>
-									<ObjectListItem intro="Intro."
-										title="Item"
-										icon="sap-icon://simple-payment"
-										number="1,000"
-										numberUnit="USD"
-										type="Active">
-										<attributes />
-										<firstStatus />
-										<secondStatus />
-									</ObjectListItem>
-								</l:content>
-							</l:BlockLayoutCell>
-							<l:BlockLayoutCell title="">
-								<l:content>
-									<ObjectListItem intro="Intro."
-										title="Item"
-										icon="sap-icon://simple-payment"
-										number="1,000"
-										numberUnit="USD"
-										type="Active">
-										<attributes />
-										<firstStatus />
-										<secondStatus />
-									</ObjectListItem>
-								</l:content>
-							</l:BlockLayoutCell>
-							<l:BlockLayoutCell title="">
-								<l:content>
-									<ObjectListItem intro="Intro."
-										title="Item"
-										icon="sap-icon://simple-payment"
-										number="1,000"
-										numberUnit="USD"
-										type="Active">
-										<attributes />
-										<firstStatus />
-										<secondStatus />
-									</ObjectListItem>
-								</l:content>
-							</l:BlockLayoutCell>
-							<l:BlockLayoutCell title="">
-								<l:content>
-									<ObjectListItem intro="Intro."
-										title="Item"
-										icon="sap-icon://simple-payment"
-										number="1,000"
-										numberUnit="USD"
-										type="Active">
-										<attributes />
-										<firstStatus />
-										<secondStatus />
-									</ObjectListItem>
-								</l:content>
-							</l:BlockLayoutCell>
-						</l:content>
-					</l:BlockLayoutRow>
+					<l:BlockLayoutCell title="">
+						<ObjectListItem intro="Intro."
+							title="Item"
+							icon="sap-icon://product"
+							number="1,000"
+							numberUnit="USD"
+							type="Active">
+						</ObjectListItem>
+					</l:BlockLayoutCell>
 
-					<l:BlockLayoutRow>
-						<l:content>
-							<l:BlockLayoutCell title="Suppliers">
-								<l:content>
-									<Title id='supplCount'
-										width="auto"
-										titleStyle="H3" />
-								</l:content>
-							</l:BlockLayoutCell>
-							<l:BlockLayoutCell title="Products">
-								<l:content>
-									<Title text="{category>Products/$count}"
-										id="prodCount"
-										width="auto"
-										titleStyle="H3" />
-								</l:content>
-							</l:BlockLayoutCell>
-						</l:content>
-					</l:BlockLayoutRow>
+					<l:BlockLayoutCell title="">
+						<ObjectListItem intro="Intro."
+							title="Item"
+							icon="sap-icon://product"
+							number="1,000"
+							numberUnit="USD"
+							type="Active">
+						</ObjectListItem>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
 
-					<l:BlockLayoutRow>
-						<l:content>
-							<l:BlockLayoutCell>
-								<l:content>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell title="{i18n>HomePageView.Suppliers}">
+						<Title id='supplCount'
+							width="auto"
+							titleStyle="H3" />
+					</l:BlockLayoutCell>
+					<l:BlockLayoutCell title="{i18n>HomePageView.Products}">
+						<Title text="{category>Products/$count}"
+							id="prodCount"
+							width="auto"
+							titleStyle="H3" />
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
 
-									<FlexBox alignContent="Stretch"
-										alignItems="Stretch"
-										direction="Column"
-										width="100%"
-										wrap="Wrap"
-										justifyContent="SpaceBetween">
-										<items>
-											<Title text="Popular products"
-												textAlign="Center"
-												titleStyle="H3"
-												width="auto"
-												class="sapUiSmallMarginBegin" />
-											<grid:CSSGrid gridAutoFlow="Row"
-												gridGap="1rem"
-												gridTemplateColumns="1fr 1fr 1fr 1fr"
-												gridTemplateRows="1fr 1fr"
-												width="100%"
-												items="{promoted>/popProducts}">
-												<grid:items>
-													<ObjectListItem intro="{promoted>ProductID}"
-														title="{promoted>ProductName}"
-														
-														icon="sap-icon://product"
-														number="{promoted>UnitPrice}"
-														numberUnit="USD"
-														type="Active">
-														<layoutData>
-															<FlexItemData alignSelf="Auto"
-																backgroundDesign="Transparent"
-																baseSize="25%"
-																maxWidth="25%"
-																growFactor="0"
-																order="0"
-																shrinkFactor="0" />
-														</layoutData>
-													</ObjectListItem>
-												</grid:items>
-											</grid:CSSGrid>
-										</items>
-									</FlexBox>
-								</l:content>
-							</l:BlockLayoutCell>
-
-						</l:content>
-					</l:BlockLayoutRow>
-
-				</l:content>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell class="pop-products">
+						<Title text="{i18n>HomePageView.PopularProducts}"
+							textAlign="Center"
+							titleStyle="H3"
+							width="auto"
+							class="sapUiSmallMarginBegin" />
+						<grid:CSSGrid items="{promoted>/popProducts}"
+							class="sapUiSmallMarginTopBottom"
+							gridTemplateColumns="repeat(auto-fill, minmax(22rem, 1fr))"
+							gridAutoRows="minmax(6rem, 8rem)"
+							gridGap="1rem"
+							gridRowGap="2rem">
+							<grid:items>
+								<ObjectListItem intro="ID: {promoted>ProductID}"
+									title="{promoted>ProductName}"
+									icon="sap-icon://product"
+									number="{
+										parts: [{path: 'promoted>UnitPrice'}, {path: 'measures>/currency'}],
+										formatter: '.formatter.productPrice'
+									}"
+									type="Active" />
+							</grid:items>
+						</grid:CSSGrid>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
 			</l:BlockLayout>
-
 		</tnt:mainContents>
 	</tnt:ToolPage>
 </mvc:View>

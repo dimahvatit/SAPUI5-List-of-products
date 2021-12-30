@@ -71,7 +71,7 @@
 						<m:Title text="{i18n>ProductDetailsView.Price}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectNumber number="{
-								path: 'category>UnitPrice',
+								parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
 								formatter: '.formatter.productPrice'
 							}"
 							class="sapMObjectNumberLarge" />
