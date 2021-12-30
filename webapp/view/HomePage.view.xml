@@ -130,8 +130,7 @@
 							titleStyle="H3" />
 					</l:BlockLayoutCell>
 					<l:BlockLayoutCell title="{i18n>HomePageView.Products}">
-						<Title text="{category>Products/$count}"
-							id="prodCount"
+						<Title id="prodCount"
 							width="auto"
 							titleStyle="H3" />
 					</l:BlockLayoutCell>
