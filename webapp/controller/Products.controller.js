@@ -1,13 +1,11 @@
-sap.ui.define(
-	[
-		'./BaseController',
-		'sap/m/MessageToast',
-		'../model/formatter',
-		'sap/ui/model/Filter',
-		'sap/ui/model/FilterOperator',
-		'sap/ui/model/json/JSONModel',
-	],
-	function (
+sap.ui.define([
+	'./BaseController',
+	'sap/m/MessageToast',
+	'../model/formatter',
+	'sap/ui/model/Filter',
+	'sap/ui/model/FilterOperator',
+	'sap/ui/model/json/JSONModel',
+], function (
 		BaseController,
 		MessageToast,
 		formatter,
@@ -17,64 +15,69 @@ sap.ui.define(
 	) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.Products', {
+		return BaseController.extend('my_cat_list.controller.Products', {			
 			formatter: formatter,
 
 			onInit: function () {
 				let oRouter = this.getRouter();
-				oRouter
-					.getRoute('products')
-					.attachPatternMatched(this._onObjectMatched, this);
+				oRouter.getRoute('products').attachPatternMatched(this._onPatternMatched, this);
 			},
 
 			/**
 			 * creates different aggregation bindings depending on the presence of the "catID" URI parameter
 			 */
-			_onObjectMatched: function (oEvent) {
-				let sParam = oEvent.getParameter('arguments').catID;
+			_onPatternMatched: function (oEvent) {
+				let sCatID = oEvent.getParameter('arguments').catID;
 				let oGridItemFrag = new sap.ui.xmlfragment('grid-list-item', 'my_cat_list.fragments.ProductItem', this);
 
-				if (sParam && sParam.length > 0) {
+				if (sCatID && sCatID.length > 0) {
 					this.byId('gridList').bindAggregation('items', {
-						path: `/Categories(${sParam})/Products`,
+						path: `/Categories(${sCatID})/Products`,
 						template: oGridItemFrag,
+						model: 'category',
+					});
+					
+					let oFilterCategories = new Filter({
+						path: 'CategoryID',
+						operator: FilterOperator.EQ,
+						value1: sCatID
+					});
+					this.byId('tableList').getBinding('items').filter([oFilterCategories]);
+
+					this.byId('prods-toolbar').bindElement({
+						path: `/Categories(${sCatID})`,
 						model: 'category',
 					});
 					this.byId('tableList').bindElement({
-						path: `/Categories(${sParam})`,
-						model: 'category',
-					});
-					this.byId('prods-toolbar').bindElement({
-						path: `/Categories(${sParam})`,
+						path: `/Categories(${sCatID})`,
 						model: 'category',
 					});
 				} else {
-					this.byId('prods-toolbar').unbindElement('category');
-					this.byId('gridList').unbindAggregation('items');
+					this.byId('tableList').getBinding('items').filter([]);
 					this.byId('tableList').unbindElement('category');
-					
 					this.byId('gridList').bindAggregation('items', {
 						path: '/Products',
 						template: oGridItemFrag,
-						model: 'category',
+						model: 'category'
 					});
 				}
+
 			},
 
 			/**
-			 * Navigates to details page of the clicked item
+			 * toggles grid/table layout
 			 */
-			onItemClick: function (oEvent) {
-				let ID = oEvent
-					.getSource()
-					.getBindingContext('category')
-					.getObject().ProductID;
-				let sMessage = `Clicked Item with ProductID: ${ID}`;
-				MessageToast.show(sMessage);
-
-				this.getRouter().navTo('details', {
-					productID: window.encodeURIComponent(ID),
-				});
+			onViewSwitch: function () {
+				let oGrid = this.byId('gridList');
+				let oTable = this.byId('tableList');
+				
+				if (oGrid.getVisible()) {
+					oGrid.setVisible(false);
+					oTable.setVisible(true);
+				} else {
+					oGrid.setVisible(true);
+					oTable.setVisible(false);
+				}
 			},
 
 			/**
@@ -94,8 +97,10 @@ sap.ui.define(
 					);
 				}
 				let oList = this.byId('gridList');
+				let oTable = this.byId('tableList');
 				oList.getBinding('items').filter(aFilter);
-			},
+				oTable.getBinding('items').filter(aFilter);
+			}
 		});
 	},
 );

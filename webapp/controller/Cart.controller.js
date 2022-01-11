@@ -8,6 +8,7 @@ sap.ui.define([
 
 		return BaseController.extend('my_cat_list.controller.Cart', {
 			formatter: formatter,
+			
 			onInit: function () {
 				let oRouter = this.getRouter();
 				oRouter
@@ -61,16 +62,6 @@ sap.ui.define([
 				cart.deleteItems(aToDelete, oCartModel, bInFavs);
 				aToDelete = [];
 				oViewModel.setProperty(`/${sCurrList}`, []);
-			},
-
-			/**
-			 * leads to the chosen product's detail page
-			 */
-			onShowProductPress: function (oEvent) {
-				let iProdID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
-				this.getRouter().navTo('details', {
-					productID: window.encodeURIComponent(iProdID),
-				});
 			}
 		});
 	},

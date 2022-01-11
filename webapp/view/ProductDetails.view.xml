@@ -16,7 +16,7 @@
 			flexEnabled="true"
 			isChildPage="true">
 			<headerTitle>
-				<ObjectPageDynamicHeaderTitle>
+				<ObjectPageDynamicHeaderTitle id="page-header">
 					<expandedHeading>
 						<m:Title text="{category>ProductName}"
 							wrapping="true" />
@@ -27,16 +27,36 @@
 					</expandedContent>
 
 					<actions>
+						<m:StepInput
+							class="sapUiSmallMarginEnd"
+							value="{cartProducts>Quantity}"
+							displayValuePrecision="{displayValuePrecision}"
+							min="0"
+							max="{= Number(${category>UnitsInStock})}"
+							width="5rem"
+							largerStep="1"
+							visible="{= !!${cartProducts>Quantity}}"
+							enabled="{Quantity}"
+							textAlign="Center"/>
 						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
 							custom:id="addToCart"
 							type="Emphasized"
+							visible="{= !${cartProducts>Quantity}}"
 							icon="sap-icon://cart-4"
-							enabled="{:= !!${category>UnitsInStock}}"
+							enabled="{= !!${category>UnitsInStock}}"
 							press="onAddItem" />
 						<m:Button text="{i18n>ProductDetailsView.AddToFavorites}"
+							id="add-favs"
+							visible="{= !${cartProducts>ProductID}}"
 							custom:id="addToFavs"
 							icon="sap-icon://bookmark"
 							press="onAddItem" />
+						<m:Button text="Remove from favorites"
+							type="Negative"
+							visible="{= !!${cartProducts>ProductID}}"
+							id="remove-favs"
+							icon="sap-icon://bookmark"
+							press=".onRemoveFromFavs" />
 					</actions>
 				</ObjectPageDynamicHeaderTitle>
 			</headerTitle>

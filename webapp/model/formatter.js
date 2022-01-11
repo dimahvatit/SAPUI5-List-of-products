@@ -100,7 +100,7 @@ sap.ui.define(
 				let iFavLen = Object.keys(oFavs).length;
 
 				return !iCartLen && !iFavLen;
-			},
+			}
 		};
 	},
 );

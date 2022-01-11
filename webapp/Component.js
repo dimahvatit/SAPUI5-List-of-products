@@ -15,7 +15,7 @@ sap.ui.define([
 			let oCartModel = new LocalStorageModel("BEST_SHOP_STORAGE", {
 				cartEntries: {},
 				favorites: {},
-				lastViewed: {}
+				lastViewed: []
 			});
 			this.setModel(oCartModel, "cartProducts");
 			this.setModel(new JSONModel({

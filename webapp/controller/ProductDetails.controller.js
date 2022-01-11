@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"../model/cart"
 ], function (BaseController, formatter, JSONModel, cart) {
+		// TODO: When changing amount of product to 0 using counter the product remains in cart
 		'use strict';
-
+		
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
 			formatter: formatter,
 			onInit() {
@@ -13,6 +14,8 @@ sap.ui.define([
 			},
 
 			_onPatternMatched(oEvent) {
+				this._setDeliveryTime();
+
 				let productID = window.decodeURIComponent(
 					oEvent.getParameter('arguments').productID,
 				);
@@ -29,13 +32,30 @@ sap.ui.define([
 					model: 'category',
 				});
 
+				this.getView().byId('page-header').bindElement({
+					path: `/cartEntries/${productID}`,
+					model: 'cartProducts'
+				});
+
+				this.byId('add-favs').bindElement({
+					path: `/favorites/${productID}`,
+					model: 'cartProducts'
+				});
+				this.byId('remove-favs').bindElement({
+					path: `/favorites/${productID}`,
+					model: 'cartProducts'
+				});
+
 				// Get model with product descriptions
 				let sDescription = this.getOwnerComponent().getModel('description').getProperty(`/${productID}`);
 				let oDescModel = new JSONModel({
 					text: sDescription
 				});
 				this.getView().byId('prod-description').setModel(oDescModel, 'prodDesc');
-				this._setDeliveryTime();
+
+				let oEntry = this.getView().getBindingContext('category').getObject();
+				let oCartModel = this.getModel("cartProducts");
+				cart.addLastViewed(oEntry, oCartModel);
 			},
 
 			/**
@@ -47,6 +67,15 @@ sap.ui.define([
 					term: term,
 				});
 				this.getView().setModel(oModel, 'delivery');
+			},
+
+			onRemoveFromFavs(oEvent) {
+				let prodID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
+				let oCartModel = this.getModel("cartProducts");
+				let oFavsItems = oCartModel.getProperty("/favorites");
+
+				delete oFavsItems[prodID];
+				oCartModel.refresh(true);
 			}
 		});
 	},

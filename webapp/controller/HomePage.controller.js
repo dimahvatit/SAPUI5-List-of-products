@@ -9,28 +9,43 @@ sap.ui.define([
 			formatter: formatter,
 			onInit: function () {
 				let oRouter = this.getRouter();
+				let oCategoryModel = this.getOwnerComponent().getModel('category');
 				oRouter.getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
 
 				// Get count of Suppliers from 'category' model
 				let oView = this.getView();
-				this.getOwnerComponent()
-					.getModel('category')
-					.read('/Suppliers/$count', {
+				oCategoryModel.read('/Suppliers/$count', {
 						sync: true,
 						success: function (sData) {
 							oView.byId('supplCount').setText(sData);
 						}
-					});
+					}
+				);
 
 				// Get count of Products from 'category' model
-				this.getOwnerComponent()
-					.getModel('category')
-					.read('/Products/$count', {
+				oCategoryModel.read('/Products/$count', {
 						sync: false,
 						success: function (sData) {
 							oView.byId('prodCount').setText(sData);
 						}
-					});
+					}
+				);
+				
+				let oCartModel = this.getOwnerComponent().getModel('cartProducts');
+				// oCartModel.setProperty('/lastViewed', []);
+				
+				let aLastViewedEntries = oCartModel.getData()['lastViewed'];
+				if (!aLastViewedEntries.length) {					
+					for (let i = 1; i <= 4; i++) {
+						oCategoryModel.read(`/Products(${i})`, {
+							sync: true,
+							success: function (oData) {
+								let aPrevVal = oCartModel.getData()['lastViewed'];
+								oCartModel.setProperty('/lastViewed', [...aPrevVal, oData]);
+							}
+						})
+					}
+				}
 				
 				let oPopProductsModel = new JSONModel({
 					popProducts: []
@@ -66,6 +81,17 @@ sap.ui.define([
 			},
 
 			_onPatternMatched: function () {
+				let oCartModel = this.getModel('cartProducts');
+				let aLastViewedEntries = oCartModel.getProperty('/lastViewed');
+
+				for (let i = 0; i <= 3; i++) {
+					let oElem = aLastViewedEntries[i];
+
+					this.byId(`item${i}`).bindElement({
+						path: `/lastViewed/${i}`,
+						model: 'cartProducts'
+					});
+				}
 			},
 
 			_onToggleButtonPress: function (oEvent) {
@@ -82,6 +108,13 @@ sap.ui.define([
 
 				oRouter.navTo(sTarget);
 			},
+
+			onLastViewedClick: function(oEvent) {
+				let iProdID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
+				this.getRouter().navTo('details', {
+					productID: window.encodeURIComponent(iProdID),
+				});
+			}
 		});
 	},
 );

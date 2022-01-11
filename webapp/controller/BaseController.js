@@ -44,10 +44,33 @@ sap.ui.define([
 			let sContextName = this.getView().getViewName() == 'my_cat_list.view.Cart' ? 'cartProducts' : 'category';
 			let oEntry = oEvent.getSource().getBindingContext(sContextName).getObject();
 			let oResourceBundle = this.getResourceBundle();
-			let oCartModel = this.getModel("cartProducts");
+			let oCartModel = this.getModel('cartProducts');
 			let sButtonId = oEvent.getSource().data().id;
 
 			cart.addToCart(oResourceBundle, oEntry, oCartModel, sButtonId);
+		},
+
+		/**
+		 * Navigates to the details page of the clicked product
+		 */
+		onProductClick: function (oEvent) {
+			let sContextName = '';
+			let sViewName = this.getView().getViewName();
+			switch (sViewName) {
+				case 'my_cat_list.view.Cart':
+					sContextName = 'cartProducts';
+					break;
+				case 'my_cat_list.view.HomePage':
+					sContextName = 'promoted';
+					break;
+				default:
+					sContextName = 'category';
+			}
+			let iProdID = oEvent.getSource().getBindingContext(sContextName).getObject().ProductID;
+			this.getRouter().navTo('details', {
+				productID: window.encodeURIComponent(iProdID),
+			});
+			sContextName = '';
 		}
 	});
 });

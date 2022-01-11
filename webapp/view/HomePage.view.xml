@@ -33,13 +33,13 @@
 					itemSelect=".onMenuItemSelect">
 					<tnt:NavigationListItem custom:to="products"
 						icon="sap-icon://heatmap-chart"
-						text="All Products" />
+						text="{i18n>HomePageView.NavList.AllProducts}" />
 					<tnt:NavigationListItem custom:to="overview"
 						icon="sap-icon://group-2"
-						text="Categories" />
+						text="{i18n>HomePageView.NavList.Categories}" />
 					<tnt:NavigationListItem custom:to="cart"
 						icon="sap-icon://cart"
-						text="Cart" />
+						text="{i18n>HomePageView.NavList.Cart}" />
 				</tnt:NavigationList>
 			</tnt:SideNavigation>
 		</tnt:sideContent>
@@ -83,43 +83,71 @@
 
 				<l:BlockLayoutRow class="last-viewed">
 					<l:BlockLayoutCell title="">
-						<ObjectListItem intro="Intro."
-							title="Item"
+						<ObjectListItem id='item0'
+							press="onLastViewedClick"
+							intro="ID: {cartProducts>ProductID}"
+							title="{cartProducts>ProductName}"
 							icon="sap-icon://product"
-							number="1,000"
-							numberUnit="USD"
-							type="Active">
-						</ObjectListItem>
+							number="{
+								parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+							}"
+							numberUnit="{measures>/currency}"
+							type="Active" />
 					</l:BlockLayoutCell>
 
 					<l:BlockLayoutCell title="">
-						<ObjectListItem intro="Intro."
-							title="Item"
+						<ObjectListItem id='item1'
+							press="onLastViewedClick"
+							intro="ID: {cartProducts>ProductID}"
+							title="{cartProducts>ProductName}"
 							icon="sap-icon://product"
-							number="1,000"
-							numberUnit="USD"
-							type="Active">
-						</ObjectListItem>
+							number="{
+								parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+							}"
+							numberUnit="{measures>/currency}"
+							type="Active" />
 					</l:BlockLayoutCell>
 
 					<l:BlockLayoutCell title="">
-						<ObjectListItem intro="Intro."
-							title="Item"
+						<ObjectListItem id='item2'
+							press="onLastViewedClick"
+							intro="ID: {cartProducts>ProductID}"
+							title="{cartProducts>ProductName}"
 							icon="sap-icon://product"
-							number="1,000"
-							numberUnit="USD"
-							type="Active">
-						</ObjectListItem>
+							number="{
+								parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+							}"
+							numberUnit="{measures>/currency}"
+							type="Active" />
 					</l:BlockLayoutCell>
 
 					<l:BlockLayoutCell title="">
-						<ObjectListItem intro="Intro."
-							title="Item"
+						<ObjectListItem id='item3'
+							press="onLastViewedClick"
+							intro="ID: {cartProducts>ProductID}"
+							title="{cartProducts>ProductName}"
 							icon="sap-icon://product"
-							number="1,000"
-							numberUnit="USD"
-							type="Active">
-						</ObjectListItem>
+							number="{
+								parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
+								type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+							}"
+							numberUnit="{measures>/currency}"
+							type="Active" />
 					</l:BlockLayoutCell>
 				</l:BlockLayoutRow>
 
@@ -153,10 +181,15 @@
 								<ObjectListItem intro="ID: {promoted>ProductID}"
 									title="{promoted>ProductName}"
 									icon="sap-icon://product"
+									press="onProductClick"
 									number="{
 										parts: [{path: 'promoted>UnitPrice'}, {path: 'measures>/currency'}],
-										formatter: '.formatter.productPrice'
+										type: 'sap.ui.model.type.Currency',
+										formatOptions: {
+											showMeasure: false
+										}
 									}"
+									numberUnit="{measures>/currency}"
 									type="Active" />
 							</grid:items>
 						</grid:CSSGrid>

@@ -66,7 +66,7 @@
                                         title="ID"
                                         text="{cartProducts>ProductID}" />
                                     <ObjectAttribute active="true"
-                                        press="onShowProductPress"
+                                        press="onProductClick"
                                         text="{i18n>CartView.ShowProductPage}" />
                                 </attributes>
                             </ObjectListItem>
@@ -120,7 +120,7 @@
                                         title="ID"
                                         text="{cartProducts>ProductID}" />
                                     <ObjectAttribute active="true"
-                                        press=".onShowProductPress"
+                                        press="onProductClick"
                                         text="{i18n>CartView.ShowProductPage}" />
                                     <ObjectAttribute active="true"
                                         press="onAddItem"

@@ -56,6 +56,20 @@ sap.ui.define([
             oCartModel.refresh(true);
         },
 
+        addLastViewed: function(oProdToAdd, oCartModel) {
+            let aLastViewedEntries = [...oCartModel.getData()['lastViewed']];
+            let oEntry = aLastViewedEntries[oProdToAdd.ProductID];
+
+            if (!oEntry) {
+                oEntry = {...oProdToAdd};
+                aLastViewedEntries.shift();
+                aLastViewedEntries.push(oEntry);
+            }
+
+            oCartModel.setProperty('/lastViewed', aLastViewedEntries);
+            oCartModel.refresh(true);
+        },
+
         deleteItems: function(aToDelete, oCartModel, bInFavs) {
             let sEntityName = bInFavs ? 'favorites' : 'cartEntries';
 
