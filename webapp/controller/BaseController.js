@@ -41,8 +41,8 @@ sap.ui.define([
 		 */
 		onAddItem(oEvent) {
 			// set model name which context will be used depending on the current view name
-			let sContextName = this.getView().getViewName() == 'my_cat_list.view.Cart' ? 'cartProducts' : 'category';
-			let oEntry = oEvent.getSource().getBindingContext(sContextName).getObject();
+			let sModelName = this.getView().getViewName() == 'my_cat_list.view.Cart' ? 'cartProducts' : 'category';
+			let oEntry = oEvent.getSource().getBindingContext(sModelName).getObject();
 			let oResourceBundle = this.getResourceBundle();
 			let oCartModel = this.getModel('cartProducts');
 			let sButtonId = oEvent.getSource().data().id;
@@ -54,23 +54,23 @@ sap.ui.define([
 		 * Navigates to the details page of the clicked product
 		 */
 		onProductClick: function (oEvent) {
-			let sContextName = '';
+			let sModelName = '';
 			let sViewName = this.getView().getViewName();
 			switch (sViewName) {
 				case 'my_cat_list.view.Cart':
-					sContextName = 'cartProducts';
+					sModelName = 'cartProducts';
 					break;
 				case 'my_cat_list.view.HomePage':
-					sContextName = 'promoted';
+					sModelName = 'promoted';
 					break;
 				default:
-					sContextName = 'category';
+					sModelName = 'category';
 			}
-			let iProdID = oEvent.getSource().getBindingContext(sContextName).getObject().ProductID;
+			let iProdID = oEvent.getSource().getBindingContext(sModelName).getObject().ProductID;
 			this.getRouter().navTo('details', {
 				productID: window.encodeURIComponent(iProdID),
 			});
-			sContextName = '';
+			sModelName = '';
 		}
 	});
 });

@@ -171,6 +171,8 @@
 							titleStyle="H3"
 							width="auto"
 							class="sapUiSmallMarginBegin" />
+
+			<!-- TODO: Fix this fucking grid so the count of columns is allways even or one -->
 						<grid:CSSGrid items="{promoted>/popProducts}"
 							class="sapUiSmallMarginTopBottom"
 							gridTemplateColumns="repeat(auto-fill, minmax(22rem, 1fr))"

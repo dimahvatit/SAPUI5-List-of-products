@@ -23,6 +23,20 @@ sap.ui.define([
 
 			_onPatternMatched: function () {
 				let oCartModel = this.getModel('cartProducts');
+
+				let oCartEntries = oCartModel.getProperty('/cartEntries');
+				let oFiltered = {};
+				
+				for (let entry in oCartEntries) {
+					if (Object.hasOwnProperty.call(oCartEntries, entry)) {
+						let el = oCartEntries[entry];
+						if (el.Quantity !== 0) {
+							oFiltered[entry] = el;
+						}
+					}
+				}
+
+				oCartModel.setProperty('/cartEntries', oFiltered);
 			},
 
 			/**

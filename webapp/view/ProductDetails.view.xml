@@ -51,7 +51,7 @@
 							custom:id="addToFavs"
 							icon="sap-icon://bookmark"
 							press="onAddItem" />
-						<m:Button text="Remove from favorites"
+						<m:Button text="{i18n>ProductDetailsView.RemoveFromFavorites}"
 							type="Negative"
 							visible="{= !!${cartProducts>ProductID}}"
 							id="remove-favs"

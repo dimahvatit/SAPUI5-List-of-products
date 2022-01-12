@@ -53,9 +53,13 @@ sap.ui.define([
 				});
 				this.getView().byId('prod-description').setModel(oDescModel, 'prodDesc');
 
+				// Add current product to lastViewed array if it's not already there
 				let oEntry = this.getView().getBindingContext('category').getObject();
 				let oCartModel = this.getModel("cartProducts");
-				cart.addLastViewed(oEntry, oCartModel);
+				let isInLastViewed = oCartModel.getProperty('/lastViewed').some(el => el.ProductID === oEntry.ProductID);
+				if (!isInLastViewed) {
+					cart.addLastViewed(oEntry, oCartModel);
+				}
 			},
 
 			/**
