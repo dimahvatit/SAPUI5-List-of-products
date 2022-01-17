@@ -8,7 +8,7 @@
     <Page title="{i18n>Products.DetailHeader}"
         showNavButton="true"
         navButtonPress="onNavBack">
-        
+
         <Table id="tableList"
             width="auto"
             visible="false"
@@ -21,44 +21,29 @@
             <headerToolbar>
                 <OverflowToolbar width="auto"
                     height="auto">
-                    <content>
-                        <Title text="{category>CategoryName}" />
-                        <ToolbarSpacer />
-                        <SearchField placeholder="{i18n>searchPlaceholder}"
-                            liveChange=".onFilterProducts"
-                            width="30%" />
-                        <OverflowToolbarButton text="Sort"
-                            type="Transparent"
-                            icon="sap-icon://sort"
-                            width="auto" />
-                        <OverflowToolbarButton text="Filter"
-                            type="Transparent"
-                            icon="sap-icon://filter"
-                            width="auto" />
-                        <OverflowToolbarButton text="Change view"
-                            tooltip="Grid view"
-                            press="onViewSwitch"
-                            type="Transparent"
-                            icon="sap-icon://grid"
-                            width="auto" />
-                    </content>
+                    <Title text="{category>CategoryName}" />
+                    <ToolbarSpacer />
+                    <SearchField placeholder="{i18n>searchPlaceholder}"
+                        liveChange=".onFilterProducts"
+                        width="30%" />
+                    <OverflowToolbarButton text="Change view"
+                        tooltip="Grid view"
+                        press=".onViewSwitch"
+                        type="Transparent"
+                        icon="sap-icon://grid"
+                        width="auto" />
                 </OverflowToolbar>
             </headerToolbar>
 
             <columns>
-                <Column width="auto"
+                <Column width="30%"
                     hAlign="Left"
                     vAlign="Middle"
                     minScreenWidth="Phone"
                     demandPopin="true"
                     popinDisplay="Inline">
-                    <header>
-                        <Text text="Product"
-                            width="auto"
-                            maxLines="1"
-                            wrapping="false" />
-                    </header>
-                    <footer />
+                    <Title text="Product"
+                        width="auto" />
                 </Column>
                 <Column width="auto"
                     hAlign="Left"
@@ -66,13 +51,8 @@
                     minScreenWidth="Tablet"
                     demandPopin="true"
                     popinDisplay="Inline">
-                    <header>
-                        <Text text="Supplier"
-                            width="auto"
-                            maxLines="1"
-                            wrapping="false" />
-                    </header>
-                    <footer />
+                    <Title text="Supplier ID"
+                        width="auto" />
                 </Column>
                 <Column width="auto"
                     hAlign="Left"
@@ -80,13 +60,8 @@
                     minScreenWidth="Tablet"
                     demandPopin="true"
                     popinDisplay="Inline">
-                    <header>
-                        <Text text="Price"
-                            width="auto"
-                            maxLines="1"
-                            wrapping="false" />
-                    </header>
-                    <footer />
+                    <Title text="Price"
+                        width="auto" />
                 </Column>
                 <Column width="auto"
                     hAlign="Left"
@@ -94,13 +69,8 @@
                     minScreenWidth="Tablet"
                     demandPopin="true"
                     popinDisplay="Inline">
-                    <header>
-                        <Text text="In stock"
-                            width="auto"
-                            maxLines="1"
-                            wrapping="false" />
-                    </header>
-                    <footer />
+                    <Title text="In stock"
+                        width="auto" />
                 </Column>
                 <Column width="auto"
                     hAlign="Left"
@@ -108,21 +78,17 @@
                     minScreenWidth="Tablet"
                     demandPopin="true"
                     popinDisplay="Inline">
-                    <header>
-                        <Text text="Category"
-                            width="auto"
-                            maxLines="1"
-                            wrapping="false" />
-                    </header>
-                    <footer />
+                    <Title text="Category ID"
+                        width="auto" />
                 </Column>
             </columns>
 
             <items>
-                <ColumnListItem type="Navigation" press="onProductClick">
+                <ColumnListItem type="Navigation"
+                    press="onProductClick">
                     <cells>
                         <ObjectIdentifier title="{category>ProductName}"
-                            text="{category>ProductID}" />
+                            text="ID: {category>ProductID}" />
                         <Text text="{category>SupplierID}"
                             width="auto"
                             maxLines="1"
@@ -147,7 +113,7 @@
             items="{category>Products}">
             <f:customLayout>
                 <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
-                    gridAutoRows="minmax(4rem, 6rem)"
+                    gridAutoRows="minmax(4rem, 8rem)"
                     gridGap="1rem"
                     gridRowGap="2rem" />
             </f:customLayout>

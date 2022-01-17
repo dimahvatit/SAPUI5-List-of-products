@@ -22,6 +22,11 @@ sap.ui.define([
 			},
 
 			_onPatternMatched: function () {
+				this.byId('');
+				this._filterCart();
+			},
+
+			_filterCart: function () {
 				let oCartModel = this.getModel('cartProducts');
 
 				let oCartEntries = oCartModel.getProperty('/cartEntries');
@@ -76,6 +81,11 @@ sap.ui.define([
 				cart.deleteItems(aToDelete, oCartModel, bInFavs);
 				aToDelete = [];
 				oViewModel.setProperty(`/${sCurrList}`, []);
+			},
+
+			onChangeAmount(oEvent) {
+				this.getModel('cartProducts').refresh(true);
+				// this._filterCart();
 			}
 		});
 	},

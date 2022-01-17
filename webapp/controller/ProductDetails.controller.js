@@ -32,16 +32,17 @@ sap.ui.define([
 					model: 'category',
 				});
 
+				// Bind header to curr product so "add" and "remove" buttons can see products quantity in cart model
 				this.getView().byId('page-header').bindElement({
 					path: `/cartEntries/${productID}`,
 					model: 'cartProducts'
 				});
 
-				this.byId('add-favs').bindElement({
+				this.getView().byId('add-favs').bindElement({
 					path: `/favorites/${productID}`,
 					model: 'cartProducts'
 				});
-				this.byId('remove-favs').bindElement({
+				this.getView().byId('remove-favs').bindElement({
 					path: `/favorites/${productID}`,
 					model: 'cartProducts'
 				});
@@ -67,12 +68,13 @@ sap.ui.define([
 			 */
 			_setDeliveryTime() {
 				let term = this.getRandomNum(1, 10);
-				let oModel = new JSONModel({
-					term: term,
-				});
+				let oModel = new JSONModel({ term });
 				this.getView().setModel(oModel, 'delivery');
 			},
 
+			/**
+			 * Removes current product's obj from '/favorites' obj of cartProducts model
+			 */
 			onRemoveFromFavs(oEvent) {
 				let prodID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
 				let oCartModel = this.getModel("cartProducts");

@@ -16,7 +16,7 @@
 				design="Transparent">
 				<Button icon="sap-icon://menu2"
 					width="auto"
-					tooltip="Toggle Side Navigation"
+					tooltip="{i18n>HomePageView.ToggleSideNavigation}"
 					press="_onToggleButtonPress" />
 				<ToolbarSpacer width="1.5rem" />
 				<Text text="BEST SHOP EVER"

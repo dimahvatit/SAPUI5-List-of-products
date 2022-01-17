@@ -55,6 +55,7 @@ sap.ui.define([
 				} else {
 					this.byId('tableList').getBinding('items').filter([]);
 					this.byId('tableList').unbindElement('category');
+					this.byId('prods-toolbar').unbindElement('category');
 					this.byId('gridList').bindAggregation('items', {
 						path: '/Products',
 						template: oGridItemFrag,
@@ -81,7 +82,7 @@ sap.ui.define([
 			},
 
 			/**
-			 * SearchFiled filtering
+			 * SearchField filtering
 			 */
 			onFilterProducts: function (oEvent) {
 				let aFilter = [];

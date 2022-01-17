@@ -36,7 +36,6 @@
 							width="5rem"
 							largerStep="1"
 							visible="{= !!${cartProducts>Quantity}}"
-							enabled="{Quantity}"
 							textAlign="Center"/>
 						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
 							custom:id="addToCart"
@@ -68,7 +67,7 @@
 					fitContainer="true">
 					<m:Avatar src="sap-icon://product"
 						displaySize="L"
-						class="sapUiLargeMarginEnd" />
+						class="sapUiLargeMarginEnd sapUiSmallMarginBottom" />
 
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:Title text="{i18n>ProductDetailsView.DeliveryTime}"

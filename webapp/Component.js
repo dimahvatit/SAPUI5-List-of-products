@@ -18,10 +18,7 @@ sap.ui.define([
 				lastViewed: []
 			});
 			this.setModel(oCartModel, "cartProducts");
-			this.setModel(new JSONModel({
-				currency: "USD",
-				quantity: "in stock"
-			}), 'measures');
+			this.setModel(new JSONModel({ currency: "USD" }), 'measures');
 
 			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);
