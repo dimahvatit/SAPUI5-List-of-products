@@ -46,78 +46,70 @@
                             </Toolbar>
                         </headerToolbar>
                         <items>
-                            <CustomListItem type="Inactive">
-                                <content>
-                                    <HBox justifyContent="SpaceBetween"
-                                        wrap="Wrap">
-                                        <VBox justifyContent="SpaceBetween"
-                                            class="sapUiSmallMarginTopBottom"
-                                            alignContent="Stretch"
-                                            alignItems="Stretch"
-                                            direction="Column"
+                            <CustomListItem>
+                                <HBox justifyContent="SpaceBetween"
+                                    wrap="Wrap">
+                                    <VBox justifyContent="SpaceBetween"
+                                        class="sapUiSmallMarginTopBottom"
+                                        direction="Column"
+                                        height="auto"
+                                        width="auto">
+                                        <HBox class="sapUiSmallMarginBottom"
+                                            alignItems="Center"
                                             height="auto"
                                             width="auto">
-                                            <HBox justifyContent="Start"
-                                                class="sapUiSmallMarginBottom"
-                                                alignItems="Center"
-                                                height="auto"
-                                                width="auto">
-                                                <ObjectAttribute text="{i18n>CartView.InCart}"
-                                                    class="sapUiTinyMarginEnd"
-                                                    active="false" />
-                                                <StepInput value="{cartProducts>Quantity}"
-                                                    displayValuePrecision="{displayValuePrecision}"
-                                                    min="0"
-                                                    max="{= Number(${cartProducts>UnitsInStock})}"
-                                                    width="4rem"
-                                                    largerStep="1"
-                                                    textAlign="Center"
-                                                    change=".onChangeAmount" />
-                                            </HBox>
-                                            <HBox class="sapUiSmallMarginEnd"
-                                                height="auto"
-                                                width="auto">
-                                                <core:Icon class="sapUiSmallMarginEnd"
-                                                    alt="product image"
-                                                    backgroundColor="transparent"
-                                                    color="#84C8F6"
-                                                    decorative="false"
-                                                    size="2.5rem"
-                                                    src="sap-icon://product" />
-                                                <Title text="{cartProducts>ProductName}"
-                                                    titleStyle="H4"
-                                                    width="auto"
-                                                    wrapping="true" />
-                                            </HBox>
-                                            <ObjectAttribute active="false"
-                                                class="sapUiTinyMarginTop"
-                                                title="ID"
-                                                text="{cartProducts>ProductID}" />
-                                        </VBox>
-                                        <VBox justifyContent="SpaceAround"
-                                            class="sapUiSmallMarginTopBottom sapUiSmallMarginEnd"
-                                            alignItems="End"
-                                            direction="Column"
-                                            height="auto"
-                                            width="auto">
-                                            <ObjectNumber number="{
+                                            <ObjectAttribute text="{i18n>CartView.InCart}"
+                                                class="sapUiTinyMarginEnd"
+                                                active="false" />
+                                            <StepInput value="{cartProducts>Quantity}"
+                                                displayValuePrecision="{displayValuePrecision}"
+                                                min="0"
+                                                max="{= Number(${cartProducts>UnitsInStock})}"
+                                                width="4rem"
+                                                largerStep="1"
+                                                textAlign="Center"
+                                                change=".onChangeAmount" />
+                                        </HBox>
+                                        <HBox class="sapUiSmallMarginEnd">
+                                            <core:Icon class="sapUiSmallMarginEnd"
+                                                alt="product image"
+                                                backgroundColor="transparent"
+                                                color="#84C8F6"
+                                                decorative="false"
+                                                size="2.5rem"
+                                                src="sap-icon://product" />
+                                            <Title text="{cartProducts>ProductName}"
+                                                titleStyle="H4"
+                                                wrapping="true" />
+                                        </HBox>
+                                        <ObjectAttribute active="false"
+                                            class="sapUiTinyMarginTop"
+                                            title="ID"
+                                            text="{cartProducts>ProductID}" />
+                                    </VBox>
+                                    <VBox justifyContent="SpaceAround"
+                                        class="sapUiSmallMarginTopBottom sapUiSmallMarginEnd"
+                                        alignItems="End"
+                                        direction="Column"
+                                        height="auto"
+                                        width="auto">
+                                        <ObjectNumber number="{
                                                     parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
                                                     type: 'sap.ui.model.type.Currency',
                                                     formatOptions: {
                                                         showMeasure: false
                                                     }
                                                 }"
-                                                textAlign="Center"
-                                                class="sapMObjectNumberLarge"
-                                                emphasized="false"
-                                                unit="{measures>/currency}"
-                                                state="Success"/>
-                                            <ObjectAttribute text="{i18n>CartView.ShowProductPage}"
-                                                press="onProductClick"
-                                                active="true" />
-                                        </VBox>
-                                    </HBox>
-                                </content>
+                                            textAlign="Center"
+                                            class="sapMObjectNumberLarge"
+                                            emphasized="false"
+                                            unit="{measures>/currency}"
+                                            state="Success" />
+                                        <ObjectAttribute text="{i18n>CartView.ShowProductPage}"
+                                            press="onProductClick"
+                                            active="true" />
+                                    </VBox>
+                                </HBox>
                             </CustomListItem>
                         </items>
                         <layoutData>

@@ -1,87 +1,103 @@
-sap.ui.define(
-	[
-		'./BaseController',
-		'../model/formatter',
-		'sap/ui/model/json/JSONModel',
-		'../model/cart',
-	],
-	function (BaseController, formatter, JSONModel, cart) {
+sap.ui.define([
+	'./BaseController',
+	'../model/formatter',
+	'sap/ui/model/json/JSONModel',
+	'../model/cart',
+	"sap/m/MessageBox",
+],	function (BaseController, formatter, JSONModel, cart, MessageBox) {
 		// TODO: When changing amount of product to 0 using counter the product remains in cart
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
 			formatter: formatter,
 			onInit() {
-				this.getRouter()
-					.getRoute('details')
-					.attachPatternMatched(this._onPatternMatched, this);
-
+				this.getRouter().getRoute('details').attachPatternMatched(this._onPatternMatched, this);
 				this.oDataModel = this.getOwnerComponent().getModel('category');
+				this.getView().setModel(new JSONModel({}));
 			},
 
 			_onPatternMatched(oEvent) {
 				this._setDeliveryTime();
 				this.getView().setBusy(true);
-
-				let productID = window.decodeURIComponent(
+				
+				this.productID = window.decodeURIComponent(
 					oEvent.getParameter('arguments').productID,
-				);
-				let sProductPath = `/Products(${productID})`;
-
-				// Bind the view to Product entity
-				this.getView().bindElement({
-					path: sProductPath,
-					model: 'category',
-				});
-
-				// Bind supplier details block to current Product's Supplier entity
-				this.getView()
-					.byId('supplier-details')
-					.bindElement({
-						path: `/Products(${productID})/Supplier`,
-						model: 'category',
-					});
+					);
+				this.sProductPath = `/Products(${this.productID})`;
 
 				// Bind header to curr product so "add" and "remove" buttons can see products quantity in cart model
 				this.getView()
 					.byId('page-header')
 					.bindElement({
-						path: `/cartEntries/${productID}`,
+						path: `/cartEntries/${this.productID}`,
 						model: 'cartProducts',
 					});
+
+				// Bind supplier details block to current Product's Supplier entity
+				this.getView()
+					.byId('supplier-details')
+					.bindElement({
+						path: `${this.sProductPath}/Supplier`,
+						model: 'category',
+					});
+
+				// Get model with product descriptions
+				let sDescription = this.getOwnerComponent()
+					.getModel('description')
+					.getProperty(`/${this.productID}`);
+				let oDescModel = new JSONModel({
+					text: sDescription,
+				});
+				this.byId('prod-description').setModel(oDescModel, 'prodDesc');
 
 				this.getView()
 					.byId('add-favs')
 					.bindElement({
-						path: `/favorites/${productID}`,
+						path: `/favorites/${this.productID}`,
 						model: 'cartProducts',
 					});
 				this.getView()
 					.byId('remove-favs')
 					.bindElement({
-						path: `/favorites/${productID}`,
+						path: `/favorites/${this.productID}`,
 						model: 'cartProducts',
 					});
 
-				this.oDataModel.attachEvent(
-					'requestCompleted',
-					function (oEvent) {
-						try {
-							let sURL = JSON.parse(
-								oEvent.getParameter('response').responseText,
-							).d.__metadata.uri;
-							let paths = sURL.split(sProductPath);
+				let that = this;
+				this.oDataModel.read(this.sProductPath, {
+					success: function (oData) {
+						// Bind the view to Product entity
+						that.getView().bindElement({
+							path: that.sProductPath,
+							model: 'category',
+						});
 
+						let oCartModel = that.getModel('cartProducts');
+						let isInLastViewed = oCartModel
+							.getProperty('/lastViewed')
+							.some((el) => el.ProductID === oData.ProductID);
+						if (!isInLastViewed) {
+							cart.addLastViewed(oData, oCartModel);
+						}
+						that.getView().setBusy(false);
+					},
+					error: function (oError) {
+						that.getView().setBusy(false);
+						console.error(oError);
+					}
+				});
+
+				/* this.oDataModel.attachEventOnce('requestCompleted',
+					function _handler(oEvent) {
+						try {
+							debugger; //! DEBUGGER
+							let sURL = JSON.parse(
+								oEvent.getParameter('response').responseText
+							).d.__metadata.uri;
+							let paths = sURL.split(this.sProductPath);
+		
 							if (paths && paths[1] === '') {
-								// Get model with product descriptions
-								let sDescription = this.getOwnerComponent()
-									.getModel('description')
-									.getProperty(`/${productID}`);
-								let oDescModel = new JSONModel({
-									text: sDescription,
-								});
-								this.byId('prod-description')
-									.setModel(oDescModel, 'prodDesc');
+								debugger; //! DEBUGGER
 
 								// Add current product to lastViewed array if it's not already there
 								let oEntry = this.getView()
@@ -90,25 +106,20 @@ sap.ui.define(
 								let oCartModel = this.getModel('cartProducts');
 								let isInLastViewed = oCartModel
 									.getProperty('/lastViewed')
-									.some(
-										(el) =>
-											el.ProductID === oEntry.ProductID,
-									);
+									.some((el) => el.ProductID === oEntry.ProductID);
 								if (!isInLastViewed) {
 									cart.addLastViewed(oEntry, oCartModel);
 								}
-								this.getView().setBusy(false);
 							}
 						} catch (error) {
+							debugger; //! DEBUGGER
 							console.error(error);
-							sap.m.MessageBox.error(
-								'Не удалось распознать ответ',
-							);
+							MessageBox.error('Не удалось распознать ответ');
+						} finally {
 							this.getView().setBusy(false);
+							// this.oDataModel.detachRequestCompleted(_handler, this);
 						}
-					},
-					this,
-				);
+					}, this); */
 			},
 
 			/**
@@ -124,16 +135,13 @@ sap.ui.define(
 			 * Removes current product's obj from '/favorites' obj of cartProducts model
 			 */
 			onRemoveFromFavs(oEvent) {
-				let prodID = oEvent
-					.getSource()
-					.getBindingContext('cartProducts')
-					.getObject().ProductID;
+				let prodID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
 				let oCartModel = this.getModel('cartProducts');
 				let oFavsItems = oCartModel.getProperty('/favorites');
 
 				delete oFavsItems[prodID];
 				oCartModel.refresh(true);
-			},
+			}
 		});
 	},
 );
