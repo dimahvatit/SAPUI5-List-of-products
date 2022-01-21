@@ -83,6 +83,7 @@ sap.ui.define([
 					},
 					error: function (oError) {
 						that.getView().setBusy(false);
+						MessageBox.error('Не удалось распознать ответ');
 						console.error(oError);
 					}
 				});
