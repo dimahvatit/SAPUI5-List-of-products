@@ -15,10 +15,10 @@
 				width="auto"
 				design="Transparent">
 				<Button icon="sap-icon://menu2"
+					class="sapUiMediumMarginEnd"
 					width="auto"
 					tooltip="{i18n>HomePageView.ToggleSideNavigation}"
 					press="_onToggleButtonPress" />
-				<ToolbarSpacer width="1.5rem" />
 				<Text text="BEST SHOP EVER"
 					maxLines="1"
 					wrapping="false"

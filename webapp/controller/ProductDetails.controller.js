@@ -13,7 +13,7 @@ sap.ui.define([
 			onInit() {
 				this.getRouter().getRoute('details').attachPatternMatched(this._onPatternMatched, this);
 				this.oDataModel = this.getOwnerComponent().getModel('category');
-				this.getView().setModel(new JSONModel({}));
+				this.oCartModel = this.getOwnerComponent().getModel('cartProducts');
 			},
 
 			_onPatternMatched(oEvent) {
@@ -72,12 +72,11 @@ sap.ui.define([
 							model: 'category',
 						});
 
-						let oCartModel = that.getModel('cartProducts');
-						let isInLastViewed = oCartModel
+						let isInLastViewed = that.oCartModel
 							.getProperty('/lastViewed')
 							.some((el) => el.ProductID === oData.ProductID);
 						if (!isInLastViewed) {
-							cart.addLastViewed(oData, oCartModel);
+							cart.addLastViewed(oData, that.oCartModel);
 						}
 						that.getView().setBusy(false);
 					},
@@ -88,7 +87,7 @@ sap.ui.define([
 					}
 				});
 
-				/* this.oDataModel.attachEventOnce('requestCompleted',
+				/* this.oDataModel.attachEvent('requestCompleted',
 					function _handler(oEvent) {
 						try {
 							debugger; //! DEBUGGER
@@ -128,6 +127,7 @@ sap.ui.define([
 			 */
 			_setDeliveryTime() {
 				let term = this.getRandomNum(1, 10);
+				//this.byId('delivery-time-status').setText(term);
 				let oModel = new JSONModel({ term });
 				this.getView().setModel(oModel, 'delivery');
 			},
@@ -137,11 +137,10 @@ sap.ui.define([
 			 */
 			onRemoveFromFavs(oEvent) {
 				let prodID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
-				let oCartModel = this.getModel('cartProducts');
-				let oFavsItems = oCartModel.getProperty('/favorites');
+				let oFavsItems = this.oCartModel.getProperty('/favorites');
 
 				delete oFavsItems[prodID];
-				oCartModel.refresh(true);
+				this.oCartModel.refresh(true);
 			}
 		});
 	},

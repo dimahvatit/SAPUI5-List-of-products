@@ -22,7 +22,7 @@
     "start": "npm-run-all --parallel proxy start:webapp",
     "test": "ui5 serve -o test/mockServer.html --accept-remote-connections",
     "start:webapp": "ui5 serve -o index.html --accept-remote-connections",
-    "proxy": "node proxy.js"
+    "proxy": "node proxy/proxy.js"
   },
   "ui5": {
     "dependencies": [

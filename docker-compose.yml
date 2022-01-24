@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services: 
     app: 
@@ -9,7 +9,7 @@ services:
         volumes: 
             - .:/home/node/app
     proxy:
-        build: .
+        build: proxy
         command: node proxy.js
         ports:
             - "8081:8081"

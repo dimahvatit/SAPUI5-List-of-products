@@ -29,10 +29,11 @@ sap.ui.define([
 			_onPatternMatched: function (oEvent) {
 				let sCatID = oEvent.getParameter('arguments').catID;
 				let oGridItemFrag = new sap.ui.xmlfragment('grid-list-item', 'my_cat_list.fragments.ProductItem', this);
+				let sCatPath = `/Categories(${sCatID})`; 
 
 				if (sCatID && sCatID.length > 0) {
 					this.byId('gridList').bindAggregation('items', {
-						path: `/Categories(${sCatID})/Products`,
+						path: `${sCatPath}/Products`,
 						template: oGridItemFrag,
 						model: 'category',
 					});
@@ -45,11 +46,11 @@ sap.ui.define([
 					this.byId('tableList').getBinding('items').filter([oFilterCategories]);
 
 					this.byId('prods-toolbar').bindElement({
-						path: `/Categories(${sCatID})`,
+						path: sCatPath,
 						model: 'category',
 					});
 					this.byId('tableList').bindElement({
-						path: `/Categories(${sCatID})`,
+						path: sCatPath,
 						model: 'category',
 					});
 				} else {
