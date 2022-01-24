@@ -121,7 +121,7 @@
 						</m:layoutData>
 						<m:Title text="{i18n>ProductDetailsView.Description}"
 							class="sapUiTinyMarginBottom" />
-						<m:ObjectStatus text="{prodDesc>/text}"
+						<m:ObjectStatus id="prod-description-text"
 							class="sapMObjectStatusSmall" />
 					</m:VBox>
 				</m:FlexBox>

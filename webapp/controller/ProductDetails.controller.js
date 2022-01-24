@@ -25,7 +25,13 @@ sap.ui.define([
 					);
 				this.sProductPath = `/Products(${this.productID})`;
 
-				// Bind header to curr product so "add" and "remove" buttons can see products quantity in cart model
+				// Bind the view to Product entity
+				this.getView().bindElement({
+					path: this.sProductPath,
+					model: 'category',
+				});
+
+				// Bind header to curr product so "add" and "remove" buttons can see current product's quantity in cart
 				this.getView()
 					.byId('page-header')
 					.bindElement({
@@ -41,14 +47,11 @@ sap.ui.define([
 						model: 'category',
 					});
 
-				// Get model with product descriptions
-				let sDescription = this.getOwnerComponent()
-					.getModel('description')
-					.getProperty(`/${this.productID}`);
-				let oDescModel = new JSONModel({
-					text: sDescription,
+				// Get text from model with products' descriptions
+				this.getModel('description').dataLoaded().then(() => {
+					let sDescription = this.getModel('description').getProperty(`/${this.productID}`);
+					this.getView().byId('prod-description-text').setText(sDescription);
 				});
-				this.byId('prod-description').setModel(oDescModel, 'prodDesc');
 
 				this.getView()
 					.byId('add-favs')
@@ -66,16 +69,10 @@ sap.ui.define([
 				let that = this;
 				this.oDataModel.read(this.sProductPath, {
 					success: function (oData) {
-						// Bind the view to Product entity
-						that.getView().bindElement({
-							path: that.sProductPath,
-							model: 'category',
-						});
-
-						let isInLastViewed = that.oCartModel
+						let bIsInLastViewed = that.oCartModel
 							.getProperty('/lastViewed')
 							.some((el) => el.ProductID === oData.ProductID);
-						if (!isInLastViewed) {
+						if (!bIsInLastViewed) {
 							cart.addLastViewed(oData, that.oCartModel);
 						}
 						that.getView().setBusy(false);
