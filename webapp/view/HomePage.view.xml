@@ -18,12 +18,18 @@
 					class="sapUiMediumMarginEnd"
 					width="auto"
 					tooltip="{i18n>HomePageView.ToggleSideNavigation}"
-					press="_onToggleButtonPress" />
+					press="onToggleButtonPress" />
 				<Text text="BEST SHOP EVER"
 					maxLines="1"
 					wrapping="false"
 					textAlign="Center"
 					class="sapUiSmallMargin" />
+				<ToolbarSpacer />
+				<Button text="Smart Table"
+					icon="sap-icon://navigation-right-arrow"
+					iconFirst="false"
+					type="Emphasized"
+					press="onNavigateToSmartT" />
 			</tnt:ToolHeader>
 		</tnt:header>
 

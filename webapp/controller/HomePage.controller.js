@@ -8,9 +8,9 @@ sap.ui.define([
 		return BaseController.extend('my_cat_list.controller.HomePage', {
 			formatter: formatter,
 			onInit: function () {
-				let oRouter = this.getRouter();
+				this.oRouter = this.getRouter();
 				let oCategoryModel = this.getOwnerComponent().getModel('category');
-				oRouter.getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
+				this.oRouter.getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
 
 				// Get count of Suppliers from 'category' model
 				let oView = this.getView();
@@ -94,7 +94,7 @@ sap.ui.define([
 				}
 			},
 
-			_onToggleButtonPress: function (oEvent) {
+			onToggleButtonPress: function (oEvent) {
 				var oToolPage = oEvent.getSource().getParent().getParent();
 				var oSideNavigation = oToolPage.getAggregation('sideContent');
 				var bExpanded = oSideNavigation.getExpanded();
@@ -104,9 +104,8 @@ sap.ui.define([
 			onMenuItemSelect: function (oEvent) {
 				let oItem = oEvent.getParameter('item') ? oEvent.getParameter('item') : oEvent.getSource();
 				let sTarget = oItem.data('to');
-				let oRouter = this.getRouter();
 
-				oRouter.navTo(sTarget);
+				this.oRouter.navTo(sTarget);
 			},
 
 			onLastViewedClick: function(oEvent) {
@@ -114,6 +113,10 @@ sap.ui.define([
 				this.getRouter().navTo('details', {
 					productID: window.encodeURIComponent(iProdID),
 				});
+			},
+
+			onNavigateToSmartT(oEvent) {
+				this.oRouter.navTo('smart_table');
 			}
 		});
 	},

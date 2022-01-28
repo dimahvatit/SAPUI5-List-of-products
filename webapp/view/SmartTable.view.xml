@@ -1,0 +1,38 @@
+<mvc:View controllerName="my_cat_list.controller.SmartTable"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartFB="sap.ui.comp.smartfilterbar"
+    xmlns:smartT="sap.ui.comp.smarttable"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0">
+    <Page title="Smart Table"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+        <smartFB:SmartFilterBar id="smartFilterBar"
+            entitySet="Products">
+            <smartFB:controlConfiguration>
+                <smartFB:ControlConfiguration key="CategoryID"
+                    visibleInAdvancedArea="true">
+                </smartFB:ControlConfiguration>
+            </smartFB:controlConfiguration>
+            <smartFB:layoutData>
+                <FlexItemData shrinkFactor="0" />
+            </smartFB:layoutData>
+        </smartFB:SmartFilterBar>
+        <smartT:SmartTable header="Products"
+            class="sapUiResponsiveContentPadding"
+            enableAutoColumnWidth="true"
+            id="smartTable"
+            smartFilterId="smartFilterBar"
+            tableType="ResponsiveTable"
+            useExportToExcel="false"
+            entitySet="Products"
+            enableAutoBinding="true">
+            <smartT:layoutData>
+                <FlexItemData baseSize="0%"
+                    growFactor="1" />
+            </smartT:layoutData>
+        </smartT:SmartTable>
+    </Page>
+</mvc:View>
