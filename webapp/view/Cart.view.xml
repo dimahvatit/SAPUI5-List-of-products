@@ -13,168 +13,171 @@
         navButtonPress="onNavBack"
         titleAlignment="Center">
         <content>
-            <FlexBox width="100%">
-                <items>
-                    <List custom:id="cart-list"
-                        includeItemInSelection="true"
-                        class="sapUiSmallMarginBottom"
-                        inset="true"
-                        mode="MultiSelect"
-                        selectionChange=".onItemPress"
-                        noDataText="No data"
-                        visible="{= !!Object.keys(${cartProducts>/cartEntries}).length}"
-                        items="{
-                            path: 'cartProducts>/cartEntries',
-                            sorter: {path: 'ProductName'}
-                        }">
-                        <headerToolbar>
-                            <Toolbar>
-                                <Title text="{i18n>CartView.ProductsInCart}" />
-                                <ToolbarSpacer />
-                                <Button text="{
+            <FlexBox width="100%"
+                wrap="Wrap">
+                <List custom:id="cart-list"
+                    includeItemInSelection="true"
+                    class="sapUiSmallMarginBottom"
+                    inset="true"
+                    mode="MultiSelect"
+                    selectionChange=".onItemPress"
+                    noDataText="No data"
+                    visible="{= !!Object.keys(${cartProducts>/cartEntries}).length}"
+                    items="{
+                        path: 'cartProducts>/cartEntries',
+                        sorter: {path: 'ProductName'}
+                    }">
+                    <layoutData>
+                        <FlexItemData growFactor="1"
+                            minWidth="325px"
+                            shrinkFactor="0" />
+                    </layoutData>
+
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="{i18n>CartView.ProductsInCart}" />
+                            <ToolbarSpacer />
+                            <Button text="{
                                     path: 'view>/cartItems',
                                     formatter: '.formatter.orderBtnText'
                                 }"
-                                    type="Accept"
-                                    class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
-                                <Button text="{
+                                type="Accept"
+                                class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
+                            <Button text="{
                                     path: 'view>/cartItems',
                                     formatter: '.formatter.deleteBtnText'
                                 }"
-                                    press=".onDeleteBtnPress"
-                                    type="Reject" />
-                            </Toolbar>
-                        </headerToolbar>
-                        <items>
-                            <CustomListItem>
-                                <HBox justifyContent="SpaceBetween"
-                                    wrap="Wrap">
-                                    <VBox justifyContent="SpaceBetween"
-                                        class="sapUiSmallMarginTopBottom"
-                                        direction="Column"
+                                press=".onDeleteBtnPress"
+                                type="Reject" />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <items>
+                        <CustomListItem>
+                            <HBox justifyContent="SpaceBetween"
+                                wrap="Wrap">
+                                <VBox justifyContent="SpaceBetween"
+                                    class="sapUiSmallMarginTopBottom"
+                                    direction="Column"
+                                    height="auto"
+                                    width="auto">
+                                    <HBox class="sapUiSmallMarginBottom"
+                                        alignItems="Center"
                                         height="auto"
                                         width="auto">
-                                        <HBox class="sapUiSmallMarginBottom"
-                                            alignItems="Center"
-                                            height="auto"
-                                            width="auto">
-                                            <ObjectAttribute text="{i18n>CartView.InCart}"
-                                                class="sapUiTinyMarginEnd"
-                                                active="false" />
-                                            <StepInput value="{cartProducts>Quantity}"
-                                                displayValuePrecision="{displayValuePrecision}"
-                                                min="0"
-                                                max="{= Number(${cartProducts>UnitsInStock})}"
-                                                width="4rem"
-                                                largerStep="1"
-                                                textAlign="Center"
-                                                change=".onChangeAmount" />
-                                        </HBox>
-                                        <HBox class="sapUiSmallMarginEnd">
-                                            <core:Icon class="sapUiSmallMarginEnd"
-                                                alt="product image"
-                                                backgroundColor="transparent"
-                                                color="#84C8F6"
-                                                decorative="false"
-                                                size="2.5rem"
-                                                src="sap-icon://product" />
-                                            <Title text="{cartProducts>ProductName}"
-                                                titleStyle="H4"
-                                                wrapping="true" />
-                                        </HBox>
-                                        <ObjectAttribute active="false"
-                                            class="sapUiTinyMarginTop"
-                                            title="ID"
-                                            text="{cartProducts>ProductID}" />
-                                    </VBox>
-                                    <VBox justifyContent="SpaceAround"
-                                        class="sapUiSmallMarginTopBottom sapUiSmallMarginEnd"
-                                        alignItems="End"
-                                        direction="Column"
-                                        height="auto"
-                                        width="auto">
-                                        <ObjectNumber number="{
+                                        <ObjectAttribute text="{i18n>CartView.InCart}"
+                                            class="sapUiTinyMarginEnd"
+                                            active="false" />
+                                        <StepInput value="{cartProducts>Quantity}"
+                                            displayValuePrecision="{displayValuePrecision}"
+                                            min="0"
+                                            max="{= Number(${cartProducts>UnitsInStock})}"
+                                            width="4rem"
+                                            largerStep="1"
+                                            textAlign="Center"
+                                            change=".onChangeAmount" />
+                                    </HBox>
+                                    <HBox class="sapUiSmallMarginEnd">
+                                        <core:Icon class="sapUiSmallMarginEnd"
+                                            alt="product image"
+                                            backgroundColor="transparent"
+                                            color="#84C8F6"
+                                            decorative="false"
+                                            size="2.5rem"
+                                            src="sap-icon://product" />
+                                        <Title text="{cartProducts>ProductName}"
+                                            titleStyle="H4"
+                                            wrapping="true" />
+                                    </HBox>
+                                    <ObjectAttribute active="false"
+                                        class="sapUiTinyMarginTop"
+                                        title="ID"
+                                        text="{cartProducts>ProductID}" />
+                                </VBox>
+                                <VBox justifyContent="SpaceAround"
+                                    class="sapUiSmallMarginTopBottom sapUiSmallMarginEnd"
+                                    alignItems="End"
+                                    direction="Column"
+                                    height="auto"
+                                    width="auto">
+                                    <ObjectNumber number="{
                                                     parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
                                                     type: 'sap.ui.model.type.Currency',
                                                     formatOptions: {
                                                         showMeasure: false
                                                     }
                                                 }"
-                                            textAlign="Center"
-                                            class="sapMObjectNumberLarge"
-                                            emphasized="false"
-                                            unit="{measures>/currency}"
-                                            state="Success" />
-                                        <ObjectAttribute text="{i18n>CartView.ShowProductPage}"
-                                            press="onProductClick"
-                                            active="true" />
-                                    </VBox>
-                                </HBox>
-                            </CustomListItem>
-                        </items>
-                        <layoutData>
-                            <FlexItemData backgroundDesign="Solid"
-                                baseSize="100%"
-                                growFactor="1" />
-                        </layoutData>
-                    </List>
+                                        textAlign="Center"
+                                        class="sapMObjectNumberLarge"
+                                        emphasized="false"
+                                        unit="{measures>/currency}"
+                                        state="Success" />
+                                    <ObjectAttribute text="{i18n>CartView.ShowProductPage}"
+                                        press="onProductClick"
+                                        active="true" />
+                                </VBox>
+                            </HBox>
+                        </CustomListItem>
+                    </items>
+                </List>
 
-                    <List includeItemInSelection="true"
-                        inset="true"
-                        selectionChange=".onItemPress"
-                        mode="MultiSelect"
-                        noDataText="No data"
-                        visible="{= !!Object.keys(${cartProducts>/favorites}).length}"
-                        items="{
-                            path: 'cartProducts>/favorites',
-                            sorter: {path: 'ProductName'}
-                        }">
-                        <headerToolbar>
-                            <Toolbar>
-                                <Title text="{i18n>CartView.ProductsInFavs}" />
-                                <ToolbarSpacer />
-                                <Button text="{
+                <List includeItemInSelection="true"
+                    inset="true"
+                    selectionChange=".onItemPress"
+                    mode="MultiSelect"
+                    noDataText="No data"
+                    visible="{= !!Object.keys(${cartProducts>/favorites}).length}"
+                    items="{
+                        path: 'cartProducts>/favorites',
+                        sorter: {path: 'ProductName'}
+                    }">
+                    <layoutData>
+                        <FlexItemData growFactor="1"
+                            minWidth="325px"
+                            shrinkFactor="0" />
+                    </layoutData>
+
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="{i18n>CartView.ProductsInFavs}" />
+                            <ToolbarSpacer />
+                            <Button text="{
                                         path: 'view>/favsItems',
                                         formatter: '.formatter.deleteBtnText'
                                     }"
-                                    custom:inFavs="true"
-                                    press=".onDeleteBtnPress"
-                                    type="Reject" />
-                            </Toolbar>
-                        </headerToolbar>
-                        <items>
-                            <ObjectListItem icon="sap-icon://product"
-                                number="{
+                                custom:inFavs="true"
+                                press=".onDeleteBtnPress"
+                                type="Reject" />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <items>
+                        <ObjectListItem icon="sap-icon://product"
+                            number="{
                                     parts: [{path: 'cartProducts>UnitPrice'}, {path: 'measures>/currency'}],
                                     type: 'sap.ui.model.type.Currency',
                                     formatOptions: {
                                         showMeasure: false
                                     }
                                 }"
-                                numberState="Success"
-                                numberUnit="{measures>/currency}"
-                                title="{cartProducts>ProductName}">
-                                <attributes>
-                                    <ObjectAttribute active="false"
-                                        title="ID"
-                                        text="{cartProducts>ProductID}" />
-                                    <ObjectAttribute active="true"
-                                        press="onProductClick"
-                                        text="{i18n>CartView.ShowProductPage}" />
-                                    <ObjectAttribute active="true"
-                                        press="onAddItem"
-                                        custom:id="addToCart"
-                                        text="{i18n>ProductDetailsView.AddToCart}" />
-                                </attributes>
-                            </ObjectListItem>
-                        </items>
-                        <layoutData>
-                            <FlexItemData backgroundDesign="Solid"
-                                baseSize="100%"
-                                growFactor="1" />
-                        </layoutData>
-                    </List>
-                </items>
+                            numberState="Success"
+                            numberUnit="{measures>/currency}"
+                            title="{cartProducts>ProductName}">
+                            <attributes>
+                                <ObjectAttribute active="false"
+                                    title="ID"
+                                    text="{cartProducts>ProductID}" />
+                                <ObjectAttribute active="true"
+                                    press="onProductClick"
+                                    text="{i18n>CartView.ShowProductPage}" />
+                                <ObjectAttribute active="true"
+                                    press="onAddItem"
+                                    custom:id="addToCart"
+                                    text="{i18n>ProductDetailsView.AddToCart}" />
+                            </attributes>
+                        </ObjectListItem>
+                    </items>
+                </List>
                 <Title text="{i18n>CartView.CartEmpty}"
                     textAlign="Center"
                     titleStyle="H2"

@@ -10,10 +10,7 @@ sap.ui.define([
 			formatter: formatter,
 			
 			onInit: function () {
-				let oRouter = this.getRouter();
-				oRouter
-					.getRoute('cart')
-					.attachPatternMatched(this._onPatternMatched, this);
+				this.getRouter().getRoute('cart').attachPatternMatched(this._onPatternMatched, this);
 				this.getView().setModel(
 					new JSONModel({
 						cartItems: [],
@@ -22,11 +19,6 @@ sap.ui.define([
 			},
 
 			_onPatternMatched: function () {
-				this.byId('');
-				this._filterCart();
-			},
-
-			_filterCart: function () {
 				let oCartModel = this.getModel('cartProducts');
 
 				let oCartEntries = oCartModel.getProperty('/cartEntries');
@@ -83,9 +75,8 @@ sap.ui.define([
 				oViewModel.setProperty(`/${sCurrList}`, []);
 			},
 
-			onChangeAmount(oEvent) {
+			onChangeAmount() {
 				this.getModel('cartProducts').refresh(true);
-				// this._filterCart();
 			}
 		});
 	},

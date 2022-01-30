@@ -19,7 +19,7 @@ sap.ui.define([
 			_onPatternMatched(oEvent) {
 				this._setDeliveryTime();
 				this.getView().setBusy(true);
-				
+
 				this.productID = window.decodeURIComponent(
 					oEvent.getParameter('arguments').productID,
 					);
@@ -124,19 +124,17 @@ sap.ui.define([
 			 */
 			_setDeliveryTime() {
 				let term = this.getRandomNum(1, 10);
-				//this.byId('delivery-time-status').setText(term);
-				let oModel = new JSONModel({ term });
-				this.getView().setModel(oModel, 'delivery');
+				this.byId('delivery-time-status').setText(formatter.deliveryTime(term));
+				this.byId('delivery-time-status').setState(formatter.deliveryState(term));
 			},
 
 			/**
 			 * Removes current product's obj from '/favorites' obj of cartProducts model
 			 */
 			onRemoveFromFavs(oEvent) {
-				let prodID = oEvent.getSource().getBindingContext('cartProducts').getObject().ProductID;
 				let oFavsItems = this.oCartModel.getProperty('/favorites');
 
-				delete oFavsItems[prodID];
+				delete oFavsItems[this.productID];
 				this.oCartModel.refresh(true);
 			}
 		});

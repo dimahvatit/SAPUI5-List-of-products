@@ -73,8 +73,6 @@
 						<m:Title text="{i18n>ProductDetailsView.DeliveryTime}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectStatus id="delivery-time-status"
-							text="{path: 'delivery>/term', formatter: '.formatter.deliveryTime'}"
-							state="{path: 'delivery>/term', formatter: '.formatter.deliveryState'}"
 							icon="sap-icon://shipping-status"
 							class="sapMObjectStatusLarge" />
 					</m:VBox>

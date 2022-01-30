@@ -1,17 +1,21 @@
 version: "3.8"
 
 services: 
-    app: 
-        build: .
-        command: npm run start:webapp
-        ports: 
-            - "8080:8080"
-        volumes: 
-            - .:/home/node/app
     proxy:
         build: proxy
         command: node proxy.js
+        image: sapui5onlineshop.azurecr.io/proxy-server
+        container_name: proxy-server
         ports:
-            - "8081:8081"
+            - "6397:6397"
+        volumes: 
+            - .:/home/node/app
+    app: 
+        build: .
+        image: sapui5onlineshop.azurecr.io/shop-app
+        command: npm run start:webapp
+        container_name: shop-app
+        ports: 
+            - "80:80"
         volumes: 
             - .:/home/node/app

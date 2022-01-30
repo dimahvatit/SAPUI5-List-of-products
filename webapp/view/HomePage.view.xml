@@ -79,7 +79,7 @@
 						<core:Icon tooltip="{i18n>HomePageView.CartTooltip}"
 							src="sap-icon://cart"
 							press=".onMenuItemSelect"
-							custom:to="cart"		
+							custom:to="cart"
 							size="4rem"
 							color="#168282"
 							activeColor="#116464"
@@ -178,13 +178,13 @@
 							width="auto"
 							class="sapUiSmallMarginBegin" />
 
-			<!-- TODO: Fix this fucking grid so the count of columns is allways even or one -->
+						<!-- TODO: Fix this fucking grid so the count of columns is allways even or one -->
 						<grid:CSSGrid items="{promoted>/popProducts}"
 							class="sapUiSmallMarginTopBottom"
 							gridTemplateColumns="repeat(auto-fill, minmax(22rem, 1fr))"
 							gridAutoRows="minmax(6rem, 8rem)"
 							gridGap="1rem"
-							gridRowGap="2rem">
+							gridRowGap="1rem">
 							<grid:items>
 								<ObjectListItem intro="ID: {promoted>ProductID}"
 									title="{promoted>ProductName}"
@@ -200,6 +200,11 @@
 									numberUnit="{measures>/currency}"
 									type="Active" />
 							</grid:items>
+							<grid:layoutData>
+								<FlexItemData minWidth="48%"
+									maxWidth="100%"
+									shrinkFactor="0" />
+							</grid:layoutData>
 						</grid:CSSGrid>
 					</l:BlockLayoutCell>
 				</l:BlockLayoutRow>

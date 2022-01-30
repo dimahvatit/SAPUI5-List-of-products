@@ -1,21 +1,17 @@
 sap.ui.define([
 	'./BaseController',
-	'sap/ui/model/json/JSONModel',
-	'../model/formatter'
-], function (BaseController, JSONModel, formatter) {
+	'sap/ui/model/json/JSONModel'
+], function (BaseController, JSONModel) {
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.HomePage', {
-			formatter: formatter,
 			onInit: function () {
-				this.oRouter = this.getRouter();
 				let oCategoryModel = this.getOwnerComponent().getModel('category');
-				this.oRouter.getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
+				this.getRouter().getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
 
 				// Get count of Suppliers from 'category' model
 				let oView = this.getView();
 				oCategoryModel.read('/Suppliers/$count', {
-						sync: true,
 						success: function (sData) {
 							oView.byId('supplCount').setText(sData);
 						}
@@ -24,7 +20,6 @@ sap.ui.define([
 
 				// Get count of Products from 'category' model
 				oCategoryModel.read('/Products/$count', {
-						sync: false,
 						success: function (sData) {
 							oView.byId('prodCount').setText(sData);
 						}
@@ -32,13 +27,11 @@ sap.ui.define([
 				);
 				
 				let oCartModel = this.getOwnerComponent().getModel('cartProducts');
-				// oCartModel.setProperty('/lastViewed', []);
 				
 				let aLastViewedEntries = oCartModel.getData()['lastViewed'];
 				if (!aLastViewedEntries.length) {					
 					for (let i = 1; i <= 4; i++) {
 						oCategoryModel.read(`/Products(${i})`, {
-							sync: true,
 							success: function (oData) {
 								let aPrevVal = oCartModel.getData()['lastViewed'];
 								oCartModel.setProperty('/lastViewed', [...aPrevVal, oData]);
@@ -52,7 +45,7 @@ sap.ui.define([
 				});
 				this.getView().setModel(oPopProductsModel, 'promoted');
 
-				this._getRandProducts(8);
+				this._getRandProducts(12);
 			},
 
 			_getRandProducts: function (count) {
@@ -105,7 +98,7 @@ sap.ui.define([
 				let oItem = oEvent.getParameter('item') ? oEvent.getParameter('item') : oEvent.getSource();
 				let sTarget = oItem.data('to');
 
-				this.oRouter.navTo(sTarget);
+				this.getRouter().navTo(sTarget);
 			},
 
 			onLastViewedClick: function(oEvent) {
@@ -116,7 +109,7 @@ sap.ui.define([
 			},
 
 			onNavigateToSmartT(oEvent) {
-				this.oRouter.navTo('smart_table');
+				this.getRouter().navTo('smart_table');
 			}
 		});
 	},
