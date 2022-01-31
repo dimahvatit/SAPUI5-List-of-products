@@ -2,13 +2,12 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"../model/cart",
-	"my_cat_list/model/formatter",
+	"my_cat_list/model/formatter"
 ], function (BaseController, JSONModel, cart, formatter) {
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.Cart', {
 			formatter: formatter,
-			
 			onInit: function () {
 				this.getRouter().getRoute('cart').attachPatternMatched(this._onPatternMatched, this);
 				this.getView().setModel(
