@@ -1,0 +1,134 @@
+<mvc:View controllerName="my_cat_list.controller.Launchpad"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0">
+    <Page navButtonTooltip="Back"
+        navButtonPress="onNavBack"
+        showNavButton="true"
+        title="My Launchpad">
+        <subHeader>
+            <OverflowToolbar height="auto">
+                <HBox alignItems="Center"
+                    id="btnContainer">
+                    <Button text="Main Page"
+                        class="sapUiTinyMarginTopBottom sapUiSmallMarginBeginEnd"
+                        type="Attention"
+                        press="onNavBtnClick">
+                        <customData>
+                            <core:CustomData key="target"
+                                value="main" />
+                        </customData>
+                    </Button>
+                    <Button text="Group 1"
+                        class="sapUiSmallMarginEnd"
+                        press="onNavBtnClick">
+                        <customData>
+                            <core:CustomData key="target"
+                                value="group1" />
+                        </customData>
+                    </Button>
+                    <Button text="Group 2"
+                        press="onNavBtnClick">
+                        <customData>
+                            <core:CustomData key="target"
+                                value="group2" />
+                        </customData>
+                    </Button>
+                </HBox>
+            </OverflowToolbar>
+        </subHeader>
+
+        <FlexBox direction="Column"
+            id="flexContainer"
+            class="sapUiSmallMarginBegin sapUiLargeMarginTop">
+            <VBox class="sapUiSmallMargin"
+                id="group1"
+                direction="Column"
+                width="100%">
+                <Title class="sapUiSmallMarginBottom"
+                    text="Group 1"
+                    titleStyle="H2"
+                    width="auto" />
+                <HBox wrap="Wrap">
+                    <GenericTile class="sapUiSmallMarginEnd"
+                        header="Products"
+                        press=".onTilePress"
+                        headerImage="sap-icon://product"
+                        subheader="total count"
+                        width="15rem">
+                        <TileContent footer="FOOTER"
+                            footerColor="Critical">
+                            <Title text="77"
+                                titleStyle="H2"
+                                width="100%" />
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="target"
+                                value="products" />
+                        </customData>
+                    </GenericTile>
+
+                    <GenericTile class="sapUiSmallMarginEnd"
+                        header="Suppliers"
+                        headerImage="sap-icon://supplier"
+                        subheader="total count"
+                        width="15rem">
+                        <TileContent footer="FOOTER"
+                            footerColor="Critical">
+                            <Title text="50"
+                                id="suppliers-tile-count"
+                                titleStyle="H2"
+                                width="100%" />
+                        </TileContent>
+                    </GenericTile>
+                </HBox>
+            </VBox>
+
+            <VBox class="sapUiSmallMargin"
+                id="group2"
+                direction="Column"
+                width="100%">
+                <Title class="sapUiSmallMarginBottom"
+                    text="Group 2"
+                    titleStyle="H2"
+                    width="auto" />
+                <HBox wrap="Wrap">
+                    <GenericTile class="sapUiSmallMarginEnd"
+                        header="Orders"
+                        headerImage="sap-icon://activity-items"
+                        subheader="total count"
+                        width="15rem">
+                        <TileContent footer="FOOTER"
+                            footerColor="Critical">
+                            <Title text="156"
+                                id="orders-tile-count"
+                                titleStyle="H2"
+                                width="100%" />
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile class="sapUiSmallMarginEnd"
+                        header="Cart"
+                        press=".onTilePress"
+                        headerImage="sap-icon://cart"
+                        subheader="overview"
+                        width="15rem">
+                        <TileContent footer="FOOTER"
+                            footerColor="Critical">
+                            <Title text="{= Object.keys(${cart>/cartEntries/}).length}"
+                                titleStyle="H2"
+                                width="100%" />
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="target"
+                                value="cart" />
+                        </customData>
+                    </GenericTile>
+                </HBox>
+            </VBox>
+        </FlexBox>
+    </Page>
+</mvc:View>

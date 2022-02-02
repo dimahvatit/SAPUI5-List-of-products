@@ -13,7 +13,7 @@
 		"ach": "CA-UI5-FST",
 		"dataSources": {
 			"backend": {
-				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"uri": "/V2/Northwind/Northwind.svc/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -118,6 +118,11 @@
 					"pattern": "smart_table",
 					"name": "smart_table",
 					"target": "smart_table"
+				},
+				{
+					"pattern": "launchpad",
+					"name": "launchpad",
+					"target": "launchpad"
 				}
 			],
 			"targets": {
@@ -144,6 +149,10 @@
 				"smart_table": {
 					"viewId": "smart_table",
 					"viewName": "SmartTable"
+				},
+				"launchpad": {
+					"viewId": "launchpad",
+					"viewName": "Launchpad"
 				}
 			}
 		},

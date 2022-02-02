@@ -13,7 +13,24 @@ sap.ui.define([
 
 				//! The BUS is here!
 				let oBus = this.getOwnerComponent().getEventBus();
-				oBus.subscribe("HPchannel", "addLastViewed", this._onAddLastViewed, this);
+				oBus.subscribe("HPchannel", "addLastViewed", onAddLastViewed, this);
+
+				//! Event handler
+				function onAddLastViewed(channelId, eventId, parametersMap) {
+					let oCartModel = this.getOwnerComponent().getModel('cartProducts');
+					let oCategoryModel = this.getOwnerComponent().getModel('category');
+	
+					let oProdToAdd = oCategoryModel.read(`/Products(${parametersMap.productID})`, {
+						success: function (oData) {
+							let bIsInLastViewed = oCartModel
+								.getProperty('/lastViewed')
+								.some((el) => el.ProductID === +parametersMap.productID);
+							if (!bIsInLastViewed) {
+								cart.addLastViewed(oData, oCartModel);
+							}
+						}
+					})				
+				}
 
 				// Get count of Suppliers from 'category' model
 				let oView = this.getView();
@@ -52,23 +69,6 @@ sap.ui.define([
 				this.getView().setModel(oPopProductsModel, 'promoted');
 
 				this._getRandProducts(12);
-			},
-
-			//! Event handler
-			_onAddLastViewed(channelId, eventId, parametersMap) {
-				let oCartModel = this.getOwnerComponent().getModel('cartProducts');
-				let oCategoryModel = this.getOwnerComponent().getModel('category');
-
-				let oProdToAdd = oCategoryModel.read(`/Products(${parametersMap.productID})`, {
-					success: function (oData) {
-						let bIsInLastViewed = oCartModel
-							.getProperty('/lastViewed')
-							.some((el) => el.ProductID === parametersMap.productID);
-						if (!bIsInLastViewed) {
-							cart.addLastViewed(oData, oCartModel);
-						}
-					}
-				})				
 			},
 
 			_getRandProducts: function (count) {
@@ -131,8 +131,12 @@ sap.ui.define([
 				});
 			},
 
-			onNavigateToSmartT(oEvent) {
+			onNavigateToSmartT() {
 				this.getRouter().navTo('smart_table');
+			},
+
+			onNavigateToLaunchpad() {
+				this.getRouter().navTo('launchpad');
 			}
 		});
 	},

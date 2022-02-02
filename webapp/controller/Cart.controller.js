@@ -10,11 +10,27 @@ sap.ui.define([
 			formatter: formatter,
 			onInit: function () {
 				this.getRouter().getRoute('cart').attachPatternMatched(this._onPatternMatched, this);
-				this.getView().setModel(
-					new JSONModel({
-						cartItems: [],
-						favsItems: [],
-					}), 'view');
+				this.oViewModel = new JSONModel({
+					cartItems: [],
+					favsItems: [],
+					total: 0
+				});
+				this._getTotal();
+
+				this.getView().setModel(this.oViewModel, 'view');
+			},
+
+			_getTotal: function () {
+				let oCartEntries = this.getOwnerComponent().getModel('cartProducts').getProperty('/cartEntries');
+				let total = this.oViewModel.getProperty('total');
+				for (const key in oCartEntries) {
+					if (Object.hasOwnProperty.call(oCartEntries, key)) {
+						const element = oCartEntries[key];
+
+						total += +element.UnitPrice * element.Quantity;
+					}
+				}
+				this.oViewModel.setProperty('/total', total);
 			},
 
 			_onPatternMatched: function () {
@@ -72,9 +88,11 @@ sap.ui.define([
 				cart.deleteItems(aToDelete, oCartModel, bInFavs);
 				aToDelete = [];
 				oViewModel.setProperty(`/${sCurrList}`, []);
+				this._getTotal();
 			},
 
 			onChangeAmount() {
+				this._getTotal();
 				this.getModel('cartProducts').refresh(true);
 			}
 		});

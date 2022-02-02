@@ -29,10 +29,25 @@
                     }">
                     <layoutData>
                         <FlexItemData growFactor="1"
-                            minWidth="325px"
                             shrinkFactor="0" />
                     </layoutData>
-
+                    <infoToolbar>
+                        <OverflowToolbar design="Solid"
+                            height="auto"
+                            style="Clear">
+                            <HBox alignItems="Center"
+                                height="3rem"
+                                width="100%"
+                                justifyContent="End">
+                                <Text maxLines="1"
+                                    class="sapUiTinyMarginEnd"
+                                    text="Total sum: "
+                                    wrapping="false" />
+                                <Title text="{view>/total}"
+                                    titleStyle="H4" />
+                            </HBox>
+                        </OverflowToolbar>
+                    </infoToolbar>
                     <headerToolbar>
                         <Toolbar>
                             <Title text="{i18n>CartView.ProductsInCart}" />
@@ -42,7 +57,7 @@
                                     formatter: '.formatter.orderBtnText'
                                 }"
                                 type="Accept"
-                                class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
+                                class="sapUiSmallMargin" />
                             <Button text="{
                                     path: 'view>/cartItems',
                                     formatter: '.formatter.deleteBtnText'
@@ -133,7 +148,6 @@
                     }">
                     <layoutData>
                         <FlexItemData growFactor="1"
-                            minWidth="325px"
                             shrinkFactor="0" />
                     </layoutData>
 

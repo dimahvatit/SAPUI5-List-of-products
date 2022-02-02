@@ -25,11 +25,16 @@
 					textAlign="Center"
 					class="sapUiSmallMargin" />
 				<ToolbarSpacer />
+				<Button text="Launchpad"
+					icon="sap-icon://navigation-up-arrow"
+					iconFirst="false"
+					type="Emphasized"
+					press=".onNavigateToLaunchpad" />
 				<Button text="Smart Table"
 					icon="sap-icon://navigation-right-arrow"
 					iconFirst="false"
 					type="Emphasized"
-					press="onNavigateToSmartT" />
+					press=".onNavigateToSmartT" />
 			</tnt:ToolHeader>
 		</tnt:header>
 
@@ -157,7 +162,7 @@
 					</l:BlockLayoutCell>
 				</l:BlockLayoutRow>
 
-				<l:BlockLayoutRow>
+				<l:BlockLayoutRow class="counters-row">
 					<l:BlockLayoutCell title="{i18n>HomePageView.Suppliers}">
 						<Title id='supplCount'
 							width="auto"
