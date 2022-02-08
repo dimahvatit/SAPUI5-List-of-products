@@ -1,0 +1,20 @@
+<Dialog xmlns="sap.m"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    title="Clearing the cart">
+    <content>
+        <Text text="Are you shure you want to delete all items?" class="sapUiSmallMargin" />
+    </content>
+    <buttons>
+        <Button icon="sap-icon://accept"
+            custom:action="accept"
+            text="Yes"
+            press=".onDialogBtnPress"
+            type="Accept"
+            width="auto" />
+        <Button icon="sap-icon://decline"
+            text="No"
+            press=".onDialogBtnPress"
+            type="Negative"
+            width="auto" />
+    </buttons>
+</Dialog>

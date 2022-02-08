@@ -2,6 +2,7 @@
 	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:m="sap.m"
+	xmlns:my="my_cat_list.control"
 	xmlns="sap.uxap"
 	displayBlock="true"
 	height="100%">
@@ -27,8 +28,7 @@
 					</expandedContent>
 
 					<actions>
-						<m:StepInput
-							class="sapUiSmallMarginEnd"
+						<m:StepInput class="sapUiSmallMarginEnd"
 							value="{cartProducts>Quantity}"
 							displayValuePrecision="{displayValuePrecision}"
 							min="0"
@@ -36,7 +36,7 @@
 							width="5rem"
 							largerStep="1"
 							visible="{= !!${cartProducts>Quantity}}"
-							textAlign="Center"/>
+							textAlign="Center" />
 						<m:Button text="{i18n>ProductDetailsView.AddToCart}"
 							custom:id="addToCart"
 							type="Emphasized"
@@ -96,8 +96,7 @@
 
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:layoutData>
-							<m:FlexItemData
-								baseSize="16%"/>
+							<m:FlexItemData baseSize="16%" />
 						</m:layoutData>
 						<m:Title text="{i18n>ProductDetailsView.UnitsInStock}"
 							class="sapUiTinyMarginBottom" />
@@ -114,8 +113,7 @@
 					<m:VBox class="sapUiSmallMarginBottom"
 						id="prod-description">
 						<m:layoutData>
-							<m:FlexItemData
-								baseSize="30%"/>
+							<m:FlexItemData baseSize="30%" />
 						</m:layoutData>
 						<m:Title text="{i18n>ProductDetailsView.Description}"
 							class="sapUiTinyMarginBottom" />
@@ -130,41 +128,58 @@
 					id="supplier-details">
 					<ObjectPageSubSection titleUppercase="true">
 						<blocks>
-							<m:VBox width="50%"
-								class="sapUiSmallMarginBegin">
-								<m:HBox alignItems="Start"
-									height="2rem"
-									wrap="Wrap"
-									class="sapUiTinyMarginBottom">
-									<m:Label class="sapUiTinyMarginEnd"
-										text="{i18n>ProductDetailsView.SupplierName}" />
-									<m:Title text="{category>CompanyName}" />
-								</m:HBox>
-								<m:HBox alignItems="Start"
-									height="2rem"
-									wrap="Wrap"
-									class="sapUiTinyMarginBottom">
-									<m:Label class="sapUiTinyMarginEnd"
-										text="{i18n>ProductDetailsView.SupplierAddress}" />
-									<m:Title text="{category>Address}" />
-								</m:HBox>
-								<m:HBox alignItems="Start"
-									height="2rem"
-									wrap="Wrap"
-									class="sapUiTinyMarginBottom">
-									<m:Label class="sapUiTinyMarginEnd"
-										text="{i18n>ProductDetailsView.SupplierZipcodeSupplierCity}" />
-									<m:Title text="{category>PostalCode} / {category>City}" />
-								</m:HBox>
-								<m:HBox alignItems="Start"
-									height="2rem"
-									wrap="Wrap"
-									class="sapUiTinyMarginBottom">
-									<m:Label class="sapUiTinyMarginEnd"
-										text="{i18n>ProductDetailsView.SupplierCountry}" />
-									<m:Title text="{category>Country}" />
-								</m:HBox>
-							</m:VBox>
+							<m:HBox alignItems="Center"
+								height="auto"
+								width="auto">
+								<m:VBox width="auto"
+									class="sapUiSmallMarginBegin">
+									<m:HBox alignItems="Start"
+										height="2rem"
+										wrap="Wrap"
+										class="sapUiTinyMarginBottom">
+										<m:Label class="sapUiTinyMarginEnd"
+											text="{i18n>ProductDetailsView.SupplierName}" />
+										<m:Title text="{category>CompanyName}" />
+									</m:HBox>
+									<m:HBox alignItems="Start"
+										height="2rem"
+										wrap="Wrap"
+										class="sapUiTinyMarginBottom">
+										<m:Label class="sapUiTinyMarginEnd"
+											text="{i18n>ProductDetailsView.SupplierAddress}" />
+										<m:Title text="{category>Address}" />
+									</m:HBox>
+									<m:HBox alignItems="Start"
+										height="2rem"
+										wrap="Wrap"
+										class="sapUiTinyMarginBottom">
+										<m:Label class="sapUiTinyMarginEnd"
+											text="{i18n>ProductDetailsView.SupplierZipcodeSupplierCity}" />
+										<m:Title text="{category>PostalCode} / {category>City}" />
+									</m:HBox>
+									<m:HBox alignItems="Start"
+										height="2rem"
+										wrap="Wrap"
+										class="sapUiTinyMarginBottom">
+										<m:Label class="sapUiTinyMarginEnd"
+											text="{i18n>ProductDetailsView.SupplierCountry}" />
+										<m:Title text="{category>Country}" />
+									</m:HBox>
+								</m:VBox>
+								<m:VBox alignItems="Center"
+									class="sapUiLargeMarginBegin"
+									height="auto"
+									width="auto"
+									justifyContent="Center">
+									<my:QRCode text="{category>PostalCode}, {category>City}, {category>Address}, {category>Country}"
+										width="128"
+										height="128"
+										id="myQRCode"
+										colorDark="#29313A"
+										colorLight="#bffffe"
+										correctLevel="3" />
+								</m:VBox>
+							</m:HBox>
 						</blocks>
 					</ObjectPageSubSection>
 				</ObjectPageSection>

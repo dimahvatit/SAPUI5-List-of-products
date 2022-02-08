@@ -135,6 +135,7 @@
                         tooltip="Table view" />
                 </OverflowToolbar>
             </f:headerToolbar>
+
             <f:items>
                 <core:Fragment fragmentName="my_cat_list.fragments.ProductItem"
                     type="XML" />

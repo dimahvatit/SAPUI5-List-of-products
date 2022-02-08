@@ -15,7 +15,7 @@ app.get('/orders', (req, res) => {
 });
 
 app.get('/suppliers', (req, res) => {
-	res.json({ rand: getRandomNum(1, 3) });
+	res.json({ rand: getRandomNum(-1, 3) });
 });
 
 app.listen(port);

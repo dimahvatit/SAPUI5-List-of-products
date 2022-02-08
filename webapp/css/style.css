@@ -55,4 +55,11 @@
 .myListApp .my-toolpage .sapUiBlockLayoutRow.counters-row .sapUiBlockCellContent {
 	padding-top: .9rem; 
 	padding-bottom: .9rem; 
-} 
+}
+
+.my-qrcode-control {
+	border: 3px solid #1B8DEC;
+	padding: 0.4rem;
+	background-color: #6BD3FF;
+	border-radius: 0.5rem;
+}

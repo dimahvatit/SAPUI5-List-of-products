@@ -3,8 +3,9 @@ sap.ui.define([
 	'../model/formatter',
 	'sap/ui/model/json/JSONModel',
 	'../model/cart',
-	"sap/m/MessageBox",
-],	function (BaseController, formatter, JSONModel, cart, MessageBox) {
+	'sap/m/MessageBox',
+	'../control/QRCode'
+],	function (BaseController, formatter, JSONModel, cart, MessageBox, QRCode) {
 		'use strict';
 
 		return BaseController.extend('my_cat_list.controller.ProductDetails', {
@@ -58,6 +59,14 @@ sap.ui.define([
 					path: `/favorites/${this.productID}`,
 					model: 'cartProducts',
 				});
+
+				/* let that = this;
+				this.oDataModel.read(this.sProductPath + "/Supplier", {
+					success: function (oData) {
+						that.getView().byId('myQRCode').setText(`${oData.PostalCode}, ${oData.City}, ${oData.Address}, ${oData.Country}`);
+						that.oDataModel.refresh();
+					}
+				}); */
 
 				//! Broadcasting the event
 				this.oBus.publish("HPchannel", "addLastViewed", { productID: this.productID });

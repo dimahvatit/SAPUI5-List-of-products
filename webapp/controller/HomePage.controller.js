@@ -18,7 +18,6 @@ sap.ui.define([
 				//! Event handler
 				function onAddLastViewed(channelId, eventId, parametersMap) {
 					let oCartModel = this.getOwnerComponent().getModel('cartProducts');
-					let oCategoryModel = this.getOwnerComponent().getModel('category');
 	
 					let oProdToAdd = oCategoryModel.read(`/Products(${parametersMap.productID})`, {
 						success: function (oData) {

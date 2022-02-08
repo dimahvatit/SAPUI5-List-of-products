@@ -11,7 +11,7 @@
   ],
   "main": "webapp/index.html",
   "scripts": {
-    "start": "npm-run-all --parallel proxy webapp",
+    "start": "npm-run-all --parallel express webapp",
     "test": "ui5 serve -o test/mockServer.html --accept-remote-connections",
     "webapp": "ui5 serve -o index.html --accept-remote-connections",
     "express": "node server/server.js",

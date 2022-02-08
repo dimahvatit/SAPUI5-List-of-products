@@ -76,19 +76,41 @@ sap.ui.define([
 			 * then calls {deleteItems} method of the cart model
 			 */
 			onDeleteBtnPress(oEvent) {
+				this.oViewModel = this.getModel('view');
 				// check what list the delete button belongs to
-				let bInFavs = oEvent.getSource().data().inFavs;
-				let sCurrList = bInFavs ? 'favsItems' : 'cartItems';
+				this.bInFavs = oEvent.getSource().data('inFavs');
+				this.sCurrList = this.bInFavs ? 'favsItems' : 'cartItems';
+				this.aToDelete = this.oViewModel.getData()[this.sCurrList];
 
+				this.loadFragment({type: "XML", name: "my_cat_list.fragments.ConfirmClear"})
+					.then(oDialog => {
+						let iLength = this.aToDelete.length;
+						if (iLength) {
+							let sMessage = "";
+							if (iLength == 1) {
+								sMessage = 'Delete this item?'
+							} else {
+								sMessage = `Delete ${iLength} items?`
+							}
+							oDialog.getContent()[0].setText(sMessage);
+						}
+						oDialog.open();
+					});
+			},
+
+			onDialogBtnPress: function (oEvent) {
 				let oCartModel = this.getModel('cartProducts');
-				let oViewModel = this.getModel('view');
-				
-				let aToDelete = oViewModel.getData()[sCurrList];
+				let oDialog = oEvent.getSource().getParent();
 
-				cart.deleteItems(aToDelete, oCartModel, bInFavs);
-				aToDelete = [];
-				oViewModel.setProperty(`/${sCurrList}`, []);
-				this._getTotal();
+				if (oEvent.getSource().data('action') === 'accept') {
+					cart.deleteItems(this.aToDelete, oCartModel, this.bInFavs);
+					this.aToDelete = [];
+					this.oViewModel.setProperty(`/${this.sCurrList}`, []);
+
+					this._getTotal();
+				}
+
+				oDialog.close();
 			},
 
 			onChangeAmount() {
