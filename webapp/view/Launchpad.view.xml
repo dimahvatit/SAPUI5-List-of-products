@@ -1,6 +1,8 @@
 <mvc:View controllerName="my_cat_list.controller.Launchpad"
     xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:my="my_cat_list.control"
     xmlns="sap.m"
     displayBlock="true"
     height="100%"
@@ -43,11 +45,17 @@
                     text="Product info"
                     titleStyle="H2"
                     width="auto" />
-                <HBox wrap="Wrap"
+                <my:TileContainer wrap="Wrap"
                     alignItems="Center"
                     alignContent="SpaceBetween">
-                    <items>
-                        <GenericTile class="sapUiSmallMarginEnd"
+                    <my:dragDropConfig>
+                        <dnd:DragDropInfo dropPosition="Between"
+                            drop=".onDrop"
+                            sourceAggregation="items"
+                            targetAggregation="items" />
+                    </my:dragDropConfig>
+                    <my:items>
+                        <my:LPTile class="sapUiSmallMarginEnd"
                             custom:navTarget="products"
                             press=".onTilePress"
                             header="Products"
@@ -58,9 +66,9 @@
                                 footerColor="Critical">
                                 <NumericContent value="77" />
                             </TileContent>
-                        </GenericTile>
+                        </my:LPTile>
 
-                        <GenericTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd"
                             header="Suppliers"
                             headerImage="sap-icon://supplier"
                             subheader="total count"
@@ -70,9 +78,9 @@
                                 <NumericContent value="50"
                                     id="suppliers-tile-count" />
                             </TileContent>
-                        </GenericTile>
-                    </items>
-                </HBox>
+                        </my:LPTile>
+                    </my:items>
+                </my:TileContainer>
             </VBox>
 
             <VBox class="sapUiSmallMargin"
@@ -83,10 +91,17 @@
                     text="Order info"
                     titleStyle="H2"
                     width="auto" />
-                <HBox wrap="Wrap"
+                <my:TileContainer wrap="Wrap"
+                    alignContent="SpaceBetween"
                     alignItems="Center">
-                    <items>
-                        <GenericTile class="sapUiSmallMarginEnd"
+                    <my:dragDropConfig>    
+                        <dnd:DragDropInfo dropPosition="Between"
+                            drop=".onDrop"
+                            sourceAggregation="items"
+                            targetAggregation="items" />
+                    </my:dragDropConfig>
+                    <my:items>
+                        <my:LPTile class="sapUiSmallMarginEnd"
                             header="Orders"
                             headerImage="sap-icon://activity-items"
                             subheader="total count"
@@ -96,9 +111,9 @@
                                 <NumericContent value="156"
                                     id="orders-tile-count" />
                             </TileContent>
-                        </GenericTile>
+                        </my:LPTile>
 
-                        <GenericTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd"
                             custom:navTarget="cart"
                             header="Cart"
                             press=".onTilePress"
@@ -109,9 +124,9 @@
                                 footerColor="Critical">
                                 <NumericContent value="{= Object.keys(${cart>/cartEntries/}).length}" />
                             </TileContent>
-                        </GenericTile>
-                    </items>
-                </HBox>
+                        </my:LPTile>
+                    </my:items>
+                </my:TileContainer>
             </VBox>
         </FlexBox>
     </Page>

@@ -6,7 +6,6 @@ sap.ui.define([
 	return BaseController.extend('my_cat_list.controller.Launchpad', {
 		onInit: function () {
 			this.aFlexItems = this.getView().byId('flexContainer').getItems();
-			this.aHBoxes = this.aFlexItems.map((item) => item.getItems()[1]);
 			this.aButtons = this.getView().byId('btnContainer').getItems();
 			this.oCartModel = this.getOwnerComponent().getModel('cartProducts');
 			this.sBaseUrl = 'http://localhost:8081';
@@ -29,6 +28,28 @@ sap.ui.define([
 
 			/* this._fetchData('orders', 'orders-tile-count', 3);
 			this._fetchData('suppliers', 'suppliers-tile-count', 5); */
+		},
+
+		onDrop: function (oEvent) {
+			let oTileContainer = oEvent.getSource().getParent();
+
+			var oDragged = oEvent.getParameter("draggedControl"),
+				oDropped = oEvent.getParameter("droppedControl"),
+				sInsertPosition = oEvent.getParameter("dropPosition"),
+				iDragPosition = oTileContainer.indexOfItem(oDragged),
+				iDropPosition = oTileContainer.indexOfItem(oDropped);
+
+			oTileContainer.removeItem(oDragged);
+
+			if (iDragPosition < iDropPosition) {
+				iDropPosition--;
+			}
+
+			if (sInsertPosition === "After") {
+				iDropPosition++;
+			}
+
+			oTileContainer.insertItem(oDragged, iDropPosition);
 		},
 
 		_refreshTiles(arr) {

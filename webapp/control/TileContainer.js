@@ -11,7 +11,7 @@ sap.ui.define(['sap/m/FlexBox'], function (FlexBox) {
 					selector: '#{id}-items',
 					dnd: {
 						draggable: true,
-						dropppable: true,
+						droppable: true,
 						layout: 'Horizontal',
 					},
 				},

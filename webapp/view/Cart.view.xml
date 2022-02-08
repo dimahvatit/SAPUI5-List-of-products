@@ -32,7 +32,7 @@
                             shrinkFactor="0" />
                     </layoutData>
                     <infoToolbar>
-                        <OverflowToolbar design="Solid"
+                        <OverflowToolbar design="Transparent"
                             height="auto"
                             style="Clear">
                             <HBox alignItems="Center"
