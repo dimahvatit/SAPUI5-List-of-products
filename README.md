@@ -1,7 +1,7 @@
 # SAPUI5 Internship Online Store Project
 
 
-### `npm i`,
+### `npm i`
 #### run with oData service:
 
 - `npm start`
