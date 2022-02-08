@@ -1,14 +1,14 @@
 # SAPUI5 Internship Online Store Project
 
 
-### `npm i`,
-#### run with oData service:
+### `npm i`
+### `npm start`
 
-- `npm start`
+#### live oData service:
+
 - http://localhost:8080/index.html
 
 
-#### run with mock server
+#### mock data:
 
-- `npm test`
 - http://localhost:8080/test/mockServer.html
