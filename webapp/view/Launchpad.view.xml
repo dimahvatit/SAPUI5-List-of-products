@@ -19,17 +19,15 @@
                         class="sapUiTinyMarginTopBottom sapUiSmallMarginBeginEnd"
                         type="Attention"
                         press=".onNavBtnClick"
-                        custom:targetGroup="main">
-                    </Button>
+                        custom:targetGroup="main" />
                     <Button text="Product info"
                         class="sapUiSmallMarginEnd"
                         press=".onNavBtnClick"
-                        custom:targetGroup="group1">
-                    </Button>
+                        custom:targetGroup="group1" />
                     <Button text="Order info"
+                        class="sapUiSmallMarginEnd"
                         press=".onNavBtnClick"
-                        custom:targetGroup="group2">
-                    </Button>
+                        custom:targetGroup="group2" />
                 </HBox>
             </OverflowToolbar>
         </subHeader>
@@ -55,7 +53,7 @@
                             targetAggregation="items" />
                     </my:dragDropConfig>
                     <my:items>
-                        <my:LPTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             custom:navTarget="products"
                             press=".onTilePress"
                             header="Products"
@@ -68,8 +66,9 @@
                             </TileContent>
                         </my:LPTile>
 
-                        <my:LPTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom myLPTile"
                             header="Suppliers"
+                            custom:type="dynamic"
                             headerImage="sap-icon://supplier"
                             subheader="total count"
                             width="15rem">
@@ -101,8 +100,9 @@
                             targetAggregation="items" />
                     </my:dragDropConfig>
                     <my:items>
-                        <my:LPTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom myLPTile"
                             header="Orders"
+                            custom:type="dynamic"
                             headerImage="sap-icon://activity-items"
                             subheader="total count"
                             width="15rem">
@@ -113,7 +113,7 @@
                             </TileContent>
                         </my:LPTile>
 
-                        <my:LPTile class="sapUiSmallMarginEnd"
+                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
                             custom:navTarget="cart"
                             header="Cart"
                             press=".onTilePress"

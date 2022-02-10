@@ -3,40 +3,38 @@
 	xmlns:f="sap.f">
 	<f:GridListItem press="onProductClick"
 		type="Active">
-		<VBox height="100%">
-			<layoutData>
-				<FlexItemData growFactor="1"
-					shrinkFactor="0" />
-			</layoutData>
-			<HBox height="100%"
-				class="sapUiSmallMargin"
-				alignItems="Start"
-				justifyContent="SpaceBetween">
-				<VBox justifyContent="SpaceBetween"
-					height="100%">
-					<Title text="{category>ProductName}"
-						wrapping="true"
-						titleStyle="H3" />
-					<Label text="{category>QuantityPerUnit}"
-						wrapping="true" />
-				</VBox>
-				<VBox justifyContent="SpaceBetween"
-					height="100%">
-					<ObjectNumber number="{
-							parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
-							formatter: '.formatter.productPrice'
-						}"
-						textAlign="End" />
-					<ObjectNumber number="{
-							parts: [{ path: 'category>UnitsInStock' }, { path: 'i18n>ProductItemFragment.InStock' }],
-							formatter: '.formatter.productQuantity'
-						}"
-						state="{
-							path: 'category>UnitsInStock',
-							formatter: '.formatter.quantityState'
-						}"
-						textAlign="End" />
-				</VBox>
+		<VBox height="100%"
+			class="sapUiSmallMarginBeginEnd"
+			alignItems="Center"
+			justifyContent="SpaceBetween">
+			<HBox justifyContent="SpaceBetween"
+				class="sapUiSmallMarginTop"
+				width="100%">
+				<Title text="{category>ProductName}"
+					wrapping="true"
+					titleStyle="H3" />
+				<ObjectNumber number="{
+						parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
+						formatter: '.formatter.productPrice'
+					}"
+					class="sapUiTinyMarginBegin"
+					textAlign="End" />
+			</HBox>
+
+			<HBox justifyContent="SpaceBetween"
+				class="sapUiSmallMarginBottom"
+				width="100%">
+				<Label text="{category>QuantityPerUnit}"
+					wrapping="true" />
+				<ObjectNumber number="{
+						parts: [{ path: 'category>UnitsInStock' }, { path: 'i18n>ProductItemFragment.InStock' }],
+						formatter: '.formatter.productQuantity'
+					}"
+					state="{
+						path: 'category>UnitsInStock',
+						formatter: '.formatter.quantityState'
+					}"
+					textAlign="End" />
 			</HBox>
 		</VBox>
 	</f:GridListItem>

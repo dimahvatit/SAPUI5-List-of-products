@@ -63,3 +63,12 @@
 	background-color: #6BD3FF;
 	border-radius: 0.5rem;
 }
+
+.tile-update {
+	background-color: #3b4653;
+	transition: all 0.2s;
+}
+
+.myLPTile {
+	transition: all 0.4s;
+}
