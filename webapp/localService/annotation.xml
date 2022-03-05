@@ -1,0 +1,72 @@
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+            Namespace="NorthwindModel">
+            <Annotations Target="NorthwindModel.Product"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+                    <Collection>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="ProductID" />
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="150px" />
+                                </Record>
+							</Annotation>
+                        </Record>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="ProductName" />
+                        </Record>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="SupplierID" />
+                        </Record>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="CategoryID" />
+                        </Record>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="QuantityPerUnit" />
+                        </Record>
+                        <Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="UnitsInStock" />
+                        </Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="UnitPrice" />
+                        </Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+                            <PropertyValue Property="Value" Path="UnitPrice" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="NorthwindModel.Product/Category"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Category" />
+						<PropertyValue Property="CollectionPath" String="Categories" />
+						<PropertyValue Property="SearchSupported" Bool="true" />
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty"
+										PropertyPath="Categories" />
+									<PropertyValue Property="ValueListProperty"
+										String="CategoryID" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="CategoryName" />
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
