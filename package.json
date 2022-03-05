@@ -12,7 +12,7 @@
   "main": "webapp/index.html",
   "scripts": {
     "start": "npm-run-all --parallel express webapp",
-    "webapp": "ui5 serve -o index.html --accept-remote-connections",
+    "webapp": "ui5 serve --accept-remote-connections",
     "express": "node server/server.js"
   },
   "devDependencies": {
