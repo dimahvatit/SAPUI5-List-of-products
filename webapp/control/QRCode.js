@@ -22,12 +22,12 @@ sap.ui.define([
 			events: {}
 		},
 	
-		renderer: function (rm, oControl) {
-            rm.openStart("div", oControl);
-			rm.class("my-qrcode-control");
-			rm.openEnd();
-			rm.renderControl(oControl.getAggregation("__qrcodeHTML"));
-			rm.close("div");
+		renderer: function (oRM, oControl) {
+            oRM.openStart("div", oControl);
+			oRM.class("my-qrcode-control");
+			oRM.openEnd();
+			oRM.renderControl(oControl.getAggregation("__qrcodeHTML"));
+			oRM.close("div");
         },
 
 		init: function () {
@@ -51,7 +51,7 @@ sap.ui.define([
 					this.__qrcode.clear();
 				}
 			} else {
-				this.destroyQRCode();
+				this._destroyQRCode();
 				this.__qrcode = new QRCode( jQuery.sap.domById( this.getId() + "-qrcode" ), {
 					text: this.getText(),
 					width: this.getWidth(),
@@ -82,7 +82,7 @@ sap.ui.define([
 		/*
 		* Clear the QR Code
 		*/
-		clearQRCode: function() {
+		_clearQRCode: function() {
 			if( this.__qrcode ) {
 				this.__qrcode.clear();
 			}
@@ -92,8 +92,8 @@ sap.ui.define([
 		/*
 		* Destroy the QR Code
 		*/
-		destroyQRCode: function() {
-			this.clearQRCode();
+		_destroyQRCode: function() {
+			this._clearQRCode();
 			this.__qrcode = undefined;
 			return this;
 		}
