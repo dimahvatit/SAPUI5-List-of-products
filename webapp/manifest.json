@@ -17,7 +17,17 @@
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
+					"localUri": "localService/metadata.xml",
+					"annotations": [
+						"annotation0"
+					]
+				}
+			},
+			"annotation0": {
+				"type": "ODataAnnotation",
+				"uri": "localService/annotation.xml",
+				"settings": {
+					"localUri": "localService/annotation.xml"
 				}
 			},
 			"description": {
@@ -77,7 +87,7 @@
 			},
 			"description": {
 				"dataSource": "description",
-				"type": "sap.ui.model.json.JSONModel" 
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"routing": {
