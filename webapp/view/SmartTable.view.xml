@@ -20,10 +20,11 @@
                 <FlexItemData shrinkFactor="0" />
             </smartFB:layoutData>
         </smartFB:SmartFilterBar>
+
         <smartT:SmartTable header="Products"
-            class="sapUiResponsiveContentPadding"
-            enableAutoColumnWidth="true"
             id="smartTable"
+            class="sapUiSmallMargin"
+            enableAutoColumnWidth="false"
             smartFilterId="smartFilterBar"
             tableType="ResponsiveTable"
             useExportToExcel="false"
