@@ -1,8 +1,6 @@
-<mvc:View controllerName="my_cat_list.controller.Launchpad"
-    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+<mvc:View controllerName="myshop.controller.Launchpad"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:dnd="sap.ui.core.dnd"
-    xmlns:my="my_cat_list.control"
+    xmlns:my="myshop.control"
     xmlns="sap.m"
     displayBlock="true"
     height="100%"
@@ -11,7 +9,30 @@
         navButtonPress="onNavBack"
         showNavButton="true"
         title="My Launchpad">
-        <subHeader>
+
+        <my:Launchpad items="{LPModel>/TileGroups}"
+            id="flexContainer"
+            class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+                <my:TileGroup tileGroupHeader="{LPModel>groupTitle}"
+                    tiles="{path: 'LPModel>tiles', templateShareable: false}"
+                    class="sapUiSmallMargin">
+                    <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                        press=".onTilePress"
+                        navTarget="{LPModel>navTarget}"
+                        header="{LPModel>header}"
+                        headerImage="{LPModel>headerImage}"
+                        subheader="{LPModel>subheader}"
+                        width="14rem"
+                        dynamic="{LPModel>dynamic}"
+                        timer="{LPModel>timer}"
+                        route="{LPModel>route}"
+                        footer="{LPModel>footer}"
+                        footerColor="{LPModel>footerColor}"
+                        number="{LPModel>number}"/>
+                </my:TileGroup>
+        </my:Launchpad>
+
+        <!-- <subHeader>
             <OverflowToolbar height="auto">
                 <HBox alignItems="Center"
                     id="btnContainer">
@@ -30,104 +51,40 @@
                         custom:targetGroup="group2" />
                 </HBox>
             </OverflowToolbar>
-        </subHeader>
+        </subHeader> -->
 
-        <FlexBox direction="Column"
+        <!-- <FlexBox direction="Column"
             id="flexContainer"
             class="sapUiSmallMarginBegin sapUiLargeMarginTop">
-            <VBox class="sapUiSmallMargin"
+
+            <my:TileGroup tileGroupHeader="{/ProductInfo/groupTitle}"
                 id="group1"
-                direction="Column"
-                width="100%">
-                <Title class="sapUiSmallMarginBottom"
-                    text="Product info"
-                    titleStyle="H2"
-                    width="auto" />
+                class="sapUiSmallMargin">
                 <my:TileContainer wrap="Wrap"
-                    alignItems="Center"
-                    alignContent="SpaceBetween">
+                    alignContent="SpaceBetween"
+                    items="{/ProductInfo/tiles}"
+                    alignItems="Center">
                     <my:dragDropConfig>
                         <dnd:DragDropInfo dropPosition="Between"
                             drop=".onDrop"
                             sourceAggregation="items"
                             targetAggregation="items" />
                     </my:dragDropConfig>
-                    <my:items>
                         <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
-                            custom:navTarget="products"
+                            navTarget="{navTarget}"
                             press=".onTilePress"
-                            header="Products"
-                            headerImage="sap-icon://product"
-                            subheader="total count"
-                            width="15rem">
-                            <TileContent footer="FOOTER"
-                                footerColor="Critical">
-                                <NumericContent value="77" />
-                            </TileContent>
-                        </my:LPTile>
-
-                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom myLPTile"
-                            header="Suppliers"
-                            custom:type="dynamic"
-                            headerImage="sap-icon://supplier"
-                            subheader="total count"
-                            width="15rem">
-                            <TileContent footer="FOOTER"
-                                footerColor="Critical">
-                                <NumericContent value="50"
-                                    id="suppliers-tile-count" />
-                            </TileContent>
-                        </my:LPTile>
-                    </my:items>
+                            header="{header}"
+                            headerImage="{headerImage}"
+                            subheader="{subheader}"
+                            width="15rem"
+                            fieldGroupIds="{fgID}"
+                            timer="{timer}"
+                            route="{route}"
+                            footer="{footer}"
+                            footerColor="{footerColor}"
+                            number="{number}"/>
                 </my:TileContainer>
-            </VBox>
-
-            <VBox class="sapUiSmallMargin"
-                id="group2"
-                direction="Column"
-                width="100%">
-                <Title class="sapUiSmallMarginBottom"
-                    text="Order info"
-                    titleStyle="H2"
-                    width="auto" />
-                <my:TileContainer wrap="Wrap"
-                    alignContent="SpaceBetween"
-                    alignItems="Center">
-                    <my:dragDropConfig>    
-                        <dnd:DragDropInfo dropPosition="Between"
-                            drop=".onDrop"
-                            sourceAggregation="items"
-                            targetAggregation="items" />
-                    </my:dragDropConfig>
-                    <my:items>
-                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom myLPTile"
-                            header="Orders"
-                            custom:type="dynamic"
-                            headerImage="sap-icon://activity-items"
-                            subheader="total count"
-                            width="15rem">
-                            <TileContent footer="FOOTER"
-                                footerColor="Critical">
-                                <NumericContent value="156"
-                                    id="orders-tile-count" />
-                            </TileContent>
-                        </my:LPTile>
-
-                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
-                            custom:navTarget="cart"
-                            header="Cart"
-                            press=".onTilePress"
-                            headerImage="sap-icon://cart"
-                            subheader="overview"
-                            width="15rem">
-                            <TileContent footer="FOOTER"
-                                footerColor="Critical">
-                                <NumericContent value="{= Object.keys(${cart>/cartEntries/}).length}" />
-                            </TileContent>
-                        </my:LPTile>
-                    </my:items>
-                </my:TileContainer>
-            </VBox>
-        </FlexBox>
+            </my:TileGroup>
+        </FlexBox> -->
     </Page>
 </mvc:View>

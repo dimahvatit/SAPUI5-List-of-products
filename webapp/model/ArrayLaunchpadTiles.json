@@ -1,0 +1,102 @@
+{
+	"TileGroups": [
+		{	
+			"groupTitle": "Product Info",
+			"tiles": [
+				{
+					"header": "Products",
+					"subheader": "total count",
+					"headerImage": "sap-icon://product",
+					"dynamic": true,
+					"route": "orders",
+					"timer": 4,
+					"number": "77",
+					"footer": "Products footer",
+					"footerColor": "Critical",
+					"navTarget": "products"
+				},
+				{
+					"header": "Suppliers",
+					"subheader": "total count",
+					"headerImage": "sap-icon://supplier",
+					"dynamic": true,
+					"route": "suppliers",
+					"timer": 6,
+					"number": "29",
+					"footer": "Suppliers footer",
+					"footerColor": "Critical"
+				}
+			]
+		},
+		{
+			"groupTitle": "Orders Info",
+			"tiles": [
+				{
+					"header": "Cart",
+					"subheader": "overview",
+					"headerImage": "sap-icon://cart",
+					"number": "{= Object.keys(${cart>/cartEntries/}).length}",
+					"footer": "Cart footer",
+					"footerColor": "Critical",
+					"navTarget": "cart"
+				},
+				{
+					"header": "Orders",
+					"subheader": "total count",
+					"headerImage": "sap-icon://activity-items",
+					"number": "156",
+					"dynamic": true,
+					"timer": 2,
+					"route": "orders",
+					"footer": "Orders footer",
+					"footerColor": "Critical"
+				},
+				{
+					"header": "Cart",
+					"subheader": "overview",
+					"headerImage": "sap-icon://cart",
+					"number": "{= Object.keys(${cart>/cartEntries/}).length}",
+					"footer": "Cart footer",
+					"footerColor": "Critical",
+					"navTarget": "cart"
+				},
+				{
+					"header": "Orders",
+					"subheader": "total count",
+					"headerImage": "sap-icon://activity-items",
+					"number": "156",
+					"dynamic": true,
+					"timer": 2,
+					"route": "orders",
+					"footer": "Orders footer",
+					"footerColor": "Critical"
+				},
+				{
+					"header": "Cart",
+					"subheader": "overview",
+					"headerImage": "sap-icon://cart",
+					"number": "{= Object.keys(${cart>/cartEntries/}).length}",
+					"footer": "Cart footer",
+					"footerColor": "Critical",
+					"navTarget": "cart"
+				}
+			]
+		},
+		{
+			"groupTitle": "Another group",
+			"tiles": [
+				{
+					"header": "Something else",
+					"subheader": "total count",
+					"headerImage": "sap-icon://activity-items",
+					"number": "25",
+					"dynamic": true,
+					"timer": 2,
+					"route": "orders",
+					"footer": "Another tile footer",
+					"footerColor": "Critical"
+				}
+			]
+		}
+	]
+}
