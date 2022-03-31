@@ -4,7 +4,7 @@ sap.ui.define([
     "../thirdparty/qrcode"
 ], function (Control, HTML, qrcode) {
 	"use strict";
-	return Control.extend("my_cat_list.control.QRCode", {
+	return Control.extend("myshop.control.QRCode", {
         __qrcode: undefined,
 
 		metadata: {
@@ -14,10 +14,10 @@ sap.ui.define([
                 height: { type: "int", group: "Appearance", defaultValue: 128 },
                 colorDark: { type: "sap.ui.core.CSSColor", group: "Appearance", defaultValue: "#000000" },
                 colorLight: { type: "sap.ui.core.CSSColor", group: "Appearance", defaultValue: "#ffffff" },
-                correctLevel: { type: "int", group: "Appearance", defaultValue: QRCode.CorrectLevel.H },
+                correctLevel: { type: "int", group: "Appearance", defaultValue: QRCode.CorrectLevel.H }
             },
 			aggregations: {
-                __qrcodeHTML: { type: "sap.ui.core.HTML", multiple: false, visibility: "hidden"},
+                __qrcodeHTML: { type: "sap.ui.core.HTML", multiple: false, visibility: "hidden"}
             },
 			events: {}
 		},
@@ -52,7 +52,7 @@ sap.ui.define([
 				}
 			} else {
 				this._destroyQRCode();
-				this.__qrcode = new QRCode( jQuery.sap.domById( this.getId() + "-qrcode" ), {
+				this.__qrcode = new QRCode( jQuery.sap.domById(`${this.getId()}-qrcode`), {
 					text: this.getText(),
 					width: this.getWidth(),
 					height: this.getHeight(),

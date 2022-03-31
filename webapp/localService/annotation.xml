@@ -14,12 +14,17 @@
                             <PropertyValue Property="Value" Path="ProductID" />
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
                                 <Record>
-                                    <PropertyValue Property="width" String="150px" />
+                                    <PropertyValue Property="width" String="100px" />
                                 </Record>
 							</Annotation>
                         </Record>
                         <Record Type="com.sap.vocabularies.UI.v1.DataField">
                             <PropertyValue Property="Value" Path="ProductName" />
+                            <Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="240px" />
+                                </Record>
+							</Annotation>
                         </Record>
                         <Record Type="com.sap.vocabularies.UI.v1.DataField">
                             <PropertyValue Property="Value" Path="SupplierID" />
@@ -29,6 +34,11 @@
                         </Record>
                         <Record Type="com.sap.vocabularies.UI.v1.DataField">
                             <PropertyValue Property="Value" Path="QuantityPerUnit" />
+                            <Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+                                <Record>
+                                    <PropertyValue Property="width" String="155px" />
+                                </Record>
+							</Annotation>
                         </Record>
                         <Record Type="com.sap.vocabularies.UI.v1.DataField">
                             <PropertyValue Property="Value" Path="UnitsInStock" />

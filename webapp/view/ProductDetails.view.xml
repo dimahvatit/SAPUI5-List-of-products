@@ -1,8 +1,8 @@
-<mvc:View controllerName="my_cat_list.controller.ProductDetails"
+<mvc:View controllerName="myshop.controller.ProductDetails"
 	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:m="sap.m"
-	xmlns:my="my_cat_list.control"
+	xmlns:my="myshop.control"
 	xmlns="sap.uxap"
 	displayBlock="true"
 	height="100%">
@@ -19,12 +19,12 @@
 			<headerTitle>
 				<ObjectPageDynamicHeaderTitle id="page-header">
 					<expandedHeading>
-						<m:Title text="{category>ProductName}"
+						<m:Title text="{backend>ProductName}"
 							wrapping="true" />
 					</expandedHeading>
 
 					<expandedContent>
-						<m:Text text="ID: {category>ProductID}" />
+						<m:Text text="ID: {backend>ProductID}" />
 					</expandedContent>
 
 					<actions>
@@ -32,7 +32,7 @@
 							value="{cartProducts>Quantity}"
 							displayValuePrecision="{displayValuePrecision}"
 							min="0"
-							max="{= Number(${category>UnitsInStock})}"
+							max="{= Number(${backend>UnitsInStock})}"
 							width="5rem"
 							largerStep="1"
 							visible="{= !!${cartProducts>Quantity}}"
@@ -42,7 +42,7 @@
 							type="Emphasized"
 							visible="{= !${cartProducts>Quantity}}"
 							icon="sap-icon://cart-4"
-							enabled="{= !!${category>UnitsInStock}}"
+							enabled="{= !!${backend>UnitsInStock}}"
 							press="onAddItem" />
 						<m:Button text="{i18n>ProductDetailsView.AddToFavorites}"
 							id="add-favs"
@@ -80,7 +80,7 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:Title text="{i18n>ProductDetailsView.QuantityPerUnit}"
 							class="sapUiTinyMarginBottom" />
-						<m:ObjectStatus text="{category>QuantityPerUnit}"
+						<m:ObjectStatus text="{backend>QuantityPerUnit}"
 							class="sapMObjectStatusLarge" />
 					</m:VBox>
 
@@ -88,7 +88,7 @@
 						<m:Title text="{i18n>ProductDetailsView.Price}"
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectNumber number="{
-								parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
+								parts: [{path: 'backend>UnitPrice'}, {path: 'measures>/currency'}],
 								formatter: '.formatter.productPrice'
 							}"
 							class="sapMObjectNumberLarge" />
@@ -102,11 +102,11 @@
 							class="sapUiTinyMarginBottom" />
 						<m:ObjectStatus text="{i18n>ProductDetailsView.Discontinued}"
 							state="Error"
-							visible="{path:'category>Discontinued'}" />
-						<m:ProgressIndicator percentValue="{category>UnitsInStock}"
-							displayValue="{category>UnitsInStock}"
+							visible="{path:'backend>Discontinued'}" />
+						<m:ProgressIndicator percentValue="{backend>UnitsInStock}"
+							displayValue="{backend>UnitsInStock}"
 							state="{
-								path: 'category>UnitsInStock',
+								path: 'backend>UnitsInStock',
 								formatter: '.formatter.quantityState'}" />
 					</m:VBox>
 
@@ -139,7 +139,7 @@
 										class="sapUiTinyMarginBottom">
 										<m:Label class="sapUiTinyMarginEnd"
 											text="{i18n>ProductDetailsView.SupplierName}" />
-										<m:Title text="{category>CompanyName}" />
+										<m:Title text="{backend>CompanyName}" />
 									</m:HBox>
 									<m:HBox alignItems="Start"
 										height="2rem"
@@ -147,7 +147,7 @@
 										class="sapUiTinyMarginBottom">
 										<m:Label class="sapUiTinyMarginEnd"
 											text="{i18n>ProductDetailsView.SupplierAddress}" />
-										<m:Title text="{category>Address}" />
+										<m:Title text="{backend>Address}" />
 									</m:HBox>
 									<m:HBox alignItems="Start"
 										height="2rem"
@@ -155,7 +155,7 @@
 										class="sapUiTinyMarginBottom">
 										<m:Label class="sapUiTinyMarginEnd"
 											text="{i18n>ProductDetailsView.SupplierZipcodeSupplierCity}" />
-										<m:Title text="{category>PostalCode} / {category>City}" />
+										<m:Title text="{backend>PostalCode} / {backend>City}" />
 									</m:HBox>
 									<m:HBox alignItems="Start"
 										height="2rem"
@@ -163,7 +163,7 @@
 										class="sapUiTinyMarginBottom">
 										<m:Label class="sapUiTinyMarginEnd"
 											text="{i18n>ProductDetailsView.SupplierCountry}" />
-										<m:Title text="{category>Country}" />
+										<m:Title text="{backend>Country}" />
 									</m:HBox>
 								</m:VBox>
 								<m:VBox alignItems="Center"
@@ -171,7 +171,7 @@
 									height="auto"
 									width="auto"
 									justifyContent="Center">
-									<my:QRCode text="{category>PostalCode}, {category>City}, {category>Address}, {category>Country}"
+									<my:QRCode text="{backend>PostalCode}, {backend>City}, {backend>Address}, {backend>Country}"
 										width="128"
 										height="128"
 										id="myQRCode"

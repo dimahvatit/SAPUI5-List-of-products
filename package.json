@@ -1,5 +1,5 @@
 {
-  "name": "my_cat_list",
+  "name": "myshop",
   "version": "1.0.0",
   "private": true,
   "author": "dimahvatit",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@sap/ux-ui5-tooling": "^1.4.3",
-    "@ui5/cli": "^2.14.4",
+    "@ui5/cli": "^2.14.6",
     "@ui5/fs": "^2.0.6",
     "@ui5/logger": "^2.0.1",
     "cors-anywhere": "^0.4.4",

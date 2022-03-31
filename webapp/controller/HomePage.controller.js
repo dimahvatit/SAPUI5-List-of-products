@@ -6,9 +6,9 @@ sap.ui.define([
 ], function (BaseController, JSONModel, EventBus, cart) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.HomePage', {
+		return BaseController.extend('myshop.controller.HomePage', {
 			onInit: function () {
-				let oCategoryModel = this.getOwnerComponent().getModel('category');
+				let oCategoryModel = this.getOwnerComponent().getModel('backend');
 				this.getRouter().getRoute('homepage').attachPatternMatched(this._onPatternMatched, this);
 
 				//! The BUS is here!
@@ -31,7 +31,7 @@ sap.ui.define([
 					})				
 				}
 
-				// Get count of Suppliers from 'category' model
+				// Get count of Suppliers from 'backend' model
 				let oView = this.getView();
 				oCategoryModel.read('/Suppliers/$count', {
 						success: function (sData) {
@@ -40,7 +40,7 @@ sap.ui.define([
 					}
 				);
 
-				// Get count of Products from 'category' model
+				// Get count of Products from 'backend' model
 				oCategoryModel.read('/Products/$count', {
 						success: function (sData) {
 							oView.byId('prodCount').setText(sData);
@@ -84,7 +84,7 @@ sap.ui.define([
 
 				for (let i = 0; i < aProductIDs.length; i++) {
 					this.getOwnerComponent()
-					.getModel('category')
+					.getModel('backend')
 					.read(`/Products(${aProductIDs[i]})`, {
 						sync: true,
 						success: function (oData) {

@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (JSONModel, Storage) {
     'use strict';
 
-    return JSONModel.extend('my_cat_list.model.LocalStorageModel', {
+    return JSONModel.extend('myshop.model.LocalStorageModel', {
         _STORAGE_KEY: 'BEST_SHOP_STORAGE',
         _storage: new Storage(Storage.Type.local),
 
@@ -12,7 +12,7 @@ sap.ui.define([
          * Fetches favorites from local storage and sets up the JSON model.
          * @param {string} sStorageKey
          * @param {object} oSettings
-         * @return {my_cat_list.model.LocalStorageModel} the local storage model instance
+         * @return {myshop.model.LocalStorageModel} the local storage model instance
          */
         constructor: function(sStorageKey, oSettings) {
             JSONModel.call(this, oSettings);

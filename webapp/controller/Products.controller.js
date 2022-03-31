@@ -15,7 +15,7 @@ sap.ui.define([
 	) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.Products', {			
+		return BaseController.extend('myshop.controller.Products', {			
 			formatter: formatter,
 
 			onInit: function () {
@@ -28,14 +28,14 @@ sap.ui.define([
 			 */
 			_onPatternMatched: function (oEvent) {
 				let sCatID = oEvent.getParameter('arguments').catID;
-				let oGridItemFrag = new sap.ui.xmlfragment('grid-list-item', 'my_cat_list.fragments.ProductItem', this);
+				let oGridItemFrag = new sap.ui.xmlfragment('grid-list-item', 'myshop.fragments.ProductItem', this);
 				let sCatPath = `/Categories(${sCatID})`; 
 
 				if (sCatID && sCatID.length > 0) {
 					this.byId('gridList').bindAggregation('items', {
 						path: `${sCatPath}/Products`,
 						template: oGridItemFrag,
-						model: 'category',
+						model: 'backend',
 					});
 					
 					let oFilterCategories = new Filter({
@@ -47,20 +47,20 @@ sap.ui.define([
 
 					this.byId('prods-toolbar').bindElement({
 						path: sCatPath,
-						model: 'category',
+						model: 'backend',
 					});
 					this.byId('tableList').bindElement({
 						path: sCatPath,
-						model: 'category',
+						model: 'backend',
 					});
 				} else {
 					this.byId('tableList').getBinding('items').filter([]);
-					this.byId('tableList').unbindElement('category');
-					this.byId('prods-toolbar').unbindElement('category');
+					this.byId('tableList').unbindElement('backend');
+					this.byId('prods-toolbar').unbindElement('backend');
 					this.byId('gridList').bindAggregation('items', {
 						path: '/Products',
 						template: oGridItemFrag,
-						model: 'category'
+						model: 'backend'
 					});
 				}
 

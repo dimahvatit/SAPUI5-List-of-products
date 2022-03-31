@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.Cart"
+<mvc:View controllerName="myshop.controller.Cart"
     xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"

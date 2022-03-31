@@ -10,11 +10,11 @@
 			<HBox justifyContent="SpaceBetween"
 				class="sapUiSmallMarginTop"
 				width="100%">
-				<Title text="{category>ProductName}"
+				<Title text="{backend>ProductName}"
 					wrapping="true"
 					titleStyle="H3" />
 				<ObjectNumber number="{
-						parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
+						parts: [{path: 'backend>UnitPrice'}, {path: 'measures>/currency'}],
 						formatter: '.formatter.productPrice'
 					}"
 					class="sapUiTinyMarginBegin"
@@ -24,14 +24,14 @@
 			<HBox justifyContent="SpaceBetween"
 				class="sapUiSmallMarginBottom"
 				width="100%">
-				<Label text="{category>QuantityPerUnit}"
+				<Label text="{backend>QuantityPerUnit}"
 					wrapping="true" />
 				<ObjectNumber number="{
-						parts: [{ path: 'category>UnitsInStock' }, { path: 'i18n>ProductItemFragment.InStock' }],
+						parts: [{ path: 'backend>UnitsInStock' }, { path: 'i18n>ProductItemFragment.InStock' }],
 						formatter: '.formatter.productQuantity'
 					}"
 					state="{
-						path: 'category>UnitsInStock',
+						path: 'backend>UnitsInStock',
 						formatter: '.formatter.quantityState'
 					}"
 					textAlign="End" />

@@ -5,12 +5,12 @@ sap.ui.define([
 ],	function (BaseController, Filter, FilterOperator) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.Categories', {
+		return BaseController.extend('myshop.controller.Categories', {
 
 			onInit: function () {
 			},
 			/**
-			 * Search by category name and description
+			 * Search by backend name and description
 			 */
 			onFilterCategories: function (oEvent) {
 				let aFilter = [];
@@ -43,7 +43,7 @@ sap.ui.define([
 			onPress: function (oEvent) {
 				let oCatItem = oEvent
 					.getSource()
-					.getBindingContext('category')
+					.getBindingContext('backend')
 					.getObject();
 
 				this.getRouter().navTo('products', {

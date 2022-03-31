@@ -2,11 +2,11 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"../model/cart",
-	"my_cat_list/model/formatter"
+	"myshop/model/formatter"
 ], function (BaseController, JSONModel, cart, formatter) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.Cart', {
+		return BaseController.extend('myshop.controller.Cart', {
 			formatter: formatter,
 			onInit: function () {
 				this.getRouter().getRoute('cart').attachPatternMatched(this._onPatternMatched, this);
@@ -82,7 +82,7 @@ sap.ui.define([
 				this.sCurrList = this.bInFavs ? 'favsItems' : 'cartItems';
 				this.aToDelete = this.oViewModel.getData()[this.sCurrList];
 
-				this.loadFragment({type: "XML", name: "my_cat_list.fragments.ConfirmClear"})
+				this.loadFragment({type: "XML", name: "myshop.fragments.ConfirmClear"})
 					.then(oDialog => {
 						let iLength = this.aToDelete.length;
 						if (iLength) {

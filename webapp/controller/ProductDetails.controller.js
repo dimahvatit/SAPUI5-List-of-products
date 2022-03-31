@@ -8,11 +8,11 @@ sap.ui.define([
 ],	function (BaseController, formatter, JSONModel, cart, MessageBox, QRCode) {
 		'use strict';
 
-		return BaseController.extend('my_cat_list.controller.ProductDetails', {
+		return BaseController.extend('myshop.controller.ProductDetails', {
 			formatter: formatter,
 			onInit: function() {
 				this.getRouter().getRoute('details').attachPatternMatched(this._onPatternMatched, this);
-				this.oDataModel = this.getOwnerComponent().getModel('category');
+				this.oDataModel = this.getOwnerComponent().getModel('backend');
 				this.oCartModel = this.getOwnerComponent().getModel('cartProducts');
 
 				//! The BUS is here!
@@ -29,7 +29,7 @@ sap.ui.define([
 				// Bind the view to Product entity
 				this.getView().bindElement({
 					path: this.sProductPath,
-					model: 'category',
+					model: 'backend',
 				});
 
 				// Bind header to curr product so "addToCart" button and counter can see current product's quantity in cart
@@ -41,7 +41,7 @@ sap.ui.define([
 				// Bind supplier details block to current Product's Supplier entity
 				this.getView().byId('supplier-details').bindElement({
 					path: `${this.sProductPath}/Supplier`,
-					model: 'category',
+					model: 'backend',
 				});
 
 				// Get text from model with products' descriptions
@@ -70,7 +70,7 @@ sap.ui.define([
 
 				//! Broadcasting the event
 				this.oBus.publish("HPchannel", "addLastViewed", { productID: this.productID });
-				// Request current Product entity from category model
+				// Request current Product entity from backend model
 				// and add it to lastViewed if it's not already there
 				/* let that = this;
 				this.oDataModel.read(this.sProductPath, {

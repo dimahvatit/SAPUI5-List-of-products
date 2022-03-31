@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.Products"
+<mvc:View controllerName="myshop.controller.Products"
     xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
@@ -14,14 +14,14 @@
             visible="false"
             noDataText="No data"
             growing="true"
-            items="{category>/Products}"
+            items="{backend>/Products}"
             growingScrollToLoad="true"
             class="sapUiResponsiveMargin">
 
             <headerToolbar>
                 <OverflowToolbar width="auto"
                     height="auto">
-                    <Title text="{category>CategoryName}" />
+                    <Title text="{backend>CategoryName}" />
                     <ToolbarSpacer />
                     <SearchField placeholder="{i18n>searchPlaceholder}"
                         liveChange=".onFilterProducts"
@@ -87,19 +87,19 @@
                 <ColumnListItem type="Navigation"
                     press="onProductClick">
                     <cells>
-                        <ObjectIdentifier title="{category>ProductName}"
-                            text="ID: {category>ProductID}" />
-                        <Text text="{category>SupplierID}"
+                        <ObjectIdentifier title="{backend>ProductName}"
+                            text="ID: {backend>ProductID}" />
+                        <Text text="{backend>SupplierID}"
                             width="auto"
                             maxLines="1"
                             wrapping="false" />
                         <ObjectNumber number="{
-										parts: [{path: 'category>UnitPrice'}, {path: 'measures>/currency'}],
+										parts: [{path: 'backend>UnitPrice'}, {path: 'measures>/currency'}],
 										formatter: '.formatter.productPrice'
 									}"
                             state="Success" />
-                        <ObjectNumber number="{category>UnitsInStock}" />
-                        <Text text="{category>CategoryID}"
+                        <ObjectNumber number="{backend>UnitsInStock}" />
+                        <Text text="{backend>CategoryID}"
                             width="114px"
                             maxLines="1"
                             wrapping="false" />
@@ -110,7 +110,7 @@
 
         <f:GridList id="gridList"
             class="sapUiResponsiveContentPadding"
-            items="{category>Products}">
+            items="{backend>Products}">
             <f:customLayout>
                 <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))"
                     gridAutoRows="minmax(4rem, 8rem)"
@@ -120,7 +120,7 @@
 
             <f:headerToolbar>
                 <OverflowToolbar id="prods-toolbar">
-                    <Title text="{category>CategoryName}" />
+                    <Title text="{backend>CategoryName}" />
                     <ToolbarSpacer />
                     <SearchField width="30%"
                         placeholder="{i18n>searchPlaceholder}"
@@ -137,7 +137,7 @@
             </f:headerToolbar>
 
             <f:items>
-                <core:Fragment fragmentName="my_cat_list.fragments.ProductItem"
+                <core:Fragment fragmentName="myshop.fragments.ProductItem"
                     type="XML" />
             </f:items>
         </f:GridList>

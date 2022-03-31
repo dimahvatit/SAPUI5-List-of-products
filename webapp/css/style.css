@@ -1,60 +1,64 @@
-.myListApp .sapMBarTitleAlignAuto .sapMBarPH {
+.myOnlineShop .sapMBarTitleAlignAuto .sapMBarPH {
 	justify-content: center;
 }
 
-.myListApp .category-list-toolbar {
+.myOnlineShop .category-list-toolbar {
 	border: none;
 }
 
-.myListApp .sapMIBar .sapMTitle {
+.myOnlineShop .sapMIBar .sapMTitle {
 	align-self: start;
 	margin-top: 0.25rem;
 }
 
-.myListApp .sapMIBar .sapMText {
+.myOnlineShop .sapMIBar .sapMText {
 	align-self: end;
 	margin-bottom: 0.25rem;
 }
 
 /**Home Page**/
 
-.myListApp .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
+.myOnlineShop .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
 	width: auto;
 	position: static;
 }
 
-.myListApp .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside+.sapTntToolPageMain {
+.myOnlineShop .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside+.sapTntToolPageMain {
 	padding-left: 0;
 	overflow: auto;
 }
 
-.myListApp .my-toolpage .sapUiBlockCellContent {
+.myOnlineShop .my-toolpage .sapUiBlockCellContent {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.myListApp .my-toolpage .sapUiBlockCellTitle {
+.myOnlineShop .my-toolpage .sapUiBlockCellTitle {
 	margin-bottom: 0;
 }
 
-.myListApp .my-toolpage .sapUiBlockCellContent {
+.myOnlineShop .my-toolpage .sapUiBlockCellContent {
 	justify-content: space-around;
 	
 }
 
-.myListApp .my-toolpage .last-viewed .sapUiBlockCellContent > *{
+.myOnlineShop .my-toolpage .last-viewed .sapUiBlockCellContent > *{
 	flex: 1;
 }
 
-.myListApp .my-toolpage .pop-products .sapUiBlockCellContent {
+.myOnlineShop .my-toolpage .pop-products .sapUiBlockCellContent {
 	flex-direction: column;
     align-items: start;
 }
 
-.myListApp .my-toolpage .sapUiBlockLayoutRow.counters-row .sapUiBlockCellContent {
+.myOnlineShop .my-toolpage .sapUiBlockLayoutRow.counters-row .sapUiBlockCellContent {
 	padding-top: .9rem; 
 	padding-bottom: .9rem; 
+}
+
+.myOnlineShop .sapUiBLy {
+	background-color: #285378;
 }
 
 .my-qrcode-control {
@@ -69,6 +73,6 @@
 }
 
 .tile-update {
-	background-color: #3b4653;
+	background-color: #333e4d;
 	transition: all 0.2s;
 }

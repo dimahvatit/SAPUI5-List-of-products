@@ -5,12 +5,12 @@ sap.ui.define([
 ) {
 	"use strict";
 
-	return BaseController.extend("my_cat_list.controller.SmartTable", {
+	return BaseController.extend("myshop.controller.SmartTable", {
 		/**
 		 * @override
 		 */
 		onInit: function() {
-			this._oDataModel = this.getOwnerComponent().getModel('category');
+			this._oDataModel = this.getOwnerComponent().getModel('backend');
 			this.getView().setModel(this._oDataModel);
 		}
 	});

@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(Controller, History, cart) {
 	"use strict";
 
-	return Controller.extend("my_cat_list.controller.BaseController", {
+	return Controller.extend("myshop.controller.BaseController", {
 		cart: cart,
 		getModel: function(sName) {
 			return this.getView().getModel(sName);
@@ -41,7 +41,7 @@ sap.ui.define([
 		 */
 		onAddItem(oEvent) {
 			// set model name which context will be used depending on the current view name
-			let sModelName = this.getView().getViewName() == 'my_cat_list.view.Cart' ? 'cartProducts' : 'category';
+			let sModelName = this.getView().getViewName() == 'myshop.view.Cart' ? 'cartProducts' : 'backend';
 			let oEntry = oEvent.getSource().getBindingContext(sModelName).getObject();
 			let oResourceBundle = this.getResourceBundle();
 			let oCartModel = this.getModel('cartProducts');
@@ -57,14 +57,14 @@ sap.ui.define([
 			let sModelName = '';
 			let sViewName = this.getView().getViewName();
 			switch (sViewName) {
-				case 'my_cat_list.view.Cart':
+				case 'myshop.view.Cart':
 					sModelName = 'cartProducts';
 					break;
-				case 'my_cat_list.view.HomePage':
+				case 'myshop.view.HomePage':
 					sModelName = 'promoted';
 					break;
 				default:
-					sModelName = 'category';
+					sModelName = 'backend';
 			}
 			let iProdID = oEvent.getSource().getBindingContext(sModelName).getObject().ProductID;
 			this.getRouter().navTo('details', {

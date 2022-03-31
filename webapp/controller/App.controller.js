@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(BaseController, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("my_cat_list.controller.App", {
+	return BaseController.extend("myshop.controller.App", {
 		onInit: function () {
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		}

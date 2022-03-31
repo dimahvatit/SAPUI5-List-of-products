@@ -2,7 +2,7 @@
 	"_version": "1.37.0",
 	"start_url": "index.html",
 	"sap.app": {
-		"id": "my_cat_list",
+		"id": "myshop",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -50,7 +50,7 @@
 			"cozy": true
 		},
 		"rootView": {
-			"viewName": "my_cat_list.view.App",
+			"viewName": "myshop.view.App",
 			"type": "XML",
 			"id": "app"
 		},
@@ -71,13 +71,13 @@
 						"bundleUrl": "i18n/i18n.properties",
 						"bundleUrlRelativeTo": "manifest"
 					}],
-					"bundleName": "my_cat_list.i18n.i18n",
+					"bundleName": "myshop.i18n.i18n",
 					"supportedLocales": ["en", "ru_RU"],
 					"fallbackLocale": "en",
 					"async": "true"
 				}
 			},
-			"category": {
+			"backend": {
 				"dataSource": "backend",
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"preload": true,
@@ -94,7 +94,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "my_cat_list.view",
+				"viewPath": "myshop.view",
 				"controlId": "app",
 				"controlAggregation": "pages"
 			},

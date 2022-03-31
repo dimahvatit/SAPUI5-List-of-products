@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.SmartTable"
+<mvc:View controllerName="myshop.controller.SmartTable"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:smartFB="sap.ui.comp.smartfilterbar"
@@ -24,7 +24,6 @@
         <smartT:SmartTable header="Products"
             id="smartTable"
             class="sapUiSmallMargin"
-            enableAutoColumnWidth="false"
             smartFilterId="smartFilterBar"
             tableType="ResponsiveTable"
             useExportToExcel="false"

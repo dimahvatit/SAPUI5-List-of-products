@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.HomePage"
+<mvc:View controllerName="myshop.controller.HomePage"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"

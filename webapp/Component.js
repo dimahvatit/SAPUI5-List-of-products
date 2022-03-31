@@ -1,12 +1,12 @@
 sap.ui.define([
 	'sap/ui/core/UIComponent',
 	'sap/ui/Device',
-	'my_cat_list/model/LocalStorageModel',
+	'myshop/model/LocalStorageModel',
 	"sap/ui/model/json/JSONModel"
 ], function (UIComponent, Device, LocalStorageModel, JSONModel) {
 	'use strict';
 
-	return UIComponent.extend('my_cat_list.Component', {
+	return UIComponent.extend('myshop.Component', {
 		metadata: {
 			manifest: 'json'
 		},

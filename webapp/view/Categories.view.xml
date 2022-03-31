@@ -1,4 +1,4 @@
-<mvc:View controllerName="my_cat_list.controller.Categories"
+<mvc:View controllerName="myshop.controller.Categories"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     displayBlock="true">
@@ -11,11 +11,11 @@
                 width="auto"
                 noDataText="No data"
                 items="{
-                    path: 'category>/Categories',
+                    path: 'backend>/Categories',
                     parameters: {expand: 'Products'}
                 }">
                 <headerToolbar>
-                    <Toolbar class="sapUiTinyMarginBottom category-list-toolbar">
+                    <Toolbar class="sapUiTinyMarginBottom backend-list-toolbar">
                         <Title text="{i18n>categoryListTitle}" />
                         <ToolbarSpacer />
                         <SearchField width="30%"
@@ -24,13 +24,13 @@
                     </Toolbar>
                 </headerToolbar>
                 <items>
-                    <ObjectListItem class="category-list-item sapUiSmallMarginbBottom"
-                        title="{category>CategoryName}"
-                        number="{= ${category>Products/}.length}"
+                    <ObjectListItem class="backend-list-item sapUiSmallMarginbBottom"
+                        title="{backend>CategoryName}"
+                        number="{= ${backend>Products/}.length}"
                         numberUnit="{i18n>listItemStatusText}"
                         type="Navigation"
                         press='.onPress'>
-                        <ObjectAttribute text="{category>Description}" />
+                        <ObjectAttribute text="{backend>Description}" />
                     </ObjectListItem>
                 </items>
             </List>
