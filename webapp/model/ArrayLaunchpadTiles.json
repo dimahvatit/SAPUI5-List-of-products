@@ -12,7 +12,7 @@
 					"timer": 4,
 					"number": "77",
 					"footer": "Products footer",
-					"footerColor": "Critical",
+					"footerColor": "Good",
 					"navTarget": "products"
 				},
 				{
@@ -24,7 +24,7 @@
 					"timer": 6,
 					"number": "29",
 					"footer": "Suppliers footer",
-					"footerColor": "Critical"
+					"footerColor": "Good"
 				}
 			]
 		},
@@ -49,7 +49,7 @@
 					"timer": 2,
 					"route": "orders",
 					"footer": "Orders footer",
-					"footerColor": "Critical"
+					"footerColor": "Good"
 				},
 				{
 					"header": "Cart",
@@ -69,7 +69,7 @@
 					"timer": 2,
 					"route": "orders",
 					"footer": "Orders footer",
-					"footerColor": "Critical"
+					"footerColor": "Good"
 				},
 				{
 					"header": "Cart",
@@ -94,7 +94,7 @@
 					"timer": 2,
 					"route": "orders",
 					"footer": "Another tile footer",
-					"footerColor": "Critical"
+					"footerColor": "Good"
 				}
 			]
 		}

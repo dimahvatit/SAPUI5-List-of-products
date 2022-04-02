@@ -19,7 +19,7 @@ sap.ui.define([
 		 * Navigation by the route from tile's navTarget attribute
 		 */
 		onTilePress(oEvt) {
-			this.getRouter().navTo(oEvt.getSource().getNavTarget(), {}, {}, true);
+			this.getRouter().navTo(oEvt.getSource().getNavTarget());
 		}
 	});
 });

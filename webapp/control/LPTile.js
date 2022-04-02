@@ -21,8 +21,7 @@ sap.ui.define([
 						type: 'sap.ui.core.Control',
 						multiple: false,
 					},
-				},
-				dnd: { draggable: true, droppable: true},
+				}
 			},
 			onBeforeRendering() {
 				GenericTile.prototype.onBeforeRendering.apply(this, arguments);

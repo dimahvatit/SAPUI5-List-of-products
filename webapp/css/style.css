@@ -16,7 +16,8 @@
 	margin-bottom: 0.25rem;
 }
 
-/**Home Page**/
+
+/** HOME PAGE **/
 
 .myOnlineShop .sapTntToolPage.my-toolpage .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
 	width: auto;
@@ -61,18 +62,25 @@
 	background-color: #285378;
 }
 
-.my-qrcode-control {
+.myOnlineShop .my-qrcode-control {
 	border: 3px solid #1B8DEC;
 	padding: 0.4rem;
 	background-color: #6BD3FF;
 	border-radius: 0.5rem;
 }
 
-.myLPTile {
+
+/** LAUNCHPAD **/
+
+.myLaunchpad .myLPTile {
 	transition: all 0.4s;
 }
 
-.tile-update {
+.myLaunchpad .tile-update {
 	background-color: #333e4d;
 	transition: all 0.2s;
+}
+
+.myLaunchpad .sapMNC {
+	width: auto;
 }

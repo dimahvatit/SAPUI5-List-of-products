@@ -1,16 +1,18 @@
 sap.ui.define([
     'sap/ui/layout/VerticalLayout',
-    'sap/m/Title',
+	'sap/ui/core/dnd/DragDropInfo',
     'myshop/control/TileContainer',
 	'myshop/control/LPTile',
-	'sap/ui/core/dnd/DragDropInfo',
-], function (VerticalLayout, Title,	TileContainer, LPTile, DragDropInfo) {
+    'sap/m/Title'
+], function (VerticalLayout, DragDropInfo, TileContainer, LPTile, Title) {
 		'use strict';
 
 		return VerticalLayout.extend('myshop.control.TileGroup', {
 			constructor: function(...args) {
 				VerticalLayout.apply(this, arguments);
 
+				//! There will be an error when group count is > 10
+				//TODO: Refactor this shit!
 				if (args.length > 1) {
 					this.setGroupNavTarget('group' + args[0].at(-1));
 				}
@@ -40,7 +42,6 @@ sap.ui.define([
 					}
 				},
 				defaultAggregation: 'tiles',
-				// dnd: { draggable: false, droppable: true }
 			},
 			onBeforeRendering() {
 				VerticalLayout.prototype.onBeforeRendering.apply(this, arguments);
@@ -50,7 +51,7 @@ sap.ui.define([
 				let oHeader = oControl.getAggregation('_header');
 				let oTileContainer = new TileContainer({});
 				oControl.getTiles().forEach(oTile => {
-					oTileContainer.addContent(oTile);
+					oTileContainer.addItem(oTile);
 				})
 				oControl.addContent(oHeader);
 				oControl.addContent(oTileContainer);

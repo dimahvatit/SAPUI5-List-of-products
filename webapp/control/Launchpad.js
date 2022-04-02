@@ -2,18 +2,34 @@
 //TODO Окончательно разделить контрол и контроллер. Навигацию вынести в контроллер, нужные свойства убрать внутрь контрола.
 
 sap.ui.define([
-    'sap/m/FlexBox',
-    'sap/m/Button',
     'myshop/control/TileGroup',
-    'sap/m/OverflowToolbar'
-], function (FlexBox, Button, TileGroup, OverflowToolbar) {
+    'sap/m/OverflowToolbar',
+    'sap/m/FlexBox',
+    'sap/m/Button'
+], function (TileGroup, OverflowToolbar, FlexBox, Button) {
 		'use strict';
 
 		return FlexBox.extend('myshop.control.Launchpad', {
-			constructor: function () {
-				FlexBox.apply(this, arguments);
-
+			metadata: {
+				aggregations: {
+                    _navbar: {
+                        type: 'sap.m.OverflowToolbar',
+                        multiple: false,
+                        visibility: 'hidden'
+                    },
+					items: {
+						type: 'myshop.control.TileGroup',
+						multiple: true,
+						singularName: 'item',
+					},
+				},
+				defaultAggregation: 'items',
+			},
+            init() {
+                FlexBox.prototype.init.apply(this, arguments);
+                this._refreshStarted = false;
                 this.setDirection('Column');
+                this.addStyleClass('myLaunchpad');
 
                 //create OverflowToolbar
                 let oNavbar = new OverflowToolbar({ height: '3rem' });
@@ -37,33 +53,6 @@ sap.ui.define([
 
                 oNavbar.addContent(oBtnContainer);
                 this.setAggregation('_navbar', oNavbar);
-			},
-			metadata: {
-				aggregations: {
-                    _navbar: {
-                        type: 'sap.m.OverflowToolbar',
-                        multiple: false,
-                        visibility: 'hidden'
-                    },
-					items: {
-						type: 'myshop.control.TileGroup',
-						multiple: true,
-						singularName: 'item',
-					},
-				},
-				defaultAggregation: 'items',
-			},
-
-            _refreshStarted: undefined,
-            init() {
-                FlexBox.prototype.init.apply(this, arguments);
-
-                if (!this._refreshStarted) {
-                    this._refreshStarted = setTimeout(() => {
-                        console.log('Start tiles refreshing');
-                        this._refreshTiles(this);
-                    }, 500);
-                }
             },
             onBeforeRendering() {
                 FlexBox.prototype.onBeforeRendering.apply(this, arguments);
@@ -85,9 +74,7 @@ sap.ui.define([
                     }
                 }
             },
-
 			renderer: function (oRM, oControl) {
-                console.log('RENDER CALL');
                 oRM.openStart('div', oControl);
                 oRM.openEnd();
                     if (oControl.getItems().length > 1) {
@@ -96,10 +83,19 @@ sap.ui.define([
                     sap.m.FlexBoxRenderer.render(oRM, oControl);
                 oRM.close('div');
 			},
+            onAfterRendering() {
+                FlexBox.prototype.onAfterRendering.apply(this, arguments);
 
+                if (this.getItems().length > 0) {
+                    if (!this._refreshStarted) {
+                        this._refreshTiles(this);
+                        this._refreshStarted = true;
+                    }
+                }
+            },
             _getDynamicTiles: function(oControl) {
                 let aTiles = oControl.getItems().map(oTileGroup => {
-                    return [...oTileGroup.getContent()[1].getContent()];
+                    return [...oTileGroup.getContent()[1].getItems()];
                 }).flat(1);
 
                 let aDynamicTiles = [];
@@ -238,7 +234,7 @@ sap.ui.define([
                         }
                     });
                 }
-            },
+            }
 		});
 	},
 );

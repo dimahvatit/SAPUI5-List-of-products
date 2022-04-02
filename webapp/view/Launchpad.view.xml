@@ -10,8 +10,8 @@
         showNavButton="true"
         title="My Launchpad">
 
-        <my:Launchpad items="{LPModel>/TileGroups}"
-            id="flexContainer"
+        <my:Launchpad id="flexContainer"
+            items="{LPModel>/TileGroups}"
             class="sapUiSmallMarginBegin sapUiSmallMarginTop">
                 <my:TileGroup tileGroupHeader="{LPModel>groupTitle}"
                     tiles="{path: 'LPModel>tiles', templateShareable: false}"
@@ -31,60 +31,5 @@
                         number="{LPModel>number}"/>
                 </my:TileGroup>
         </my:Launchpad>
-
-        <!-- <subHeader>
-            <OverflowToolbar height="auto">
-                <HBox alignItems="Center"
-                    id="btnContainer">
-                    <Button text="Main Page"
-                        class="sapUiTinyMarginTopBottom sapUiSmallMarginBeginEnd"
-                        type="Attention"
-                        press=".onNavBtnClick"
-                        custom:targetGroup="main" />
-                    <Button text="Product info"
-                        class="sapUiSmallMarginEnd"
-                        press=".onNavBtnClick"
-                        custom:targetGroup="group1" />
-                    <Button text="Order info"
-                        class="sapUiSmallMarginEnd"
-                        press=".onNavBtnClick"
-                        custom:targetGroup="group2" />
-                </HBox>
-            </OverflowToolbar>
-        </subHeader> -->
-
-        <!-- <FlexBox direction="Column"
-            id="flexContainer"
-            class="sapUiSmallMarginBegin sapUiLargeMarginTop">
-
-            <my:TileGroup tileGroupHeader="{/ProductInfo/groupTitle}"
-                id="group1"
-                class="sapUiSmallMargin">
-                <my:TileContainer wrap="Wrap"
-                    alignContent="SpaceBetween"
-                    items="{/ProductInfo/tiles}"
-                    alignItems="Center">
-                    <my:dragDropConfig>
-                        <dnd:DragDropInfo dropPosition="Between"
-                            drop=".onDrop"
-                            sourceAggregation="items"
-                            targetAggregation="items" />
-                    </my:dragDropConfig>
-                        <my:LPTile class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
-                            navTarget="{navTarget}"
-                            press=".onTilePress"
-                            header="{header}"
-                            headerImage="{headerImage}"
-                            subheader="{subheader}"
-                            width="15rem"
-                            fieldGroupIds="{fgID}"
-                            timer="{timer}"
-                            route="{route}"
-                            footer="{footer}"
-                            footerColor="{footerColor}"
-                            number="{number}"/>
-                </my:TileContainer>
-            </my:TileGroup>
-        </FlexBox> -->
     </Page>
 </mvc:View>
