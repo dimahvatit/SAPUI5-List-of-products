@@ -13,7 +13,7 @@
 		"ach": "CA-UI5-FST",
 		"dataSources": {
 			"backend": {
-				"uri": "/V2/Northwind/Northwind.svc/",
+				"uri": "/api",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
